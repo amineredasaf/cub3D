@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/26 00:12:26 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/26 00:16:10 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int main(int argc, char **argv)
 {
     if (argc == 1)
-        printf("Error: No Map As Input\n");
+        printf("%s : Error: No Map As Input\n", argv[0]);
     return (0);
 }
