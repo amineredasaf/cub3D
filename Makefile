@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/25 20:48:56 by rsaf             ###   ########.fr        #
+#    Updated: 2022/08/26 00:15:26 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ PARSING		=
 
 EXECUTION	=
 
-ALL_FILES	=	$(PARSING) $(EXECUTION)
+ALL_FILES	=	main.c $(PARSING) $(EXECUTION)
 
 OBJ			=	$(ALL_FILES:.c=.o)
 
