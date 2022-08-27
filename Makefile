@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/26 00:15:26 by rsaf             ###   ########.fr        #
+#    Updated: 2022/08/27 03:37:21 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,15 @@ PARSING		=
 
 EXECUTION	=
 
+LIB			=	./LIB/cub3d.h ./LIB/parsing.h
+
 ALL_FILES	=	main.c $(PARSING) $(EXECUTION)
 
 OBJ			=	$(ALL_FILES:.c=.o)
 
 all			:	$(NAME)
 
-%.o			:	%.c	cub3d.h
+%.o			:	%.c	$(LIB)
 	cc	$(C_FLAGS) -c $< -o $@
 
 $(NAME)		: $(OBJ)
