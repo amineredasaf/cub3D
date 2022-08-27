@@ -1,7 +1,7 @@
 
-#if !defined(MACRO)
-#define MACRO
+#ifndef PARSING_H
+#define PARSING_H
 
 
 
-#endif // MACRO
+#endif // PARSING_H
