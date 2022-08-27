@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/27 03:37:21 by rsaf             ###   ########.fr        #
+#    Updated: 2022/08/27 03:47:00 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ PARSING		=
 
 EXECUTION	=
 
-LIB			=	./LIB/cub3d.h ./LIB/parsing.h
+LIB			=	./LIB/cub3d.h ./LIB/parsing.h ./LIB/structrs.h ./LIB/execution.h
 
 ALL_FILES	=	main.c $(PARSING) $(EXECUTION)
 
