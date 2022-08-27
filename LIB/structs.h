@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 20:49:37 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/27 03:44:43 by rsaf             ###   ########.fr       */
+/*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
+/*   Updated: 2022/08/27 03:46:01 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef STRUCTS_H
+#define STRUCTS_H
 
-# include <stdio.h>
-# include "structs.h"
-# include "parsing.h"
-# include "execution.h"
+typedef struct s_data
+{
+}   t_data;
 
-#endif
+
+#endif // STRUCTS_H
