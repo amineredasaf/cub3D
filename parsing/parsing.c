@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2022/08/28 21:37:35 by rsaf             ###   ########.fr       */
+=======
 /*   Updated: 2022/08/28 18:54:26 by yabtaour         ###   ########.fr       */
+>>>>>>> a028cb84634ccba9a9937bb4e2007e0b2bb0b0d0
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../includes/cub3d.h"
 
 int	ft_check_cub(char *name)
 {
@@ -22,9 +26,9 @@ int	ft_check_cub(char *name)
 	i--;
 	if (name[i] == 'b' && name[i - 1] == 'u'
 		&& name[i - 2] == 'c' && name[i - 3] == '.')
-		return (0);
+		return (EXIT_SUCCESS);
 	printf("Error\nInvalid name of map ");
-	return (1);
+	return (EXIT_FAILURE);
 }
 
 int	ft_open_map(t_data *data)
@@ -33,9 +37,9 @@ int	ft_open_map(t_data *data)
 	if (data->fd_map == -1)
 	{
 		printf("Error\nInvalid file !!\n");
-		return (1);
+		return (EXIT_FAILURE);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 void	ft_read_file(t_data *data)
@@ -64,12 +68,12 @@ int	ft_parsing(t_data *data)
 	if (data->ac != 2)
 	{
 		printf("Error\nInvalid number of arguments !!\n");
-		return (1);
+		return (EXIT_FAILURE);
 	}
 	if (ft_check_cub(data->av[1]))
-		return (1);
+		return (EXIT_FAILURE);
 	if (ft_open_map(data))
-		return (1);
+		return (EXIT_FAILURE);
 	ft_read_file(data);
-	return (0);
+	return (EXIT_SUCCESS);
 }

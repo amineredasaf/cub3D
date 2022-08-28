@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/28 21:37:59 by rsaf             ###   ########.fr       */
+/*   Created: 2022/08/28 21:22:20 by rsaf              #+#    #+#             */
+/*   Updated: 2022/08/28 21:24:40 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
 
-int main(int argc, char **argv)
-{
-	t_data	data;
+#ifndef UTILS_H
+#define UTILS_H
 
-	data.av = argv;
-	data.ac = argc;
-	if (ft_parsing(&data))
-		return (EXIT_FAILURE);
-	return (0);
-}
+#include "structs.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "../Get_next_line/get_next_line.h"
+
+char	*ft_substr(char *s, int start, size_t len);
+
+#endif // UTILS_H

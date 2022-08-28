@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils1.c                                   :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:39:13 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/28 17:41:44 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/28 21:38:38 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "../includes/cub3d.h"
 
 char	*ft_substr(char *s, int start, size_t len)
 {
@@ -24,7 +24,7 @@ char	*ft_substr(char *s, int start, size_t len)
 		return (NULL);
 	ptr = (char *)malloc((len + 1) * sizeof(char));
 	if (!ptr)
-		exit (1);
+		exit (EXIT_FAILURE);
 	if (start <= ft_strlen(s))
 	{
 		while (start < end && s[start] != '\0')
