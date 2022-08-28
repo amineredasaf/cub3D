@@ -6,11 +6,11 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/28 15:51:08 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/28 17:47:18 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/parsing.h"
+#include "../includes/parsing.h"
 
 int	ft_check_cub(char *name)
 {
@@ -35,6 +35,22 @@ int	ft_open_map(t_data *data)
 	return (0);
 }
 
+void	ft_read_file(t_data *data)
+{
+	char	*line;
+	data->file = malloc(sizeof(char *) * 100);
+	int		i;
+
+	i = 0;
+	line = NULL;
+	while ((line = get_next_line(data->fd_map)))
+	{
+		data->file[i] = ft_substr(line, 0, ft_strlen(line));
+		i++;
+		free(line);
+	}
+}
+
 int	ft_parsing(t_data *data)
 {
 	if (data->ac != 2)
@@ -46,5 +62,6 @@ int	ft_parsing(t_data *data)
 		return (1);
 	if (ft_open_map(data))
 		return (1);
+	ft_read_file(data);
 	return (0);
 }

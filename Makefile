@@ -6,7 +6,7 @@
 #    By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/28 15:03:29 by yabtaour         ###   ########.fr        #
+#    Updated: 2022/08/28 17:43:00 by yabtaour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,16 @@ NAME		=	cub3d
 
 C_FLAGS		=	-Wall -Wextra -Werror
 
-PARSING		=	parsing.c
+PARSING		=	./parsing/parsing.c ./parsing/parsing_utils1.c
 
 EXECUTION	=
 
-INCLUDES	=	./includes/cub3d.h ./includes/parsing.h ./includes/structrs.h ./includes/execution.h
+GNL			=	./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c
 
-ALL_FILES	=	main.c $(PARSING) $(EXECUTION)
+INCLUDES	=	./includes/cub3d.h ./includes/parsing.h ./includes/structrs.h \
+				./includes/execution.h ./Get_next_line/get_next_line.h
+
+ALL_FILES	=	main.c $(PARSING) $(EXECUTION) $(GNL)
 
 OBJ			=	$(ALL_FILES:.c=.o)
 
