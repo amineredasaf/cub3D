@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/28 23:32:48 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/29 00:53:43 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,13 @@ int	ft_open_map(t_data *data)
 		x++;
 	}
 	if (data->fd_map[0] == -1 || data->fd_map[1] == -1)
-	{
-		ft_print_error("- Can't Access Configuration File.");
-		return (EXIT_FAILURE);
-	}
+		return (ft_print_error("- Can't Access Configuration File."));
 	return (EXIT_SUCCESS);
 }
 
 // this func read conf file content and allocate space for it
+// FD : need to be closed [0]
+// data->file_content : need to be freed
 void	ft_read_file(t_data *data)
 {
 	char	*line;
@@ -66,9 +65,11 @@ void	ft_read_file(t_data *data)
 	line = NULL;
 	while (get_next_line(data->fd_map[0]))
 		i++;
-	data->file_content = malloc(sizeof(char *) * i);
+	if (i == 0)
+		exit (ft_print_error("- Configuration File is empty."));
+	data->file_content = malloc(-sizeof(char *) * i);
 	if (!data->file_content)
-		exit(EXIT_FAILURE);
+		exit(ft_print_error("- Allocation Error Occurred."));
 	i = 0;
 	while ((line = get_next_line(data->fd_map[1])))
 	{
@@ -81,6 +82,8 @@ void	ft_read_file(t_data *data)
 		ft_print_error("- Configuration File is Not Well Formatted.");
 }
 
+
+// this func is main func for parsing process.
 int	ft_parsing(t_data *data)
 {
 	if (data->ac != 2)

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_error.c                                  :+:      :+:    :+:   */
+/*   ft_print_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 22:30:05 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/28 22:35:20 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/29 00:46:40 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void ft_print_error(char *str)
+int	ft_print_error(char *str)
 {
 	if (str != NULL)
 	{
 		printf("Error :\n");
 		printf("%s\n", str);
 	}
+	return (EXIT_FAILURE);
 }
