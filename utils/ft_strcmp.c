@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 20:49:37 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/28 22:08:23 by rsaf             ###   ########.fr       */
+/*   Created: 2022/08/28 22:15:27 by rsaf              #+#    #+#             */
+/*   Updated: 2022/08/28 22:15:50 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-/*				std::pakage				*/
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <fcntl.h>
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+	int	j;
 
-/*				our::package			*/
-# include "utils.h"
-# include "macros.h"
-# include "structs.h"
-# include "parsing.h"
-# include "execution.h"
-# include "../Get_next_line/get_next_line.h"
-
-#endif
+	i = 0;
+	while (s1 [i] != '\0' && s2 [i] != '\0' && s1 [i] == s2 [i])
+		i++;
+	if (s1 == s2)
+		j = 0;
+	else
+		j = s1 [i] - s2 [i];
+	return (j);
+}

@@ -6,30 +6,47 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/28 22:45:08 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/28 23:32:48 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+// this func check for Name And Suffix of the Conf file.
 int	ft_check_cub(char *name)
 {
 	int	i;
 
 	i = 0;
-	while (name[i])
+	while (name && name[i])
 		i++;
 	i = i - 4;
-	if (ft_strcmp(&name[i], ".cub") == 0)
-		return (EXIT_SUCCESS);
-	ft_print_error("- Invalid Suffix Of the Configuration File.");
+	if (i >= 0)
+	{
+		if (ft_strcmp(&name[i], ".cub") == 0)
+			return (EXIT_SUCCESS);
+		ft_print_error("- Invalid Suffix Of the Configuration File.");
+	}
+	else
+		ft_print_error("- Invalid Name Of the Configuration File.");
 	return (EXIT_FAILURE);
 }
 
+// this fun open the conf file and return file descriptors
+// we open two file descriptors :
+// [0] : for counting the number of lines for allocation
+// [1] : for reading the content and parse it out.
 int	ft_open_map(t_data *data)
 {
-	data->fd_map = open(data->av[1], O_RDONLY);
-	if (data->fd_map == -1)
+	int	x;
+
+	x = 0;
+	while (x < 2)
+	{
+		data->fd_map[x] = open(data->av[1], O_RDONLY);
+		x++;
+	}
+	if (data->fd_map[0] == -1 || data->fd_map[1] == -1)
 	{
 		ft_print_error("- Can't Access Configuration File.");
 		return (EXIT_FAILURE);
@@ -37,19 +54,25 @@ int	ft_open_map(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+// this func read conf file content and allocate space for it
 void	ft_read_file(t_data *data)
 {
 	char	*line;
-	data->file = malloc(sizeof(char *) * 100);
 	int		i;
 	int		flag;
-
+	
 	flag = 0;
 	i = 0;
 	line = NULL;
-	while ((line = get_next_line(data->fd_map)))
+	while (get_next_line(data->fd_map[0]))
+		i++;
+	data->file_content = malloc(sizeof(char *) * i);
+	if (!data->file_content)
+		exit(EXIT_FAILURE);
+	i = 0;
+	while ((line = get_next_line(data->fd_map[1])))
 	{
-		data->file[i] = ft_substr(line, 0, ft_strlen(line));
+		data->file_content[i] = ft_substr(line, 0, ft_strlen(line));
 		flag++;
 		i++;
 		free(line);
