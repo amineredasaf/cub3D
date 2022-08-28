@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/28 21:37:59 by rsaf             ###   ########.fr       */
+/*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
+/*   Updated: 2022/08/28 21:35:18 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#ifndef MACROS_H
+#define MACROS_H
 
-int main(int argc, char **argv)
-{
-	t_data	data;
+# define EXIT_FAILURE 1
+# define EXIT_SUCCESS 0
 
-	data.av = argv;
-	data.ac = argc;
-	if (ft_parsing(&data))
-		return (EXIT_FAILURE);
-	return (0);
-}
+#endif // MACROS_H
