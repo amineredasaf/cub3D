@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/28 17:47:18 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/28 18:54:26 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	ft_open_map(t_data *data)
 {
 	data->fd_map = open(data->av[1], O_RDONLY);
 	if (data->fd_map == -1)
+	{
+		printf("Error\nInvalid file !!\n");
 		return (1);
+	}
 	return (0);
 }
 
@@ -40,15 +43,20 @@ void	ft_read_file(t_data *data)
 	char	*line;
 	data->file = malloc(sizeof(char *) * 100);
 	int		i;
+	int		flag;
 
+	flag = 0;
 	i = 0;
 	line = NULL;
 	while ((line = get_next_line(data->fd_map)))
 	{
 		data->file[i] = ft_substr(line, 0, ft_strlen(line));
+		flag++;
 		i++;
 		free(line);
 	}
+	if (!flag)
+		printf("Error\nFile is empty or it's a folder !!\n");
 }
 
 int	ft_parsing(t_data *data)
