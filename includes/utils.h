@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:22:20 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/29 00:44:45 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/29 00:57:45 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ char	*ft_substr(char *s, int start, size_t len);
 int     ft_strcmp(char *s1, char *s2);
 
 /*          Error utils         */
-int ft_print_error(char *str);
+int		ft_print_error(char *str);
 
 #endif // UTILS_H

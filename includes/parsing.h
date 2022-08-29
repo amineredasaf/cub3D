@@ -10,6 +10,6 @@
 
 int		ft_check_cub(char *name);
 int		ft_parsing(t_data *data);
-char	*ft_substr(char *s, int start, size_t len);
+int		ft_parse_textures(t_data *data);
 
 #endif // PARSING_H

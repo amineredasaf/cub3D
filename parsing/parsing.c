@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/29 00:53:43 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/29 02:07:13 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_read_file(t_data *data)
 		i++;
 	if (i == 0)
 		exit (ft_print_error("- Configuration File is empty."));
-	data->file_content = malloc(-sizeof(char *) * i);
+	data->file_content = malloc(sizeof(char *) * (i + 1));
 	if (!data->file_content)
 		exit(ft_print_error("- Allocation Error Occurred."));
 	i = 0;
@@ -97,5 +97,6 @@ int	ft_parsing(t_data *data)
 	if (ft_open_map(data))
 		return (EXIT_FAILURE);
 	ft_read_file(data);
+	ft_parse_textures(data);
 	return (EXIT_SUCCESS);
 }
