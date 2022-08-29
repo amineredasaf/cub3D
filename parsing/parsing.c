@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/29 16:11:26 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:23:16 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_open_map(t_data *data)
 	data->fd_map[0] = open(data->av[1], O_RDONLY);
 	data->fd_map[1] = open(data->av[1], O_RDONLY);
 	if (data->fd_map[0] == -1 || data->fd_map[1] == -1)
-		return (ft_print_error("- Can't Access Configuration File."));
+		return (ft_print_error("- Can't access configuration file."));
 	return (EXIT_SUCCESS);
 }
 
@@ -60,20 +60,19 @@ void	ft_read_file(t_data *data)
 	while (get_next_line(data->fd_map[0]))
 		i++;
 	if (i == 0)
-		exit (ft_print_error("- Configuration File is empty."));
+		exit (ft_print_error("- Configuration file is empty."));
 	data->file_content = malloc(sizeof(char *) * (i + 1));
 	if (!data->file_content)
-		exit(ft_print_error("- Allocation Error Occurred."));
+		exit(ft_print_error("- Allocation error occurred."));
 	i = 0;
 	while ((line = get_next_line(data->fd_map[1])))
 	{
-		data->file_content[i] = ft_substr(line, 0, ft_strlen(line));
+		data->file_content[i++] = ft_substr(line, 0, ft_strlen(line));
 		flag++;
-		i++;
 		free(line);
 	}
 	if (!flag)
-		ft_print_error("- Configuration File is Not Well Formatted.");
+		ft_print_error("- Configuration file is not well formatted.");
 }
 
 
