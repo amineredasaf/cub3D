@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/29 04:15:00 by rsaf             ###   ########.fr       */
+/*   Created: 2022/08/29 04:23:53 by rsaf              #+#    #+#             */
+/*   Updated: 2022/08/29 04:32:47 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-#define STRUCTS_H
+#include "../includes/cub3d.h"
 
-typedef struct s_textures
+char    *ft_strdup(char *str)
 {
-	int		n_no;
-	int 	n_so;
-	int 	n_we;
-	int 	n_ea;
-	char	*no_txt;
-	char	*so_txt;
-	char	*we_txt;
-	char	*ea_txt;
-}	t_textures;
+	char	*ptr;
+	int		len;
+	int		idx;
 
-
-typedef struct s_data
-{
-	char		**av;
-	int			ac;
-	int			fd_map[2]; // file-descriptor of the map
-	char		**file_content; // file content *line by line*
-	t_textures	sides;
-}   t_data;
-
-#endif // STRUCTS_H
+	idx = 0;
+	len = ft_strlen(str) + 1;
+	ptr = (char *)malloc(len * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	while (str[idx] != '\0')
+	{
+		ptr[idx] = str[idx];
+		idx++;
+	}
+	ptr[idx] = '\0';
+	return (ptr);
+}
