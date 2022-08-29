@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/28 22:37:29 by rsaf             ###   ########.fr        #
+#    Updated: 2022/08/29 01:04:25 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	cub3d
 
 C_FLAGS		=	-Wall -Wextra -Werror
 
-PARSING		=	./parsing/parsing.c
+PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c ./utils/ft_print_error.c \
 				
