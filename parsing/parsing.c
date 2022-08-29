@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/29 02:07:13 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/29 14:04:36 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	ft_check_cub(char *name)
 	{
 		if (ft_strcmp(&name[i], ".cub") == 0)
 			return (EXIT_SUCCESS);
-		ft_print_error("- Invalid Suffix Of the Configuration File.");
+		ft_print_error("- Invalid suffix of the configuration file.");
 	}
 	else
-		ft_print_error("- Invalid Name Of the Configuration File.");
+		ft_print_error("- Invalid name of the configuration file.");
 	return (EXIT_FAILURE);
 }
 
@@ -88,8 +88,7 @@ int	ft_parsing(t_data *data)
 {
 	if (data->ac != 2)
 	{
-		ft_print_error("- More or Less Argument Was Provided : ");
-		printf("-- [ Only Configuration File is Needed ].");
+		ft_print_error("- Invalid number of arguments : ");
 		return (EXIT_FAILURE);
 	}
 	if (ft_check_cub(data->av[1]))
