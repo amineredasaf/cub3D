@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/29 14:04:36 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:11:26 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,8 @@ int	ft_check_cub(char *name)
 // [1] : for reading the content and parse it out.
 int	ft_open_map(t_data *data)
 {
-	int	x;
-
-	x = 0;
-	while (x < 2)
-	{
-		data->fd_map[x] = open(data->av[1], O_RDONLY);
-		x++;
-	}
+	data->fd_map[0] = open(data->av[1], O_RDONLY);
+	data->fd_map[1] = open(data->av[1], O_RDONLY);
 	if (data->fd_map[0] == -1 || data->fd_map[1] == -1)
 		return (ft_print_error("- Can't Access Configuration File."));
 	return (EXIT_SUCCESS);
