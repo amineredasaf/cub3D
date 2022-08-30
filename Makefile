@@ -6,7 +6,7 @@
 #    By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/30 09:33:17 by yabtaour         ###   ########.fr        #
+#    Updated: 2022/08/30 17:47:10 by yabtaour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		=	cub3d
 C_FLAGS		=	-Wall -Wextra -Werror
 
 PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
+				./parsing/parsing_utils.c \
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_print_error.c ./utils/ft_strdup.c \

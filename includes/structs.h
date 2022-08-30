@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/30 09:06:08 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:44:59 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_textures
 	char	*so_txt;
 	char	*we_txt;
 	char	*ea_txt;
+	char	*f_txt;
+	char	*c_txt;
 }	t_textures;
 
 typedef struct s_data
