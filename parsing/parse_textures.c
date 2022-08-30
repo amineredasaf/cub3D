@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/30 17:52:29 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:06:48 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ int	ft_init_sides(t_data *data, char *line, int flag)
 		data->sides.c_txt = ft_color_alloc(data, line, flag);
 	if (data->sides.n_ea > 1 || data->sides.n_so > 1 || data->sides.n_we > 1
 		|| data->sides.n_no > 1 || data->sides.n_f > 1 || data->sides.n_c > 1)
-		return (ft_print_error("File configuration is wrong"));
+		{
+			printf("Error\nFile configuration is wrong\n");
+			exit (1);
+		}
 	return (EXIT_SUCCESS);
 }
 
