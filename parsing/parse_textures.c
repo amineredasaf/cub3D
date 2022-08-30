@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/30 17:46:20 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:52:29 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,15 @@ int	ft_parse_textures(t_data *data)
 	while (data->file_content && !ft_is_map(data->file_content[x]))
 	{
 		line = ft_strtrim(data->file_content[x], " ");
-		printf("%s", line);
 		ft_check_sides(data, line);
 		x++;
 		free(line);
 	}
+	printf("no : %s\n", data->sides.no_txt);
+	printf("so : %s\n", data->sides.so_txt);
+	printf("ea : %s\n", data->sides.ea_txt);
+	printf("we : %s\n", data->sides.we_txt);
+	printf("c : %s\n", data->sides.c_txt);
+	printf("f : %s\n", data->sides.f_txt);
 	return (EXIT_SUCCESS);
 }
