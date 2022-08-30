@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
+#    By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/29 04:24:46 by rsaf             ###   ########.fr        #
+#    Updated: 2022/08/30 09:33:17 by yabtaour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_print_error.c ./utils/ft_strdup.c \
+				./utils/ft_strtrim.c \
 				
+INIT		=	./initialization/initialize_data.c \
 
 EXECUTION	=
 
@@ -28,7 +30,7 @@ INCLUDES	=	./includes/cub3d.h ./includes/parsing.h ./includes/structrs.h \
 				./includes/execution.h ./Get_next_line/get_next_line.h \
 				./includes/utils.h ./includes/macros.h \
 
-ALL_FILES	=	main.c $(PARSING) $(EXECUTION) $(GNL) $(UTILS)
+ALL_FILES	=	main.c $(PARSING) $(EXECUTION) $(GNL) $(UTILS) $(INIT)
 
 OBJ			=	$(ALL_FILES:.c=.o)
 
