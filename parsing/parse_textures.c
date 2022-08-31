@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/30 18:06:48 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 07:40:41 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	ft_parse_textures(t_data *data)
 	int	x;
 
 	x = 0;
-	while (data->file_content && !ft_is_map(data->file_content[x]))
+	while (data->file_content && ft_is_map(data->file_content[x]))
 	{
 		line = ft_strtrim(data->file_content[x], " ");
 		ft_check_sides(data, line);

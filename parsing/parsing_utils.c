@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:58:03 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/30 17:46:54 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 07:44:23 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 int	ft_is_map(char *line)
 {
 	if (line[0] != ' ' && line[0] != '1')
-		return (0);
-	return (1);
+		return (TRUE);
+	return (FAlSE);
 }
 
 // this func compare sides and colors [ NO - SO - WE - EA - F - C]
