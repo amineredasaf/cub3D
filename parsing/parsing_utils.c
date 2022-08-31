@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:58:03 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 13:02:35 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:21:20 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,3 @@ int	ft_issides(char *line, char a, char b, int flag)
 		return (TRUE);
 	return (FAlSE);
 }
-
