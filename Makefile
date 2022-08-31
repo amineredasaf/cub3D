@@ -15,7 +15,9 @@ NAME		=	cub3d
 C_FLAGS		=	-Wall -Wextra -Werror
 
 PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
-				./parsing/parsing_utils.c ./parsing/get_colors.c \
+				    ./parsing/parse_map.c ./parsing/parsing_utils.c \
+            ./parsing/get_colors.c \
+
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_print_error.c ./utils/ft_strdup.c \
