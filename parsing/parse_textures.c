@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 09:50:58 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 12:30:12 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,24 +101,23 @@ int	ft_parse_textures(t_data *data)
 	{
 		line = ft_strtrim(data->file_content[x], " ");
 		if (line && !ft_is_map(line))
-		{	
 			ft_check_sides(data, line);
-			free(line);
-		}
 		else if (data->sides.f_found < 6)
 			exit(ft_print_error("- Configuration file is not Correct."));
+		free(line);
 		x++;
 	}
+	// we need to add protection here for all textures and colors if empty or new line
 	if (data->sides.no_txt == NULL || data->sides.no_txt[0] == '\n')
 	{
 		printf("PRINTF NEW LINE BECUASE OF ERROR *CHANGE ME* [%s : line %d]",__func__, __LINE__);
 		exit(EXIT_FAILURE);
 	}
-	printf("no	: %s\n", data->sides.no_txt);
-	printf("so	: %s\n", data->sides.so_txt);
-	printf("ea	: %s\n", data->sides.ea_txt);
-	printf("we	: %s\n", data->sides.we_txt);
-	printf("c	: %s\n", data->sides.c_txt);
-	printf("f	: %s\n", data->sides.f_txt);
+	// printf("no	: %s\n", data->sides.no_txt);
+	// printf("so	: %s\n", data->sides.so_txt);
+	// printf("ea	: %s\n", data->sides.ea_txt);
+	// printf("we	: %s\n", data->sides.we_txt);
+	// printf("c	: %s\n", data->sides.c_txt);
+	// printf("f	: %s\n", data->sides.f_txt);
 	return (EXIT_SUCCESS);
 }

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
 /*   Updated: 2022/08/31 11:38:07 by rsaf             ###   ########.fr       */
@@ -38,6 +38,14 @@ typedef struct s_map
 	int		l_lentgh;	
 }	t_map;
 
+typedef struct s_color
+{
+	char	**splited;
+	int		r;
+	int		b;
+	int		g;
+}	t_color;
+
 
 typedef struct s_data
 {
@@ -45,6 +53,8 @@ typedef struct s_data
 	int			ac;
 	int			fd_map[2]; // file-descriptor of the map
 	char		**file_content; // file content *line by line*
+	t_color		floor;
+	t_color		ceiling;
 	t_textures	sides;
 }   t_data;
 

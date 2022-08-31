@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
 /*   Updated: 2022/08/31 11:31:34 by rsaf             ###   ########.fr       */
@@ -75,7 +75,6 @@ void	ft_read_file(t_data *data)
 		ft_print_error("- Configuration file is not well formatted.");
 }
 
-
 // this func is main func for parsing process.
 int	ft_parsing(t_data *data)
 {
@@ -91,5 +90,6 @@ int	ft_parsing(t_data *data)
 	ft_read_file(data);
 	ft_parse_textures(data);
 	ft_parse_map(data);
+	ft_get_colors(data);
 	return (EXIT_SUCCESS);
 }
