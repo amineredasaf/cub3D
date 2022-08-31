@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 08:01:16 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 08:12:31 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	ft_check_sides(t_data *data, char *line)
 		ft_init_sides(data, line, S_F);
 	else if (ft_issides(line, 'C', 'q', COLOR))
 		ft_init_sides(data, line, S_C);
+	else if (line[0] != '1' && line[0] != '0' && line[0] != '\n')
+		exit(ft_print_error("- Configuration file is not Correct."));
 	return (EXIT_SUCCESS);
 }
 
@@ -100,12 +102,11 @@ int	ft_parse_textures(t_data *data)
 		line = ft_strtrim(data->file_content[x], " ");
 		if (line && ft_is_map(line))
 		{	
-			printf("Hey\n");
 			ft_check_sides(data, line);
 			free(line);
 		}
 		else if (data->sides.f_found < 6)
-			return(ft_print_error("- Configuration file is not Correct."));
+			exit(ft_print_error("- Configuration file is not Correct."));
 		x++;
 	}
 	printf("no : %s\n", data->sides.no_txt);
