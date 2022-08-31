@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:58:03 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 12:54:35 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:02:35 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,3 @@ int	ft_issides(char *line, char a, char b, int flag)
 	return (FAlSE);
 }
 
-// we need to add protection here for all textures and colors if empty or new line
-int	ft_check_after_id(t_data *data)
-{
-	if (!data->sides.no_txt || data->sides.no_txt[0] == '\n'
-		|| !data->sides.so_txt || data->sides.so_txt[0] == '\n'
-		|| !data->sides.ea_txt || data->sides.ea_txt[0] == '\n'
-		|| !data->sides.we_txt || data->sides.we_txt[0] == '\n'
-		|| !data->sides.f_txt || data->sides.f_txt[0] == '\n'
-		|| !data->sides.c_txt || data->sides.c_txt[0] == '\n')
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
