@@ -15,8 +15,9 @@ int     ft_parse_map(t_data *data);
 void	ft_get_colors(t_data *data);
 
 //         parsing utils       */
-int	ft_issides(char *line, char a, char b, int flag);
-int	ft_is_map(char *line);
-int	ft_check_after_id(t_data *data);
+int     ft_issides(char *line, char a, char b, int flag);
+int     ft_is_map(char *line);
+int     ft_check_after_id(t_data *data);
+void	ft_update_txt(t_data *data);
 
 #endif // PARSING_H
