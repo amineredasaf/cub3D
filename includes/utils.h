@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:22:20 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 11:53:02 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:49:34 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*ft_strtrim(char *s1, char *set);
 int     ft_isspace(char c);
 char	**ft_split(char *s, char c);
 void	*ft_calloc(size_t	count, size_t	size);
+int		ft_atoi(const char	*str);
 
 /*          Error utils         */
 int		ft_print_error(char *str);
