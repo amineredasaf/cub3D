@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 08:12:31 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 08:24:35 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	ft_parse_textures(t_data *data)
 	while (data->file_content[x])
 	{
 		line = ft_strtrim(data->file_content[x], " ");
-		if (line && ft_is_map(line))
+		if (line && !ft_is_map(line))
 		{	
 			ft_check_sides(data, line);
 			free(line);
