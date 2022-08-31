@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 07:40:41 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 08:01:16 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_textures_alloc(t_data *data, char *line, int flag)
 	if (data->sides.n_no > 1 || data->sides.n_we > 1
 		|| data->sides.n_so > 1 || data->sides.n_ea > 1)
 		return (NULL);
+	data->sides.f_found++;
 	return (ft_strtrim(ft_strdup(&line[3]), " "));
 }
 
@@ -39,6 +40,7 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 		data->sides.n_c++;
 	if (data->sides.n_f > 1 || data->sides.n_c > 1)
 		return (NULL);
+	data->sides.f_found++;
 	return (ft_strtrim(ft_strdup(&line[2]), " "));
 }
 
@@ -62,7 +64,7 @@ int	ft_init_sides(t_data *data, char *line, int flag)
 	if (data->sides.n_ea > 1 || data->sides.n_so > 1 || data->sides.n_we > 1
 		|| data->sides.n_no > 1 || data->sides.n_f > 1 || data->sides.n_c > 1)
 		{
-			printf("Error\nFile configuration is wrong\n");
+			ft_print_error("- Configuration file is not Correct.");
 			exit (1);
 		}
 	return (EXIT_SUCCESS);
@@ -93,12 +95,18 @@ int	ft_parse_textures(t_data *data)
 	int	x;
 
 	x = 0;
-	while (data->file_content && ft_is_map(data->file_content[x]))
+	while (data->file_content[x])
 	{
 		line = ft_strtrim(data->file_content[x], " ");
-		ft_check_sides(data, line);
+		if (line && ft_is_map(line))
+		{	
+			printf("Hey\n");
+			ft_check_sides(data, line);
+			free(line);
+		}
+		else if (data->sides.f_found < 6)
+			return(ft_print_error("- Configuration file is not Correct."));
 		x++;
-		free(line);
 	}
 	printf("no : %s\n", data->sides.no_txt);
 	printf("so : %s\n", data->sides.so_txt);
