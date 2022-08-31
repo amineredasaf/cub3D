@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 09:00:24 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 11:31:34 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int	ft_parsing(t_data *data)
 		return (EXIT_FAILURE);
 	ft_read_file(data);
 	ft_parse_textures(data);
+	ft_parse_map(data);
 	return (EXIT_SUCCESS);
 }
