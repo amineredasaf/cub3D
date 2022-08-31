@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 13:46:30 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:53:18 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*ft_textures_alloc(t_data *data, char *line, int flag)
 		|| data->sides.n_so > 1 || data->sides.n_ea > 1)
 		return (NULL);
 	data->sides.f_found++;
-	printf("|%s|", ft_strtrim(ft_strdup(&line[2]), " "));
 	return (ft_strtrim(ft_strdup(&line[2]), " "));
 }
 
@@ -110,11 +109,12 @@ int	ft_parse_textures(t_data *data)
 	}
 	if (ft_check_after_id(data))
 		exit(ft_print_error("- Texture configuration is not correct"));
-	// printf("no	: %s\n", data->sides.no_txt);
-	// printf("so	: %s\n", data->sides.so_txt);
-	// printf("ea	: %s\n", data->sides.ea_txt);
-	// printf("we	: %s\n", data->sides.we_txt);
-	// printf("c	: %s\n", data->sides.c_txt);
-	// printf("f	: %s\n", data->sides.f_txt);
+	ft_update_txt(data);
+	printf("no	: |%s|\n", data->sides.no_txt);
+	printf("so	: |%s|\n", data->sides.so_txt);
+	printf("ea	: |%s|\n", data->sides.ea_txt);
+	printf("we	: |%s|\n", data->sides.we_txt);
+	printf("c	: |%s|\n", data->sides.c_txt);
+	printf("f	: |%s|\n", data->sides.f_txt);
 	return (EXIT_SUCCESS);
 }
