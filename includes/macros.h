@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/29 04:06:43 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/30 09:58:11 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,11 @@
 # define S_SO 11
 # define S_WE 12
 # define S_EA 13
+# define S_F  14
+# define S_C  15
+
+/*      ft_isside flag  */
+# define SIDE 1
+# define COLOR 0
 
 #endif // MACROS_H
