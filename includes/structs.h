@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 11:27:22 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:38:07 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ typedef struct s_textures
 	char	*f_txt;
 	char	*c_txt;
 }	t_textures;
+
+typedef struct s_map
+{
+	/* data */
+	char	**map_tab;
+	int		n_lines;
+	int		l_lentgh;	
+}	t_map;
 
 typedef struct s_color
 {

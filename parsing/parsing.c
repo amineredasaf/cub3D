@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 10:38:04 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:31:34 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	ft_parsing(t_data *data)
 		return (EXIT_FAILURE);
 	ft_read_file(data);
 	ft_parse_textures(data);
+	ft_parse_map(data);
 	ft_get_colors(data);
 	return (EXIT_SUCCESS);
 }
