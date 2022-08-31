@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:58:03 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 13:47:14 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:52:15 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,26 @@ int	ft_check_after_id(t_data *data)
 		|| !data->sides.c_txt || data->sides.c_txt[0] == '\n')
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
+}
+
+char	*ft_delete_new_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (line[i])
+		line[i] = '\0';
+	return (line);
+}
+
+void	ft_update_txt(t_data *data)
+{
+	data->sides.c_txt = ft_delete_new_line(data->sides.c_txt);
+	data->sides.f_txt = ft_delete_new_line(data->sides.f_txt);
+	data->sides.no_txt = ft_delete_new_line(data->sides.no_txt);
+	data->sides.so_txt = ft_delete_new_line(data->sides.so_txt);
+	data->sides.ea_txt = ft_delete_new_line(data->sides.ea_txt);
+	data->sides.we_txt = ft_delete_new_line(data->sides.we_txt);
 }
