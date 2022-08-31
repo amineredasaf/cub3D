@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 09:40:16 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 09:50:58 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,10 @@ int	ft_parse_textures(t_data *data)
 		x++;
 	}
 	if (data->sides.no_txt == NULL || data->sides.no_txt[0] == '\n')
-		exit(ft_print_error("mok"));
+	{
+		printf("PRINTF NEW LINE BECUASE OF ERROR *CHANGE ME* [%s : line %d]",__func__, __LINE__);
+		exit(EXIT_FAILURE);
+	}
 	printf("no	: %s\n", data->sides.no_txt);
 	printf("so	: %s\n", data->sides.so_txt);
 	printf("ea	: %s\n", data->sides.ea_txt);
