@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 11:38:07 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 16:46:04 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_color
 	int		r;
 	int		b;
 	int		g;
+	int		final_color;
 }	t_color;
 
 

@@ -6,7 +6,7 @@
 #    By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/31 11:52:11 by yabtaour         ###   ########.fr        #
+#    Updated: 2022/08/31 16:45:09 by yabtaour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,15 @@ NAME		=	cub3d
 C_FLAGS		=	-Wall -Wextra -Werror
 
 PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
-				    ./parsing/parse_map.c ./parsing/parsing_utils.c \
-            ./parsing/get_colors.c \
+				./parsing/parse_map.c ./parsing/parsing_utils.c \
+            	./parsing/get_colors.c \
 
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_print_error.c ./utils/ft_strdup.c \
 				./utils/ft_strtrim.c ./utils/ft_isspace.c \
 				./utils/ft_split.c ./utils/ft_calloc.c \
+				./utils/ft_atoi.c \
 				
 INIT		=	./initialization/initialize_data.c \
 
