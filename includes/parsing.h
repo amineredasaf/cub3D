@@ -11,6 +11,7 @@
 int		ft_check_cub(char *name);
 int		ft_parsing(t_data *data);
 int		ft_parse_textures(t_data *data);
+void	ft_get_colors(t_data *data);
 
 //         parsing utils       */
 int	ft_issides(char *line, char a, char b, int flag);
