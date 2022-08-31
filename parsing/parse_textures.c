@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 12:58:28 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:46:30 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ char	*ft_textures_alloc(t_data *data, char *line, int flag)
 		|| data->sides.n_so > 1 || data->sides.n_ea > 1)
 		return (NULL);
 	data->sides.f_found++;
-	return (ft_strtrim(ft_strdup(&line[3]), " "));
+	printf("|%s|", ft_strtrim(ft_strdup(&line[2]), " "));
+	return (ft_strtrim(ft_strdup(&line[2]), " "));
 }
 
 // this function incremente colors depends on the flag and return the colors
@@ -41,7 +42,7 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 	if (data->sides.n_f > 1 || data->sides.n_c > 1)
 		return (NULL);
 	data->sides.f_found++;
-	return (ft_strtrim(ft_strdup(&line[2]), " "));
+	return (ft_strtrim(ft_strdup(&line[1]), " "));
 }
 
 // this func alloact texture data in our struct. beta version could be better

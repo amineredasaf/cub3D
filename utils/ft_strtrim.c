@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 08:29:04 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/30 08:52:51 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:32:51 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ char	*ft_strtrim(char *s1, char *set)
 	{
 		start = 0;
 		last = ft_strlen(s1);
-		while (s1[start] != '\0' && ft_strchr(set, s1[start]))
+		while (s1[start] != '\0' && ft_isspace(s1[start]))
 			start++;
-		while (ft_strchr(set, s1[last - 1]) && last > start)
+		while ((ft_isspace(s1[last - 1])) && last > start)
 			last--;
 		ptr = (char *)malloc(sizeof(char) * (last - start + 1));
 		if (ptr)
