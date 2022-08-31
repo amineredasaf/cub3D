@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+         #
+#    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/30 17:47:10 by yabtaour         ###   ########.fr        #
+#    Updated: 2022/08/31 09:30:03 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_print_error.c ./utils/ft_strdup.c \
-				./utils/ft_strtrim.c \
+				./utils/ft_strtrim.c ./utils/ft_isspace.c \
 				
 INIT		=	./initialization/initialize_data.c \
 

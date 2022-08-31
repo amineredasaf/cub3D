@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 08:24:35 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/08/31 09:40:16 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,13 @@ int	ft_parse_textures(t_data *data)
 			exit(ft_print_error("- Configuration file is not Correct."));
 		x++;
 	}
-	printf("no : %s\n", data->sides.no_txt);
-	printf("so : %s\n", data->sides.so_txt);
-	printf("ea : %s\n", data->sides.ea_txt);
-	printf("we : %s\n", data->sides.we_txt);
-	printf("c : %s\n", data->sides.c_txt);
-	printf("f : %s\n", data->sides.f_txt);
+	if (data->sides.no_txt == NULL || data->sides.no_txt[0] == '\n')
+		exit(ft_print_error("mok"));
+	printf("no	: %s\n", data->sides.no_txt);
+	printf("so	: %s\n", data->sides.so_txt);
+	printf("ea	: %s\n", data->sides.ea_txt);
+	printf("we	: %s\n", data->sides.we_txt);
+	printf("c	: %s\n", data->sides.c_txt);
+	printf("f	: %s\n", data->sides.f_txt);
 	return (EXIT_SUCCESS);
 }
