@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 13:53:18 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/01 09:01:04 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,13 @@ int	ft_parse_textures(t_data *data)
 			ft_check_sides(data, line);
 		else if (data->sides.f_found < 6)
 			exit(ft_print_error("- Configuration file is not Correct."));
+		else if (ft_is_map(line))
+			break;
 		free(line);
 		x++;
 	}
+	if (x != 0)
+		data->map_s.start_point = x;
 	if (ft_check_after_id(data))
 		exit(ft_print_error("- Texture configuration is not correct"));
 	ft_update_txt(data);
