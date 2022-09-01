@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/01 08:00:19 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/01 08:52:57 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 {
 	/* data */
 	char	**map_tab;
+	int		start_point;
 	int		n_lines;
 	int		l_lentgh;	
 }	t_map;
@@ -57,6 +58,7 @@ typedef struct s_data
 	t_color		floor;
 	t_color		ceiling;
 	t_textures	sides;
+	t_map		map_s;
 }   t_data;
 
 #endif // STRUCTS_H
