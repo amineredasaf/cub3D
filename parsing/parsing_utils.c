@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:58:03 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 13:52:15 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/01 07:01:56 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	ft_check_after_id(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+// this function deletes the new line at the end
 char	*ft_delete_new_line(char *line)
 {
 	int	i;
@@ -55,6 +56,7 @@ char	*ft_delete_new_line(char *line)
 	return (line);
 }
 
+// this function calls the function that deletes the new line at the end of the textures and colors
 void	ft_update_txt(t_data *data)
 {
 	data->sides.c_txt = ft_delete_new_line(data->sides.c_txt);

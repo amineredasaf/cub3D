@@ -6,7 +6,7 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:38:38 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 16:52:21 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/01 07:14:44 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_check_fields(char **fields)
 		exit (ft_print_error("- Colors configuration is not correct"));
 }
 
+
+// this function converts the colors from char * to int using atoi
 void	ft_store_color(t_data *data, int flag)
 {
 	if (flag == S_F)
@@ -58,6 +60,8 @@ void	ft_store_color(t_data *data, int flag)
 	}
 }
 
+// this function function checks the range of colors and converts rgb to int
+// the formula is (r * 1 << 16) + (g * 1 << 8) + (b * 1 << 0)
 void	ft_convert_color(t_data *data, int flag)
 {
 	if (flag == S_F)
@@ -65,17 +69,18 @@ void	ft_convert_color(t_data *data, int flag)
 		if (data->floor.b > 255 || data->floor.r > 255 || data->floor.g > 255
 			|| data->floor.b < 0 || data->floor.r < 0 || data->floor.g < 0)
 			exit (ft_print_error("- Color configuration is no correct."));
-		// here I need to call the function that converts the color to int and store it in data->floor.final_color
+		data->floor.final_color = (data->floor.r * 65536) + (data->floor.g * 265) + (data->floor.b);
 	}
 	if (flag == S_C)
 	{
 		if (data->ceiling.b > 255 || data->ceiling.r > 255 || data->ceiling.g > 255
 			|| data->ceiling.b < 0 || data->ceiling.r < 0 || data->ceiling.g < 0)
 			exit (ft_print_error("- Color configuration is no correct."));
-		// here I need to call the function that converts the color to int and store it in data->ceiling.final_color
+		data->ceiling.final_color = (data->ceiling.r * 65536) + (data->ceiling.g * 265) + (data->ceiling.b);
 	}
 }
 
+// this is the main function for parsing the colors
 void	ft_get_colors(t_data *data)
 {
 	ft_check_comma(data->sides.c_txt);
@@ -90,4 +95,6 @@ void	ft_get_colors(t_data *data)
 	ft_store_color(data, S_C);
 	ft_convert_color(data, S_F);
 	ft_convert_color(data, S_C);
+	printf("Floor color %d\n", data->floor.final_color);
+	printf("Ceiling color %d\n", data->ceiling.final_color);
 }
