@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/01 15:10:40 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/01 17:10:52 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,41 +44,36 @@ int	ft_elements_checker(char **line, int broder_flag)
 {
 	int	x;
 	int	len;
+	int closed;
 
 	x = 0;
 	len = ft_strlen(line[x]);
+	closed = FAlSE;
 	if (broder_flag == W_FIRST_LAST)
 	{
 		while(line[0][x] && line[0][x] != '\n')
 		{
 			if (line[0][x] != '1' && !ft_isspace(line[0][x]))
-				exit(ft_print_error("Tetsing : map not valid"));
+				exit(ft_print_error("Tetsing : map not valid Flag First"));
 			else if (ft_isspace(line[0][x]))
 				ft_check_vertical(line , 0, x);
 			x++;
 		}
 	}
-	int closed = FAlSE;
 	if (broder_flag == W_INSIDE)
 	{
-		while(line[0] && line[0][x] != '\n' && line[0][x] != '\0')
+		while(line[0] && line[0][x] != '\n')
 		{
-			if (line[0][0] != '1' && !ft_isspace(line[0][0]) && !closed)
-			{
-				printf("[%s]\n", line[0]);
-				exit(ft_print_error("Tetsing : map not valid inside"));
-			}
-			else if (x == 0 && ft_isvalid(line[0], x))
-				ft_check_vertical(line , 0, x);
-			else if (line[0][x] == '1')
+			if (line[0][x] == '1')
 				closed = TRUE;
-			else if (line[0][x] != '0' && ft_isvalid(line[0], x))
-				ft_check_vertical(line , 0, x);
-			else if (ft_isvalid(line[0], x))
-				ft_check_vertical(line , 0, x);
+			else if (ft_isspace(line[0][x]) && line[0][x] != '0')
+				ft_check_vertical(line, 0, x);
+			else if (line[0][x] == '0' && (line[0][x + 1] != '1' && line[0][x + 1] != '0'))
+				exit(ft_print_error("WA LA AZBi"));
 			x++;
 		}
 	}
+	
 	return (EXIT_SUCCESS);
 }
 
