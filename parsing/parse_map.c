@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/01 17:10:52 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/01 17:39:28 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,17 @@ int	ft_elements_checker(char **line, int broder_flag)
 			x++;
 		}
 	}
+	if (broder_flag == W_LAST)
+	{
+		while(line[0] && line[0][x] != '\0')
+		{
+			if (line[0][x] == '1')
+				closed = TRUE;
+			else if (line[0][x] != '1' && line[0][x] != ' ')
+				exit(ft_print_error("error"));
+			x++;
+		}
+	}
 	
 	return (EXIT_SUCCESS);
 }
@@ -90,6 +101,8 @@ int	ft_parse_map(t_data *data)
 	{
 		if (x == map->start_point)
 			ft_elements_checker(&data->file_content[x], W_FIRST_LAST);
+		else if (data->file_content[x + 1] == NULL)
+			ft_elements_checker(&data->file_content[x], W_LAST);
 		else if (x != map->start_point)
 			ft_elements_checker(&data->file_content[x], W_INSIDE);
 		x++;
