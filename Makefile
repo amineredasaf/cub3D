@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/09/02 21:33:54 by rsaf             ###   ########.fr        #
+#    Updated: 2022/09/02 21:43:33 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_atoi.c \
 				
 INIT		=	./initialization/initialize_data.c \
+				./initialization/mlx_initialization.c \
 
 EXECUTION	=
 

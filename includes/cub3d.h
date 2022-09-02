@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:49:37 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/28 22:08:23 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 21:44:38 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+# include <mlx.h>
 
 /*				our::package			*/
 # include "utils.h"
