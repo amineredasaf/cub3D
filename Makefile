@@ -6,13 +6,15 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/09/02 17:39:25 by rsaf             ###   ########.fr        #
+#    Updated: 2022/09/02 21:33:54 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3d
 
 C_FLAGS		=	-Wall -Wextra -Werror
+
+MLX			=	-lmlx -framework OpenGL -framework AppKit
 
 PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 				./parsing/parse_map.c ./parsing/parsing_utils.c \
@@ -45,7 +47,7 @@ all			:	$(NAME)
 	cc	$(C_FLAGS) -c $< -o $@
 
 $(NAME)		: $(OBJ)
-	cc $(C_FLAGS) $^ -o $@
+	cc $(C_FLAGS) $^ $(MLX) -o $@
 
 clean		:
 	rm -f $(OBJ)
