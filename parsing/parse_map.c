@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 18:37:54 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 20:25:43 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	first_line_verification(char **line, t_data *data)
 	while(line[0][x] && line[0][x] != '\n')
 	{
 		if (line[0][x] != '1' && !ft_isspace(line[0][x]))
-			exit(ft_print_error(E_WALLS));
+			exit(ft_print_error("E_WALLS"));
 		else if (ft_isspace(line[0][x]))
 			ft_check_vertical(line , 0, x);
 		x++;
@@ -66,7 +66,7 @@ int	inside_line_verification(char **line, t_data *data)
 				|| (line[0][x] != '1' && !ft_isvalid(line[0][x]))))
 			exit(ft_print_error(E_CHARACTERS));
 		else if (ft_isvalid(line[1][x]) && data->map_s.closed == FAlSE)
-			exit(ft_print_error(E_WALLS));
+			exit(ft_print_error("E_WALLS"));
 		x++;
 	}
 	return (EXIT_SUCCESS);
@@ -83,7 +83,7 @@ int	last_line_verification(char **line, t_data *data)
 	{
 		if (line[0][x] == '1')
 			data->map_s.closed = TRUE;
-		else if (line[0][x] != '1' && line[0][x] != ' ')
+		else if (line[0][x] != '1' && line[0][x] != ' ' && line[0][x] != '\n')
 			exit(ft_print_error(E_WALLS));
 		x++;
 	}
