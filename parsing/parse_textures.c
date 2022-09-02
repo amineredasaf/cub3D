@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/01 09:01:04 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 15:59:17 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_init_sides(t_data *data, char *line, int flag)
 	if (data->sides.n_ea > 1 || data->sides.n_so > 1 || data->sides.n_we > 1
 		|| data->sides.n_no > 1 || data->sides.n_f > 1 || data->sides.n_c > 1)
 		{
-			ft_print_error("- Configuration file is not Correct.");
+			ft_print_error(E_FILE_FORMAT);
 			exit (1);
 		}
 	return (EXIT_SUCCESS);
@@ -86,7 +86,7 @@ int	ft_check_sides(t_data *data, char *line)
 	else if (ft_issides(line, 'C', 'q', COLOR))
 		ft_init_sides(data, line, S_C);
 	else if (line[0] != '1' && line[0] != '0' && line[0] != '\n')
-		exit(ft_print_error("- Configuration file is not Correct."));
+		exit(ft_print_error(E_FILE_FORMAT));
 	return (EXIT_SUCCESS);
 }
 
@@ -103,7 +103,7 @@ int	ft_parse_textures(t_data *data)
 		if (line && !ft_is_map(line))
 			ft_check_sides(data, line);
 		else if (data->sides.f_found < 6)
-			exit(ft_print_error("- Configuration file is not Correct."));
+			exit(ft_print_error(E_FILE_FORMAT));
 		else if (ft_is_map(line))
 			break;
 		free(line);
@@ -112,13 +112,7 @@ int	ft_parse_textures(t_data *data)
 	if (x != 0)
 		data->map_s.start_point = x;
 	if (ft_check_after_id(data))
-		exit(ft_print_error("- Texture configuration is not correct"));
+		exit(ft_print_error(E_TEXTURE));
 	ft_update_txt(data);
-	printf("no	: |%s|\n", data->sides.no_txt);
-	printf("so	: |%s|\n", data->sides.so_txt);
-	printf("ea	: |%s|\n", data->sides.ea_txt);
-	printf("we	: |%s|\n", data->sides.we_txt);
-	printf("c	: |%s|\n", data->sides.c_txt);
-	printf("f	: |%s|\n", data->sides.f_txt);
 	return (EXIT_SUCCESS);
 }
