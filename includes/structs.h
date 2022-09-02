@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/01 08:52:57 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 15:39:27 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 {
 	/* data */
 	char	**map_tab;
+	int		closed;
 	int		start_point;
 	int		n_lines;
 	int		l_lentgh;	
