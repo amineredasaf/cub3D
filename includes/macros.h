@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 15:13:50 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 16:01:20 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # define E_FILE_NAME "- Invalid name of the configuration file."
 # define E_SUFFIX "- Invalid suffix of the configuration file."
 # define E_TEXTURE "- Texture configuration is not correct"
+# define E_COLOR "- Color Configuration is Not Correct."
 
 /*				dubg				*/
 

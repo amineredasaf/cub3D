@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:38:38 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/09/01 07:14:44 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:01:48 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_check_comma(char *line)
 		i++;
 	}
 	if (count != 2)
-		exit (ft_print_error("- Colors configuration is not correct"));
+		exit (ft_print_error(E_COLOR));
 }
 
 //this function cheks how many fields are there in the color
@@ -39,7 +39,7 @@ void	ft_check_fields(char **fields)
 	while (fields[i])
 		i++;
 	if (i != 3)
-		exit (ft_print_error("- Colors configuration is not correct"));
+		exit (ft_print_error(E_COLOR));
 }
 
 
@@ -68,14 +68,14 @@ void	ft_convert_color(t_data *data, int flag)
 	{
 		if (data->floor.b > 255 || data->floor.r > 255 || data->floor.g > 255
 			|| data->floor.b < 0 || data->floor.r < 0 || data->floor.g < 0)
-			exit (ft_print_error("- Color configuration is no correct."));
+			exit (ft_print_error(E_COLOR));
 		data->floor.final_color = (data->floor.r * 65536) + (data->floor.g * 265) + (data->floor.b);
 	}
 	if (flag == S_C)
 	{
 		if (data->ceiling.b > 255 || data->ceiling.r > 255 || data->ceiling.g > 255
 			|| data->ceiling.b < 0 || data->ceiling.r < 0 || data->ceiling.g < 0)
-			exit (ft_print_error("- Color configuration is no correct."));
+			exit (ft_print_error(E_COLOR));
 		data->ceiling.final_color = (data->ceiling.r * 65536) + (data->ceiling.g * 265) + (data->ceiling.b);
 	}
 }
@@ -95,6 +95,4 @@ void	ft_get_colors(t_data *data)
 	ft_store_color(data, S_C);
 	ft_convert_color(data, S_F);
 	ft_convert_color(data, S_C);
-	printf("Floor color %d\n", data->floor.final_color);
-	printf("Ceiling color %d\n", data->ceiling.final_color);
 }

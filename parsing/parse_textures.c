@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 15:55:12 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 15:59:17 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,5 @@ int	ft_parse_textures(t_data *data)
 	if (ft_check_after_id(data))
 		exit(ft_print_error(E_TEXTURE));
 	ft_update_txt(data);
-	printf("no	: |%s|\n", data->sides.no_txt);
-	printf("so	: |%s|\n", data->sides.so_txt);
-	printf("ea	: |%s|\n", data->sides.ea_txt);
-	printf("we	: |%s|\n", data->sides.we_txt);
-	printf("c	: |%s|\n", data->sides.c_txt);
-	printf("f	: |%s|\n", data->sides.f_txt);
 	return (EXIT_SUCCESS);
 }
