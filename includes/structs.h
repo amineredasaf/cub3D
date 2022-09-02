@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 21:39:58 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 21:47:42 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_data
 	t_color		ceiling;
 	t_textures	sides;
 	t_map		map_s;
+	t_mlx		mlx_s;
 }   t_data;
 
 #endif // STRUCTS_H
