@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 11:31:34 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 14:44:44 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	ft_check_cub(char *name)
 	{
 		if (ft_strcmp(&name[i], ".cub") == 0)
 			return (EXIT_SUCCESS);
-		ft_print_error("- Invalid suffix of the configuration file.");
+		ft_print_error(E_SUFFIX);
 	}
 	else
-		ft_print_error("- Invalid name of the configuration file.");
+		ft_print_error(E_FILE_NAME);
 	return (EXIT_FAILURE);
 }
 
@@ -41,7 +41,7 @@ int	ft_open_map(t_data *data)
 	data->fd_map[0] = open(data->av[1], O_RDONLY);
 	data->fd_map[1] = open(data->av[1], O_RDONLY);
 	if (data->fd_map[0] == -1 || data->fd_map[1] == -1)
-		return (ft_print_error("- Can't access configuration file."));
+		return (ft_print_error(E_PERMISSION_DENIED));
 	return (EXIT_SUCCESS);
 }
 
@@ -60,10 +60,10 @@ void	ft_read_file(t_data *data)
 	while (get_next_line(data->fd_map[0]))
 		i++;
 	if (i == 0)
-		exit (ft_print_error("- Configuration file is empty."));
+		exit (ft_print_error(E_EMPTY_FILE));
 	data->file_content = malloc(sizeof(char *) * (i + 1));
 	if (!data->file_content)
-		exit(ft_print_error("- Allocation error occurred."));
+		exit(ft_print_error(E_ALLOCATION_FAILED));
 	i = 0;
 	while ((line = get_next_line(data->fd_map[1])))
 	{
@@ -72,7 +72,7 @@ void	ft_read_file(t_data *data)
 		free(line);
 	}
 	if (!flag)
-		ft_print_error("- Configuration file is not well formatted.");
+		ft_print_error(E_FILE_FORMAT);
 }
 
 // this func is main func for parsing process.
@@ -80,7 +80,7 @@ int	ft_parsing(t_data *data)
 {
 	if (data->ac != 2)
 	{
-		ft_print_error("- Invalid number of arguments : ");
+		ft_print_error(E_ARGC_NB);
 		return (EXIT_FAILURE);
 	}
 	if (ft_check_cub(data->av[1]))

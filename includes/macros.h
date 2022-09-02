@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 14:07:57 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 14:44:27 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,22 @@
 # define COLOR 0
 
 /*				MAP					*/
-# define W_FIRST_LAST 1
+# define W_FIRST 1
 # define W_INSIDE 2
 # define W_LAST 3
 
+
+/*				Error				*/
+# define E_WALLS "- Configuration Walls is not well formatted."
+# define E_CHARACTERS "- Configuration Characters, Not Well Formatted."
+# define E_FILE_FORMAT "- Configuration file is not well formatted."
+# define E_ARGC_NB "- Invalid number of arguments : "
+# define E_EMPTY_FILE "- Configuration file is empty."
+# define E_ALLOCATION_FAILED "- Allocation error occurred."
+# define E_PERMISSION_DENIED "- Can't access configuration file."
+# define E_FILE_NAME "- Invalid name of the configuration file."
+# define E_SUFFIX "- Invalid suffix of the configuration file."
+permission denied
 
 /*				dubg				*/
 
