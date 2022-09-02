@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+         #
+#    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/31 16:45:09 by yabtaour         ###   ########.fr        #
+#    Updated: 2022/09/02 17:39:25 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ C_FLAGS		=	-Wall -Wextra -Werror
 
 PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 				./parsing/parse_map.c ./parsing/parsing_utils.c \
-            	./parsing/get_colors.c \
+            	./parsing/get_colors.c ./parsing/ft_isvalid.c \
 
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
