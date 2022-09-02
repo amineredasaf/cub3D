@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 14:45:51 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 15:14:03 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	ft_parse_textures(t_data *data)
 	if (x != 0)
 		data->map_s.start_point = x;
 	if (ft_check_after_id(data))
-		exit(ft_print_error("- Texture configuration is not correct"));
+		exit(ft_print_error(E_TEXTURE));
 	ft_update_txt(data);
 	printf("no	: |%s|\n", data->sides.no_txt);
 	printf("so	: |%s|\n", data->sides.so_txt);
