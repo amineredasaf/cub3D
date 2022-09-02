@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 15:55:31 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/02 15:58:02 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_check_vertical(char **line, int y, int x)
 	return (EXIT_FAILURE);
 }
 
+// this func parse the first line conditions
 int	first_line_verification(char **line, t_data *data)
 {
 	int	x;
@@ -45,6 +46,7 @@ int	first_line_verification(char **line, t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+// this func parse the lines conditions inside the map
 int	inside_line_verification(char **line, t_data *data)
 {
 	int	x;
@@ -67,6 +69,7 @@ int	inside_line_verification(char **line, t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+// this func parse the last line conditions
 int	last_line_verification(char **line, t_data *data)
 {
 	int	x;
@@ -83,25 +86,6 @@ int	last_line_verification(char **line, t_data *data)
 	}
 	return (EXIT_SUCCESS);
 }
-// this func loop on the map lines and checkes if conditions are valid
-// closed variable: TRUE if The Map start with '1', false if Not and error
-// int	ft_elements_checker(char **line, int broder_flag)
-// {
-// 	int	x;
-// 	int	len;
-// 	int closed;
-
-// 	x = 0;
-// 	len = ft_strlen(line[x]);
-// 	closed = FAlSE;
-// 	if (broder_flag == W_FIRST)
-// 		first_line_verification(line);
-// 	if (broder_flag == W_INSIDE)
-// 		inside_line_verification(line);
-// 	if (broder_flag == W_LAST)
-// 		last_line_verification(line);
-// 	return (EXIT_SUCCESS);
-// }
 
 // this func loop on the map and parse it
 // start_point is the start of the map the value is from texture parsing
