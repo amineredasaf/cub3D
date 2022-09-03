@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:23:37 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 07:57:26 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/03 12:28:42 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	ft_initialize_textures(t_textures *sides)
 void	ft_initialize_data(t_data *data)
 {
 	data->file_content = NULL;
+	data->map_s.map = 0;
 	ft_initialize_textures(&data->sides);
 }
