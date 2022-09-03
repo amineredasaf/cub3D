@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/09/02 14:44:44 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/03 12:34:40 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_read_file(t_data *data)
 	line = NULL;
 	while (get_next_line(data->fd_map[0]))
 		i++;
+	data->map_s.end_point = i;
 	if (i == 0)
 		exit (ft_print_error(E_EMPTY_FILE));
 	data->file_content = malloc(sizeof(char *) * (i + 1));
@@ -73,6 +74,32 @@ void	ft_read_file(t_data *data)
 	}
 	if (!flag)
 		ft_print_error(E_FILE_FORMAT);
+}
+
+// this function store the map content in data->map_s.map
+void	ft_get_map(t_data *data)
+{
+	int		i;
+	int		size;
+	int		j;
+	char	*line;
+
+	size = data->map_s.end_point - data->map_s.start_point;
+	i = data->map_s.start_point;
+	j = 0;
+	data->map_s.map = malloc (sizeof(char *) * size + 1);
+	while (i < data->map_s.end_point)
+	{
+		line = data->file_content[i++];
+		data->map_s.map[j++] = ft_substr(line, 0, ft_strlen(line));
+	}
+	data->map_s.map[j] = NULL;
+	i = 0;
+	while (data->map_s.map[i])
+	{
+		printf("%s", data->map_s.map[i]);
+		i++;
+	}
 }
 
 // this func is main func for parsing process.
@@ -91,5 +118,6 @@ int	ft_parsing(t_data *data)
 	ft_parse_textures(data);
 	ft_parse_map(data);
 	ft_get_colors(data);
+	ft_get_map(data);
 	return (EXIT_SUCCESS);
 }

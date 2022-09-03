@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 20:25:43 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/03 12:33:36 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ int	ft_parse_map(t_data *data)
 			inside_line_verification(&data->file_content[x - 1], data);
 		x++;
 	}
+	data->map_s.map_size = data->map_s.end_point - data->map_s.start_point;
 	return (EXIT_SUCCESS);
 }
