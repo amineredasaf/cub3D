@@ -6,22 +6,26 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 21:47:42 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/03 11:02:00 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+
 typedef struct s_mlx
 {
 	/* data */
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*img_ptr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	char	*name;
 	
 }	t_mlx;
-
 
 typedef struct s_textures
 {
@@ -70,7 +74,7 @@ typedef struct s_data
 	t_color		ceiling;
 	t_textures	sides;
 	t_map		map_s;
-	t_mlx		mlx_s;
+	t_mlx		minimap;
 }   t_data;
 
 #endif // STRUCTS_H
