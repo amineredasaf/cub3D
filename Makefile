@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+         #
+#    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/08/31 16:45:09 by yabtaour         ###   ########.fr        #
+#    Updated: 2022/09/02 21:43:33 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ NAME		=	cub3d
 
 C_FLAGS		=	-Wall -Wextra -Werror
 
+MLX			=	-lmlx -framework OpenGL -framework AppKit
+
 PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 				./parsing/parse_map.c ./parsing/parsing_utils.c \
-            	./parsing/get_colors.c \
+            	./parsing/get_colors.c ./parsing/ft_isvalid.c \
 
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
@@ -26,6 +28,7 @@ UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_atoi.c \
 				
 INIT		=	./initialization/initialize_data.c \
+				./initialization/mlx_initialization.c \
 
 EXECUTION	=
 
@@ -45,7 +48,7 @@ all			:	$(NAME)
 	cc	$(C_FLAGS) -c $< -o $@
 
 $(NAME)		: $(OBJ)
-	cc $(C_FLAGS) $^ -o $@
+	cc $(C_FLAGS) $^ $(MLX) -o $@
 
 clean		:
 	rm -f $(OBJ)

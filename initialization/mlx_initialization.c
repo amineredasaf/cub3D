@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_initialization.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 21:53:22 by rsaf             ###   ########.fr       */
+/*   Created: 2022/09/02 21:43:38 by rsaf              #+#    #+#             */
+/*   Updated: 2022/09/02 21:56:19 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "../includes/cub3d.h"
 
-int main(int argc, char **argv)
+int mlx_initialization(t_data *data)
 {
-	t_data	data;
+	t_mlx   *mlx_s;
 
-	data.av = argv;
-	data.ac = argc;
-	ft_initialize_data(&data);
-	if (ft_parsing(&data))
-		return (EXIT_FAILURE);
-	if (mlx_initialization(&data))
-		return (EXIT_FAILURE);
-	while (TRUE);
-	return (0);
+	mlx_s->name = ft_strdup("Cub3d");
+	mlx_s->mlx_ptr = mlx_init();
+	mlx_s->win_ptr = mlx_new_window(mlx_s->mlx_ptr, 1200, 1200, mlx_s->name);
+	
+	mlx_loop(mlx_s->mlx_ptr);
+	return (EXIT_SUCCESS);
 }

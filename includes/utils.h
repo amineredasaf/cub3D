@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:22:20 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/31 12:49:34 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/02 21:52:19 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		ft_print_error(char *str);
 
 /*          initialization      */
 void	ft_initialize_data(t_data *data);
+int     mlx_initialization(t_data *data);
 
 #endif // UTILS_H

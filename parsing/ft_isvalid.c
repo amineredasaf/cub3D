@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isvalid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 21:53:22 by rsaf             ###   ########.fr       */
+/*   Created: 2022/09/02 17:39:52 by rsaf              #+#    #+#             */
+/*   Updated: 2022/09/02 18:12:09 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
+#include "../includes/cub3d.h"
 
-int main(int argc, char **argv)
+// int	player_sides(char c)
+
+
+int ft_isvalid(char c)
 {
-	t_data	data;
-
-	data.av = argv;
-	data.ac = argc;
-	ft_initialize_data(&data);
-	if (ft_parsing(&data))
-		return (EXIT_FAILURE);
-	if (mlx_initialization(&data))
-		return (EXIT_FAILURE);
-	while (TRUE);
-	return (0);
+	if (c == '0' || c == 'N' || c == 'W' || c == 'E' || c == 'S')
+		return (TRUE);
+	return (FAlSE);
 }
