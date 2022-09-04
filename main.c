@@ -6,32 +6,28 @@
 /*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/04 14:55:06 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/04 15:17:05 by yabtaour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
 
-int	call_me(t_data *data, int x, int y)
+int	call_me(t_data *data)
 {
 	data->minimap.mlx_ptr = mlx_init();
-	data->minimap.win_ptr = mlx_new_window(data->minimap.mlx_ptr, data->map_s.longest_line, 500, "cube");
+	data->minimap.win_ptr = mlx_new_window(data->minimap.mlx_ptr, 1000, 1000, "cube");
 	data->minimap.img_ptr = mlx_new_image(data->minimap.mlx_ptr, 20, 20);
 	data->minimap.buff = (int *) mlx_get_data_addr(data->minimap.img_ptr, &data->minimap.bits_per_pixel, &data->minimap.line_length, &data->minimap.endian);
-
 	int i = 0;
 	int j = 0;
-	
 	while (i < 20) {
-		HERE
 		while (j < 20) {
-			data->minimap.buff[j + (i * (data->minimap.line_length / 4))] = 0x00FF0000;
+			data->minimap.buff[j + (i * (data->minimap.line_length / 4))] = 0xFFFF00;
 			j++;
 		}
 		i++;
 		j = 0;
 	}
-	mlx_put_image_to_window(data->minimap.mlx_ptr, data->minimap.win_ptr, data->minimap.img_ptr, x * 20, y * 20);
 	return (EXIT_SUCCESS);
 }
 
@@ -46,7 +42,6 @@ int	ft_find_max(char **map)
 	{
 		if (max < ft_strlen(map[i]))
 			max = ft_strlen (map[i]);
-		printf("%s", map[i]);
 		i++;
 	}
 	return (max);
@@ -64,19 +59,18 @@ int	hard_code(t_data *data)
 	data->map_s.longest_line = ft_find_max(map);
 	int	y = 0;
 
+	call_me(data);
 	while (map[y])
 	{
 		x = 0;
 		while (map[y][x])
 		{
 			if (map[y][x] == '1')
-				call_me(data, x, y);
+				mlx_put_image_to_window(data->minimap.mlx_ptr, data->minimap.win_ptr, data->minimap.img_ptr, x * 20, y * 20);
 			x++;
 		}
 		y++;
 	}
-	
-	mlx_loop(data->minimap.mlx_ptr);
 }
 
 
@@ -93,6 +87,6 @@ int main(int argc, char **argv)
 	if (ft_parsing(&data))
 		return (EXIT_FAILURE);
 	hard_code(&data);
-
+	mlx_loop(data.minimap.mlx_ptr);
 }
 
