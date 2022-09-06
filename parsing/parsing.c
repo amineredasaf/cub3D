@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/09/03 12:34:40 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/07 00:48:41 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ void	ft_get_map(t_data *data)
 	}
 	data->map_s.map[j] = NULL;
 	i = 0;
-	while (data->map_s.map[i])
-	{
-		printf("%s", data->map_s.map[i]);
-		i++;
-	}
+	// while (data->map_s.map[i])
+	// {
+	// 	printf("%s", data->map_s.map[i]);
+	// 	i++;
+	// }
 }
 
 // this func is main func for parsing process.
