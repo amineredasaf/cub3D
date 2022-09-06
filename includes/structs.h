@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/04 14:52:38 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/09/06 23:02:44 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ typedef struct s_mlx
 	/* data */
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_ptr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	void	*wall_ptr;
+	void	*play_ptr;
+	int		bpp;
+	int		llength;
+	int		ein;
 	char	*name;
 	int		*buff;
-	
 }	t_mlx;
 
 typedef struct s_textures
