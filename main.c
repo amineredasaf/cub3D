@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/06 23:57:47 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/07 00:45:17 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	*insert_img_buffer(t_data *data, int color)
 	map = &data->minimap;
 	ptr = mlx_new_image(map->mlx_ptr, IMG_S, IMG_S);
 	map->buff = (int *) mlx_get_data_addr(ptr, &map->bpp, &map->llength, &map->ein);
-	while (i < IMG_S) {
+	while (i < IMG_S)
+	{
 		while (j < IMG_S) {
 			map->buff[j + (i * (map->llength / 4))] = color;
 			j++;
@@ -77,10 +78,56 @@ int	draw_minimap(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+
+// kayn chi segfault here idk why, everytime i tried to access data->map[]
+int	update_minimap(t_data *data, int x, int y)
+{
+
+
+	int stop = 0;
+	int	old_x;
+	int	old_y;
+
+	old_y = 0;
+	// while (data->map_s.map[old_y])
+	// {
+	// 	old_x = 0;
+	// 	// while (data->map_s.map[old_y][old_x])
+	// 	// {
+	// 	// 	HERE
+	// 	// 	// if (data->map_s.map[old_y][old_x] == 'N')
+	// 	// 	// {
+	// 	// 	// 	HERE
+	// 	// 	// 	stop = 1;
+	// 	// 	// 	break;
+	// 	// 	// }
+	// 	// 	old_x++;
+	// 	// }
+	// 	HERE
+	// 	if (stop == 1)
+	// 		break;
+	// 	old_y++;
+	// }
+
+	/********************************/
+	// if (data->map_s.map[y][x] != '1')
+	// {
+	// 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+	// 	data->map_s.map[old_y][old_x] = '0';
+	// 	data->map_s.map[old_y + y][old_x + x ] = 'N';
+	// 	draw_minimap(data);
+	// }
+	return (EXIT_SUCCESS);	
+}
+
 int	key_detector(int keycode, t_data *data)
 {
+
 	if (keycode == 0)
+	{
 		write(1, "A\n", 2);
+		// update_minimap(data, -1, 0);
+	}
 	if (keycode == 1)
 		write(1, "S\n", 2);
 	if (keycode == 2)
