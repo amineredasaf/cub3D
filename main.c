@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/06 23:25:34 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/06 23:57:47 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,25 @@ int	draw_minimap(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+int	key_detector(int keycode, t_data *data)
+{
+	if (keycode == 0)
+		write(1, "A\n", 2);
+	if (keycode == 1)
+		write(1, "S\n", 2);
+	if (keycode == 2)
+		write(1, "D\n", 2);
+	if (keycode == 13)
+		write(1, "W\n", 2);
+	return (EXIT_SUCCESS);
+}
+
+int	move_minimap(t_data *data)
+{
+	mlx_hook(data->minimap.win_ptr, 2, 1L<<0, key_detector, &data);
+	return (EXIT_SUCCESS);
+}
+
 int main(int argc, char **argv)
 {
 	t_data	data;
@@ -89,6 +108,7 @@ int main(int argc, char **argv)
 	data.minimap.mlx_ptr = mlx_init();
 	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
 	draw_minimap(&data);
+	move_minimap(&data);
 	mlx_loop(data.minimap.mlx_ptr);
 }
 
