@@ -6,13 +6,23 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/02 16:01:20 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/06 22:56:39 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_H
 #define MACROS_H
 
+/*              win size            */
+
+# define W_X 1000
+# define W_Y 1000
+
+/*              img size            */
+
+# define IMG_S 50
+
+/*              vectors             */
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 # define TRUE 1

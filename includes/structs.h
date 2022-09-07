@@ -6,26 +6,27 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/06 17:57:46 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/07 00:57:56 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
-
 typedef struct s_mlx
 {
 	/* data */
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_ptr;
+	void	*wall_ptr;
+	void	*play_ptr;
+	int		x;
+	int		y;
 	int		bpp;
 	int		llength;
 	int		ein;
 	char	*name;
 	int		*buff;
-	
 }	t_mlx;
 
 typedef struct s_textures
