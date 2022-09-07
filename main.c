@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/07 01:42:13 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/07 13:44:26 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,10 @@ int	key_detector(int keycode, t_data *data)
 		update_minimap(data, 0, 1);
 	if (keycode == 13)
 		update_minimap(data, 0, -1);
+	else if (keycode == 53)
+		exit (EXIT_SUCCESS);
+	else
+		printf("key = %d\n", keycode);
 	return (EXIT_SUCCESS);
 }
 
