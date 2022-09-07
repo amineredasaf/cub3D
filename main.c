@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/07 01:11:18 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/07 01:42:13 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	draw_minimap(t_data *data)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == '1')
+			if (map[y][x] == '1' || ft_isspace(map[y][x]))
 				put_on_win(data, data->minimap.wall_ptr, x, y);
 			else if (map[y][x] == 'N')
 			{
@@ -82,6 +82,7 @@ int	draw_minimap(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+// this func update the map and draw it again.
 int	update_minimap(t_data *data, int x, int y)
 {
 	int old_x;
@@ -99,20 +100,24 @@ int	update_minimap(t_data *data, int x, int y)
 	return (EXIT_SUCCESS);	
 }
 
+// this func find which key and move to the right direction
+// |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
 int	key_detector(int keycode, t_data *data)
 {
 
 	if (keycode == 0)
 		update_minimap(data, -1, 0);
-	if (keycode == 1)
-		update_minimap(data, 0, 1);
 	if (keycode == 2)
 		update_minimap(data, 1, 0);
+	if (keycode == 1)
+		update_minimap(data, 0, 1);
 	if (keycode == 13)
 		update_minimap(data, 0, -1);
 	return (EXIT_SUCCESS);
 }
 
+
+// this func waitng for key pressed to call the right action
 int	move_minimap(t_data *data)
 {
 	mlx_hook(data->minimap.win_ptr, 2, 1L<<2, key_detector, data);
