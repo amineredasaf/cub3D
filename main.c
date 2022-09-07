@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/07 00:45:17 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/09/07 01:11:18 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,11 @@ int	draw_minimap(t_data *data)
 			if (map[y][x] == '1')
 				put_on_win(data, data->minimap.wall_ptr, x, y);
 			else if (map[y][x] == 'N')
+			{
+				data->minimap.x = x;
+				data->minimap.y = y;
 				put_on_win(data, data->minimap.play_ptr, x, y);
+			}
 			x++;
 		}
 		y++;
@@ -78,45 +82,20 @@ int	draw_minimap(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
-
-// kayn chi segfault here idk why, everytime i tried to access data->map[]
 int	update_minimap(t_data *data, int x, int y)
 {
-
-
-	int stop = 0;
-	int	old_x;
+	int old_x;
 	int	old_y;
 
-	old_y = 0;
-	// while (data->map_s.map[old_y])
-	// {
-	// 	old_x = 0;
-	// 	// while (data->map_s.map[old_y][old_x])
-	// 	// {
-	// 	// 	HERE
-	// 	// 	// if (data->map_s.map[old_y][old_x] == 'N')
-	// 	// 	// {
-	// 	// 	// 	HERE
-	// 	// 	// 	stop = 1;
-	// 	// 	// 	break;
-	// 	// 	// }
-	// 	// 	old_x++;
-	// 	// }
-	// 	HERE
-	// 	if (stop == 1)
-	// 		break;
-	// 	old_y++;
-	// }
-
-	/********************************/
-	// if (data->map_s.map[y][x] != '1')
-	// {
-	// 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
-	// 	data->map_s.map[old_y][old_x] = '0';
-	// 	data->map_s.map[old_y + y][old_x + x ] = 'N';
-	// 	draw_minimap(data);
-	// }
+	old_x = data->minimap.x;
+	old_y = data->minimap.y;
+	if (data->map_s.map[old_y + y][old_x + x] != '1')
+	{
+		mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+		data->map_s.map[old_y][old_x] = '0';
+		data->map_s.map[old_y + y][old_x + x ] = 'N';
+		draw_minimap(data);
+	}
 	return (EXIT_SUCCESS);	
 }
 
@@ -124,22 +103,19 @@ int	key_detector(int keycode, t_data *data)
 {
 
 	if (keycode == 0)
-	{
-		write(1, "A\n", 2);
-		// update_minimap(data, -1, 0);
-	}
+		update_minimap(data, -1, 0);
 	if (keycode == 1)
-		write(1, "S\n", 2);
+		update_minimap(data, 0, 1);
 	if (keycode == 2)
-		write(1, "D\n", 2);
+		update_minimap(data, 1, 0);
 	if (keycode == 13)
-		write(1, "W\n", 2);
+		update_minimap(data, 0, -1);
 	return (EXIT_SUCCESS);
 }
 
 int	move_minimap(t_data *data)
 {
-	mlx_hook(data->minimap.win_ptr, 2, 1L<<0, key_detector, &data);
+	mlx_hook(data->minimap.win_ptr, 2, 1L<<2, key_detector, data);
 	return (EXIT_SUCCESS);
 }
 
