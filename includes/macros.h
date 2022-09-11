@@ -18,6 +18,10 @@
 # define W_X 1000
 # define W_Y 1000
 
+# define BLOCK_W 64
+# define BLOCK_H 64
+# define PI 3.14
+
 /*              img size            */
 
 # define IMG_S 10

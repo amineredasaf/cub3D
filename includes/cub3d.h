@@ -19,6 +19,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include <math.h>
 
 /*				our::package			*/
 # include "utils.h"

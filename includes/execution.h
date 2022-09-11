@@ -13,6 +13,6 @@
 #ifndef EXECUTION_H
 #define EXECUTION_H
 
-
+float	ft_convert_deg_rad(float deg);
 
 #endif // EXECUTION_H

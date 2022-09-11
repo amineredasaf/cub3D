@@ -68,6 +68,19 @@ typedef struct s_color
 	int		final_color;
 }	t_color;
 
+typedef struct s_player
+{
+	float	fov;
+	int		x;
+	int		y;
+	float	angle;
+}	t_player;
+
+typedef struct s_plane
+{
+	int	width;
+	int	height;
+}	t_plane;
 
 typedef struct s_data
 {
