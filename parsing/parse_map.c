@@ -30,7 +30,7 @@ int	ft_check_vertical(char **line, int y, int x)
 }
 
 // this func parse the first line conditions
-int	first_line_verification(char **line, t_data *data)
+int	first_line_verification(char **line)
 {
 	int	x;
 
@@ -50,8 +50,8 @@ int	first_line_verification(char **line, t_data *data)
 int	inside_line_verification(char **line, t_data *data)
 {
 	int	x;
-	int	len;
-	int closed;
+	// int	len;
+	// int closed;
 
 	x = 0;
 	while(line[1] && line[1][x] != '\n')
@@ -76,7 +76,7 @@ int	inside_line_verification(char **line, t_data *data)
 int	last_line_verification(char **line, t_data *data)
 {
 	int	x;
-	int closed;
+	// int closed;
 
 	x = 0;
 	while(line[0] && line[0][x] != '\0')
@@ -105,7 +105,7 @@ int	ft_parse_map(t_data *data)
 		if (data->file_content[x][0] == '\n')
 			exit(ft_print_error(E_WALLS));
 		if (x == map->start_point)
-			first_line_verification(&data->file_content[x], data);
+			first_line_verification(&data->file_content[x]);
 		else if (data->file_content[x + 1] == NULL)
 			last_line_verification(&data->file_content[x], data);
 		else if (x != map->start_point)

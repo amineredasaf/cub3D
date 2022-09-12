@@ -47,7 +47,7 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 // this func alloact texture data in our struct. beta version could be better
 int	ft_init_sides(t_data *data, char *line, int flag)
 {
-	int	len;
+	// int	len;
 
 	if  (flag == S_NO)
 		data->sides.no_txt = ft_textures_alloc(data, line, flag);

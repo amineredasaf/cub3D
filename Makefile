@@ -12,7 +12,7 @@
 
 NAME		=	cub3d
 
-C_FLAGS		=	-Wall -Wextra -Werror
+CFLAGS		:=	-Wall -Wextra -Werror -g
 
 MLX			=	-lmlx -framework OpenGL -framework AppKit
 
@@ -45,7 +45,7 @@ OBJ			=	$(ALL_FILES:.c=.o)
 all			:	$(NAME)
 
 %.o			:	%.c	$(INCLUDES)
-	cc	$(C_FLAGS) -c $< -o $@
+	cc	$(CFLAGS) -g -c $< -o $@
 
 test		:
 	cc $(MLX) mlx_testing.c
