@@ -150,11 +150,12 @@ int main(int argc, char **argv)
 	ft_initialize_data(&data);
 	if (ft_parsing(&data))
 		return (EXIT_FAILURE);
-	data.minimap.mlx_ptr = mlx_init();
-	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
-	ft_draw_f_c(&data);
-	draw_minimap(&data);
-	move_minimap(&data);
-	mlx_loop(data.minimap.mlx_ptr);
+	ft_execution(&data);
+	// data.minimap.mlx_ptr = mlx_init();
+	// data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
+	// ft_draw_f_c(&data);
+	// draw_minimap(&data);
+	// move_minimap(&data);
+	// mlx_loop(data.minimap.mlx_ptr);
 }
 

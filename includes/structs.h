@@ -82,6 +82,18 @@ typedef struct s_plane
 	int	height;
 }	t_plane;
 
+typedef struct s_coordinate
+{
+	float x;
+	float y;
+}	t_coordinate;
+
+typedef struct s_ray
+{
+	float	disX;
+	float	distX;
+}	t_ray;
+
 typedef struct s_data
 {
 	char		**av;
@@ -92,6 +104,10 @@ typedef struct s_data
 	t_color		ceiling;
 	t_textures	sides;
 	t_map		map_s;
+	t_player	player;
+	t_plane		plane;
+	t_ray		ray;
+	t_coordinate	coordinate;
 	t_mlx		minimap;
 }   t_data;
 
