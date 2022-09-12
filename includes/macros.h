@@ -18,6 +18,16 @@
 # define W_X 1000
 # define W_Y 1000
 
+/*              execution           */
+# define ADD 1
+# define SUB 0
+
+# define BLOCK_W 64
+# define BLOCK_H 64
+# define PI 3.14
+# define FOV 60
+# define ANGLE_STEP 0.1875
+
 /*              img size            */
 
 # define IMG_S 10

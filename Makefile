@@ -30,7 +30,7 @@ UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 INIT		=	./initialization/initialize_data.c \
 				./initialization/mlx_initialization.c \
 
-EXECUTION	=
+EXECUTION	=	./execution/execution.c ./execution/execution_utils.c \
 
 GNL			=	./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c
 
