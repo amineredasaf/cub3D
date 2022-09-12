@@ -35,6 +35,6 @@ int		ft_print_error(char *str);
 
 /*          initialization      */
 void	ft_initialize_data(t_data *data);
-int     mlx_initialization(t_data *data);
+int     mlx_initialization(void);
 
 #endif // UTILS_H

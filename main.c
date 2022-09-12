@@ -17,7 +17,7 @@ void	*insert_img_buffer(t_data *data, int color, int x, int y);
 void	ft_draw_f_c(t_data *data)
 {
 	int	i;
-	int	j;
+	// int	j;
 	void	*ptr;
 	void	*ptr2;
 
@@ -67,7 +67,7 @@ int	draw_minimap(t_data *data)
 {
 	int		y;
 	int		x;
-	int		len;
+	// int		len;
 	char	**map;
 
 	y = 0;
@@ -158,4 +158,3 @@ int main(int argc, char **argv)
 	// move_minimap(&data);
 	// mlx_loop(data.minimap.mlx_ptr);
 }
-

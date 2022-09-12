@@ -47,7 +47,7 @@ void	ft_update_view_angle(t_data *data, int flag)
 
 int		is_wall(t_data *data, int x, int y)
 {
-	if (data->map_s.map[x][y] == '1')
+	if (data->map_s.map[y][x] == '1')
 		return (1);
 	else
 		return (0);
@@ -62,17 +62,19 @@ void	ft_check_horiz(t_data *data, float angle)
 
 	if (sin(angle) >= 0)
 	{
-		ystep = 64;
-		pointy = floor(data->player.y / 64) - 1;
-	}
-	else if (sin(angle) < 0)
-	{
 		ystep = -64;
-		pointy = floor(data->player.y / 64) + 64;
+		pointy = floor(data->player.y / 64) * 64 - 1;
+	}
+	else
+	{
+		ystep = 64;
+		pointy = floor(data->player.y / 64) * 64 + 64;
 	}
 	pointx = ((data->player.y - pointy) / tan(angle)) + data->player.x;
 	xstep = 64 / tan(angle);
-	while (!is_wall(data, pointx / 64, pointy / 64))
+	if (cos(angle) < 0)
+		xstep *= -1;
+	while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
 	{
 		pointx += xstep;
 		pointy += ystep;
@@ -91,14 +93,18 @@ void	ft_check_verti(t_data *data, float angle)
 		pointx = floor(data->player.x / 64) * 64 + 64;
 		xstep = 64;
 	}
-	else if (cos(angle) < 0)
+	else
 	{
-		pointx = floor(data->player.x / 64) * 64 + 64;
+		pointx = floor(data->player.x / 64) * 64 - 1;
 		xstep = -64;
 	}
-	pointy = (tan(angle) * data->player.x - pointx) + pointy;
+	pointy = tan(angle) * (data->player.x - pointx) + data->player.y;
+	printf ("tan : %f | px - bx : %f | py : %f\n", tan(angle), (data->player.x - pointx), data->player.y);
+	// printf ("tan : %f | px - bx : %f | py : %f\n", tan(angle) * (data->player.x - pointx) + data->player.y);
 	ystep = 64 * tan(angle);
-	while (!is_wall(data, pointx / 64, pointy / 64))
+	if (sin(angle) >= 0)
+		ystep *= -1;
+	while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
 	{
 		pointx += xstep;
 		pointy += ystep;
@@ -113,10 +119,13 @@ void	ft_execution(t_data *data)
 
 	i = 0;
 	angle = data->player.angle + ft_convert_deg_rad(30);
+	printf ("[%f]\n", angle);
+	// ft_check_horiz(data, ft_convert_deg_rad(60));
+	// ft_check_verti(data, ft_convert_deg_rad(60));
 	while (i < 319)
 	{
-		ft_check_horiz(data, ft_convert_deg_rad(angle));
-		ft_check_verti(data, ft_convert_deg_rad(angle));
+		ft_check_verti(data, angle);
+		ft_check_horiz(data, angle);
 		i++;
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}

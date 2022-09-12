@@ -71,8 +71,8 @@ typedef struct s_color
 typedef struct s_player
 {
 	float	fov;
-	int		x;
-	int		y;
+	float		x;
+	float		y;
 	float	angle;
 }	t_player;
 

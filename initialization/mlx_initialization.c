@@ -14,7 +14,7 @@
 
 
 // free mlx_s->name
-int mlx_initialization(t_data *data)
+int mlx_initialization(void)
 {
 	return (EXIT_SUCCESS);
 }
