@@ -65,7 +65,7 @@ float	ft_line_len(t_data *data, float y)
 	return (x);
 }
 
-float	ft_check_horiz(t_data *data, float angle)
+void	ft_check_horiz(t_data *data, float angle, t_ray *ray)
 {
 	float	pointx;
 	float	pointy;
@@ -86,17 +86,23 @@ float	ft_check_horiz(t_data *data, float angle)
 	xstep = 64 / tan(angle);
 	if (cos(angle) < 0)
 		xstep *= -1;
-	if (floor(pointx / 64) < 0 || floor(pointx / 64) > ft_line_len(data, floor(pointy / 64)))
-		return (MAXFLOAT);
-	while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
+	if (floor(pointx / 64) < 0 || floor(pointx / 64) * 64 - 1 > ft_line_len(data, floor(pointy / 64)))
+		ray->hdis = MAXFLOAT;
+	else
 	{
-		pointx += xstep;
-		pointy += ystep;
+		while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
+		{
+			pointx += xstep;
+			pointy += ystep;
+		}
 	}
-	return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
+	ray->hdis = sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy)));
+	ray->hendX = pointx;
+	ray->hendY = pointy;
+	// return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
 }
 
-float	ft_check_verti(t_data *data, float angle)
+void	ft_check_verti(t_data *data, float angle, t_ray *ray)
 {
 	float	pointx;
 	float	pointy;
@@ -117,15 +123,22 @@ float	ft_check_verti(t_data *data, float angle)
 	ystep = 64 * tan(angle);
 	if (sin(angle) < 0)
 		ystep *= -1;
-	printf ("pointy %f lines %d\n", pointy, data->map_s.n_lines);
-	if (floor(pointy / 64) <= 0 || pointy > (data->map_s.n_lines * 64))
-		return (MAXFLOAT);
-	while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
+	printf ("pointy %f pointx %f\n", pointy, pointx);
+	if (floor(pointy / 64) < 0 || pointx / 64 - 1 > data->map_s.n_lines * 64)
+		ray->vdist = MAXFLOAT;
+	else
 	{
-		pointx += xstep;
-		pointy += ystep;
+		while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
+		{
+			pointx += xstep;
+			pointy += ystep;
+		}
 	}
-	return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
+	HERE
+	ray->vdist = sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy)));
+	ray->vendX = pointx;
+	ray->vendY = pointy;
+	// return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
 }
 
 int	ft_count_lines(t_data *data)
@@ -138,12 +151,43 @@ int	ft_count_lines(t_data *data)
 	return (i);
 }
 
+void line(t_data *data, int x0, int y0, int x1, int y1) {
+
+  int dx = abs(x1-x0), sx = x0<x1 ? 1 : -1;
+  int dy = abs(y1-y0), sy = y0<y1 ? 1 : -1; 
+  int err = (dx>dy ? dx : -dy)/2, e2;
+
+  for(int i = 0; i < 200; i++){
+	mlx_pixel_put(data->minimap.mlx_ptr, data->minimap.win_ptr, x0, y0, data->floor.final_color);
+    if (x0==x1 && y0==y1) break;
+    e2 = err;
+    if (e2 >-dx) { err -= dy; x0 += sx; }
+    if (e2 < dy) { err += dx; y0 += sy; }
+  }
+}
+
+
+void	ft_draw_ray(t_data *data, t_ray *ray, char flag)
+{
+	float	endx;
+	float	endy;
+	if (flag == 'h')
+	{
+		endx = ray->hendX;
+		endy = ray->hendY;	
+	}
+	else
+	{
+		endx = ray->vendX;
+		endy = ray->vendY;
+	}
+	line (data, data->player.x, data->player.y, (int) endx, (int) endy);
+}
+
 void	ft_execution(t_data *data)
 {
 	float	angle;
-	float	min;
-	float	vert;
-	float	hori;
+	t_ray	ray;
 	int	i;
 
 	i = 0;
@@ -152,14 +196,12 @@ void	ft_execution(t_data *data)
 	angle = data->player.angle + ft_convert_deg_rad(30);
 	while (i < 319)
 	{
-		HERE
-		vert = ft_check_verti(data, angle);
-		hori = ft_check_horiz(data, angle);
-		if (hori <= vert)
-			min = hori;
-		else
-			min = vert;
-		printf("%f\n", min);
+		ft_check_verti(data, angle, &ray);
+		// ft_check_horiz(data, angle, &ray);
+		// if (ray.hdis <= ray.vdist)
+		// 	ft_draw_ray(data, &ray, 'h');
+		// else
+		// 	ft_draw_ray(data, &ray, 'v');
 		i++;
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}
