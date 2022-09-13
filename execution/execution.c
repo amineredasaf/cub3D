@@ -47,13 +47,25 @@ void	ft_update_view_angle(t_data *data, int flag)
 
 int		is_wall(t_data *data, int x, int y)
 {
-	if (data->map_s.map[y][x] == '1')
-		return (1);
-	else
+	if (data->map_s.map[y][x] == '0')
 		return (0);
+	else
+		return (1);
 }
 
-void	ft_check_horiz(t_data *data, float angle)
+float	ft_line_len(t_data *data, float y)
+{
+	int	x;
+	int y1;
+
+	x = 0;
+	y1 = (int) y;
+	while (data->map_s.map[y1][x] != '\0' && data->map_s.map[y1][x] != '\n')
+		x++;
+	return (x);
+}
+
+float	ft_check_horiz(t_data *data, float angle)
 {
 	float	pointx;
 	float	pointy;
@@ -74,14 +86,17 @@ void	ft_check_horiz(t_data *data, float angle)
 	xstep = 64 / tan(angle);
 	if (cos(angle) < 0)
 		xstep *= -1;
+	if (floor(pointx / 64) < 0 || floor(pointx / 64) > ft_line_len(data, floor(pointy / 64)))
+		return (MAXFLOAT);
 	while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
 	{
 		pointx += xstep;
 		pointy += ystep;
 	}
+	return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
 }
 
-void	ft_check_verti(t_data *data, float angle)
+float	ft_check_verti(t_data *data, float angle)
 {
 	float	pointx;
 	float	pointy;
@@ -98,34 +113,53 @@ void	ft_check_verti(t_data *data, float angle)
 		pointx = floor(data->player.x / 64) * 64 - 1;
 		xstep = -64;
 	}
-	pointy = tan(angle) * (data->player.x - pointx) + data->player.y;
-	printf ("tan : %f | px - bx : %f | py : %f\n", tan(angle), (data->player.x - pointx), data->player.y);
-	// printf ("tan : %f | px - bx : %f | py : %f\n", tan(angle) * (data->player.x - pointx) + data->player.y);
+	pointy = data->player.y + tan(angle) * (data->player.x - pointx);
 	ystep = 64 * tan(angle);
-	if (sin(angle) >= 0)
+	if (sin(angle) < 0)
 		ystep *= -1;
+	printf ("pointy %f lines %d\n", pointy, data->map_s.n_lines);
+	if (floor(pointy / 64) <= 0 || pointy > (data->map_s.n_lines * 64))
+		return (MAXFLOAT);
 	while (!is_wall(data, floor(pointx / 64), floor(pointy / 64)))
 	{
 		pointx += xstep;
 		pointy += ystep;
 	}
+	return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
+}
+
+int	ft_count_lines(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (data->map_s.map[i])
+		i++;
+	return (i);
 }
 
 void	ft_execution(t_data *data)
 {
-	ft_get_starting_angle(data);
 	float	angle;
+	float	min;
+	float	vert;
+	float	hori;
 	int	i;
 
 	i = 0;
+	data->map_s.n_lines = ft_count_lines(data);
+	ft_get_starting_angle(data);
 	angle = data->player.angle + ft_convert_deg_rad(30);
-	printf ("[%f]\n", angle);
-	// ft_check_horiz(data, ft_convert_deg_rad(60));
-	// ft_check_verti(data, ft_convert_deg_rad(60));
 	while (i < 319)
 	{
-		ft_check_verti(data, angle);
-		ft_check_horiz(data, angle);
+		HERE
+		vert = ft_check_verti(data, angle);
+		hori = ft_check_horiz(data, angle);
+		if (hori <= vert)
+			min = hori;
+		else
+			min = vert;
+		printf("%f\n", min);
 		i++;
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}
