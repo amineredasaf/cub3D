@@ -90,8 +90,12 @@ typedef struct s_coordinate
 
 typedef struct s_ray
 {
-	float	disX;
-	float	distX;
+	float	hdis;
+	float	vdist;
+	float	hendX;
+	float	hendY;
+	float	vendX;
+	float	vendY;
 }	t_ray;
 
 typedef struct s_data
