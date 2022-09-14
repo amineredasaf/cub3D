@@ -113,19 +113,33 @@ int	update_minimap(t_data *data, int x, int y)
 	return (EXIT_SUCCESS);	
 }
 
+void	rotate_player(t_data *data, int flag)
+{
+	if (flag == LEFT)
+		data->player.angle += ft_convert_deg_rad(20);
+	else if (flag == RIGHT)
+		data->player.angle -= ft_convert_deg_rad(20);
+	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+	ft_execution(data);
+}
+
 // this func find which key and move to the right direction
 // |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
 int	key_detector(int keycode, t_data *data)
 {
 
-	if (keycode == 0)
-		update_minimap(data, -1, 0);
-	if (keycode == 2)
-		update_minimap(data, 1, 0);
-	if (keycode == 1)
-		update_minimap(data, 0, 1);
-	if (keycode == 13)
-		update_minimap(data, 0, -1);
+	// if (keycode == 0)
+	// 	update_minimap(data, -1, 0);
+	// if (keycode == 2)
+	// 	update_minimap(data, 1, 0);
+	// if (keycode == 1)
+	// 	update_minimap(data, 0, 1);
+	// if (keycode == 13)
+	// 	update_minimap(data, 0, -1);
+	if (keycode == 123)
+		rotate_player(data, LEFT);
+	if (keycode == 124)
+		rotate_player(data, RIGHT);
 	else if (keycode == 53)
 		exit (EXIT_SUCCESS);
 	else
@@ -152,9 +166,10 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	data.minimap.mlx_ptr = mlx_init();
 	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
+	ft_get_starting_angle(&data);
 	ft_execution(&data);
 	// ft_draw_f_c(&data);
 	// draw_minimap(&data);
-	// move_minimap(&data);
+	move_minimap(&data);
 	mlx_loop(data.minimap.mlx_ptr);
 }

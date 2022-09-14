@@ -15,5 +15,6 @@
 
 float	ft_convert_deg_rad(float deg);
 void	ft_execution(t_data *data);
+void    ft_get_starting_angle(t_data *data);
 
 #endif // EXECUTION_H

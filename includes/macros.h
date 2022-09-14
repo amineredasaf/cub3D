@@ -15,8 +15,8 @@
 
 /*              win size            */
 
-# define W_X 200
-# define W_Y 200
+# define W_X 500
+# define W_Y 500
 
 /*              execution           */
 # define ADD 1
@@ -27,6 +27,9 @@
 # define PI 3.14159265359
 # define FOV 60
 # define ANGLE_STEP 0.1875
+
+# define LEFT -1
+# define RIGHT 1
 
 /*              img size            */
 

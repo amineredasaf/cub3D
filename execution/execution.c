@@ -94,12 +94,20 @@ void	ft_check_horiz(t_data *data, float angle, t_ray *ray)
 		{
 			pointx += xstep;
 			pointy += ystep;
+			if (floor(pointx / 64) < 0 || floor(pointx / 64) > ft_line_len(data, floor(pointy / 64) - 1))
+			{
+				ray->hdis = MAXFLOAT;
+				break ;
+			}
 		}
+
 	}
-	ray->hdis = sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy)));
-	ray->hendX = pointx;
-	ray->hendY = pointy;
-	// return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
+	if (floor(pointx / 64) >= 0 && floor(pointx / 64) <= ft_line_len(data, floor(pointy / 64) - 1))
+	{
+		ray->hdis = sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy)));
+		ray->hendX = pointx;
+		ray->hendY = pointy;
+	}
 }
 
 void	ft_check_verti(t_data *data, float angle, t_ray *ray)
@@ -119,12 +127,11 @@ void	ft_check_verti(t_data *data, float angle, t_ray *ray)
 		pointx = floor(data->player.x / 64) * 64 - 1;
 		xstep = -64;
 	}
-	pointy = data->player.y + tan(angle) * (data->player.x - pointx);
+	pointy = data->player.y + (tan(angle) * (data->player.x - pointx));
 	ystep = 64 * tan(angle);
 	if (sin(angle) < 0)
 		ystep *= -1;
-	printf ("pointy %f pointx %f\n", pointy, pointx);
-	if (floor(pointy / 64) < 0 || pointx / 64 - 1 > data->map_s.n_lines * 64)
+	if (floor(pointy / 64) < 0 || floor(pointy / 64) >= data->map_s.n_lines - 1)
 		ray->vdist = MAXFLOAT;
 	else
 	{
@@ -132,12 +139,19 @@ void	ft_check_verti(t_data *data, float angle, t_ray *ray)
 		{
 			pointx += xstep;
 			pointy += ystep;
+			if (floor(pointy / 64) < 0 || floor(pointy / 64) > data->map_s.n_lines - 1)
+			{
+				ray->vdist = MAXFLOAT;
+				break ;
+			}
 		}
 	}
-	HERE
-	ray->vdist = sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy)));
-	ray->vendX = pointx;
-	ray->vendY = pointy;
+	if (floor(pointy / 64) >= 0 && floor(pointy / 64) < data->map_s.n_lines - 1)
+	{
+		ray->vdist = sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy)));
+		ray->vendX = pointx;
+		ray->vendY = pointy;
+	}
 	// return (sqrt(((pointx - data->player.x) * (pointx - data->player.x)) + ((data->player.y - pointy) * (data->player.y - pointy))));
 }
 
@@ -157,7 +171,7 @@ void line(t_data *data, int x0, int y0, int x1, int y1) {
   int dy = abs(y1-y0), sy = y0<y1 ? 1 : -1; 
   int err = (dx>dy ? dx : -dy)/2, e2;
 
-  for(int i = 0; i < 200; i++){
+  for(int i = 0; i < 500; i++){
 	mlx_pixel_put(data->minimap.mlx_ptr, data->minimap.win_ptr, x0, y0, data->floor.final_color);
     if (x0==x1 && y0==y1) break;
     e2 = err;
@@ -192,16 +206,17 @@ void	ft_execution(t_data *data)
 
 	i = 0;
 	data->map_s.n_lines = ft_count_lines(data);
-	ft_get_starting_angle(data);
 	angle = data->player.angle + ft_convert_deg_rad(30);
 	while (i < 319)
 	{
 		ft_check_verti(data, angle, &ray);
-		// ft_check_horiz(data, angle, &ray);
-		// if (ray.hdis <= ray.vdist)
-		// 	ft_draw_ray(data, &ray, 'h');
-		// else
-		// 	ft_draw_ray(data, &ray, 'v');
+		ft_check_horiz(data, angle, &ray);
+		if (ray.hdis <= ray.vdist)
+			ft_draw_ray(data, &ray, 'h');
+		else
+			ft_draw_ray(data, &ray, 'v');
+		printf ("HOR : %f\n", ray.hdis);
+		printf ("VER %f\n", ray.vdist);
 		i++;
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}
