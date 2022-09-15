@@ -31,6 +31,7 @@ INIT		=	./initialization/initialize_data.c \
 				./initialization/mlx_initialization.c \
 
 EXECUTION	=	./execution/execution.c ./execution/execution_utils.c \
+				./execution/hor.c ./execution/ver.c \
 
 GNL			=	./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c
 
