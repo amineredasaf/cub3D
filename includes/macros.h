@@ -15,8 +15,8 @@
 
 /*              win size            */
 
-# define W_X 500
-# define W_Y 500
+# define W_X 1000
+# define W_Y 1000
 
 /*              execution           */
 # define ADD 1

@@ -90,12 +90,11 @@ typedef struct s_coordinate
 
 typedef struct s_ray
 {
-	float	hdis;
-	float	vdist;
-	float	hendX;
-	float	hendY;
-	float	vendX;
-	float	vendY;
+	float	dist;
+	float	inter_x;
+	float	inter_y;
+	float	xstep;
+	float	ystep;
 }	t_ray;
 
 typedef struct s_data
@@ -110,7 +109,7 @@ typedef struct s_data
 	t_map		map_s;
 	t_player	player;
 	t_plane		plane;
-	t_ray		ray;
+	int			wall_hit;
 	t_coordinate	coordinate;
 	t_mlx		minimap;
 }   t_data;
