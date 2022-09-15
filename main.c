@@ -72,25 +72,29 @@ int	draw_minimap(t_data *data)
 
 	y = 0;
 	map = data->map_s.map;
-	data->minimap.wall_ptr = insert_img_buffer(data, 0xFFFFFF, 20, 20);
-	data->minimap.play_ptr = insert_img_buffer(data, 0x12FF00, 20, 20);
+	data->minimap.wall_ptr = insert_img_buffer(data, 0xFFFFFF, 64, 64);
+	// data->minimap.play_ptr = insert_img_buffer(data, 0x12FF00, 20, 64);
 	while (map[y])
 	{
 		x = 0;
 		while (map[y][x])
 		{
 			if (map[y][x] == '1' || ft_isspace(map[y][x]))
-				put_on_win(data, data->minimap.wall_ptr, x * 20, y * 20);
-			else if (map[y][x] == 'N')
-			{
-				data->minimap.x = x;
-				data->minimap.y = y;
-				put_on_win(data, data->minimap.play_ptr, x * 20, y * 20);
-			}
+				put_on_win(data, data->minimap.wall_ptr, x * 64, y * 64);
+			// else if (map[y][x] == 'N')
+			// {
+			// 	data->minimap.x = x;
+			// 	data->minimap.y = y;
+			// 	put_on_win(data, data->minimap.play_ptr, x * 20, y * 20);
+			// }
 			x++;
 		}
 		y++;
 	}
+
+// printf("data->player.angle\t:\t%f\n", (data->player.angle * 180) / M_PI );
+
+	// line(data, 0, 0, 150, 150);
 	return (EXIT_SUCCESS);
 }
 
@@ -113,23 +117,38 @@ int	update_minimap(t_data *data, int x, int y)
 	return (EXIT_SUCCESS);	
 }
 
+void	rotate_player(t_data *data, int flag)
+{
+	if (flag == RIGHT)
+		data->player.angle -= ft_convert_deg_rad(20);
+	else if (flag == LEFT)
+		data->player.angle += ft_convert_deg_rad(20);
+	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+	draw_minimap(data);
+	ft_execution(data);
+}
+
 // this func find which key and move to the right direction
 // |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
 int	key_detector(int keycode, t_data *data)
 {
 
-	if (keycode == 0)
-		update_minimap(data, -1, 0);
-	if (keycode == 2)
-		update_minimap(data, 1, 0);
-	if (keycode == 1)
-		update_minimap(data, 0, 1);
-	if (keycode == 13)
-		update_minimap(data, 0, -1);
-	else if (keycode == 53)
+	// if (keycode == 0)
+	// 	update_minimap(data, -1, 0);
+	// if (keycode == 2)
+	// 	update_minimap(data, 1, 0);
+	// if (keycode == 1)
+	// 	update_minimap(data, 0, 1);
+	// if (keycode == 13)
+	// 	update_minimap(data, 0, -1);
+	if (keycode == 123)
+		rotate_player(data, LEFT);
+	if (keycode == 124)
+		rotate_player(data, RIGHT);
+	if (keycode == 53)
 		exit (EXIT_SUCCESS);
-	else
-		printf("key = %d\n", keycode);
+	// else
+		// printf("key = %d\n", keycode);
 	return (EXIT_SUCCESS);
 }
 
@@ -152,9 +171,13 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	data.minimap.mlx_ptr = mlx_init();
 	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
+	ft_get_starting_angle(&data);
+
+
 	ft_execution(&data);
+
 	// ft_draw_f_c(&data);
-	// draw_minimap(&data);
-	// move_minimap(&data);
+	draw_minimap(&data);
+	move_minimap(&data);
 	mlx_loop(data.minimap.mlx_ptr);
 }
