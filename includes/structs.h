@@ -109,7 +109,8 @@ typedef struct s_data
 	t_map		map_s;
 	t_player	player;
 	t_plane		plane;
-	int			wall_hit;
+	int			wall_hit_hor;
+	int			wall_hit_ver;
 	t_coordinate	coordinate;
 	t_mlx		minimap;
 }   t_data;
