@@ -23,7 +23,8 @@ void	ft_first_ver(t_data *data, t_ray *ray, float angle)
 	if (floor(ray->inter_y / 64) < 0
 		|| floor(ray->inter_y / 64) >= data->map_s.n_lines - 1)
 		ray->dist = MAXFLOAT;
-	ray->dist = fabs(data->player.x - ray->inter_x) / cos(angle);
+	// ray->dist = fabs(data->player.x - ray->inter_x) / cos(angle);
+	ray->dist = sqrtf((data->player.x - ray->inter_x) * (data->player.x - ray->inter_x) + (data->player.y - ray->inter_y) * (data->player.y - ray->inter_y));
 }
 
 void	ft_ver_check(t_data *data, t_ray *ray, float angle)
