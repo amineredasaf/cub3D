@@ -26,6 +26,6 @@ int		is_wall(t_data *data, int x, int y);
 void	ft_first_hor(t_data *data, t_ray *ray, float angle);
 void	ft_ver_check(t_data *data, t_ray *ray, float angle);
 void	ft_first_ver(t_data *data, t_ray *ray, float angle);
-void	ft_ver_check(t_data *data, t_ray *ray, float angle);
+void	ft_hor_check(t_data *data, t_ray *ray, float angle);
 
 #endif // EXECUTION_H

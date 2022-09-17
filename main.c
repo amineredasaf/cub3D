@@ -171,11 +171,9 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	data.minimap.mlx_ptr = mlx_init();
 	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
+	HERE
 	ft_get_starting_angle(&data);
-
-
 	ft_execution(&data);
-
 	// ft_draw_f_c(&data);
 	draw_minimap(&data);
 	move_minimap(&data);
