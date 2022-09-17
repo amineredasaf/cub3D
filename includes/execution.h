@@ -24,8 +24,8 @@ void	ft_update_view_angle(t_data *data, int flag);
 void	ft_draw_ray(t_data *data, t_ray *ray);
 int		is_wall(t_data *data, int x, int y);
 void	ft_first_hor(t_data *data, t_ray *ray, float angle);
-void	ft_ver_check(t_data *data, t_ray *ray, float angle);
+void	ft_ver_check(t_data *data, t_ray *ray);
 void	ft_first_ver(t_data *data, t_ray *ray, float angle);
-void	ft_hor_check(t_data *data, t_ray *ray, float angle);
+void	ft_hor_check(t_data *data, t_ray *ray);
 
 #endif // EXECUTION_H

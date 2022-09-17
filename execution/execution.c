@@ -6,24 +6,26 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 	t_ray	hor;
 	t_ray	ver;
 
-	data->wall_hit = 0;
+	data->wall_hit_ver = 0;
+	data->wall_hit_hor = 0;
 	hor.dist = W_X * W_Y;
 	ver.dist = W_X * W_Y;
 	ft_first_hor(data, &hor, angle);
 	ft_first_ver(data, &ver, angle);
-	// while (!data->wall_hit)
-	// {
-	// 	if (hor.dist <= ver.dist)
-	// 		ft_hor_check(data, &hor, angle);
-	// 	else
-	// 		ft_ver_check(data, &ver, angle);
-	// }
+	while (!data->wall_hit_hor && !data->wall_hit_ver)
+	{
+		if (hor.dist <= ver.dist && !data->wall_hit_hor)
+			ft_hor_check(data, &hor);
+		if (ver.dist <= ver.dist && !data->wall_hit_ver)
+			ft_ver_check(data, &ver);
+	}
 	printf("hor [%f]\n", hor.dist);
 	printf("ver [%f]\n", ver.dist);
-	if (hor.dist < ver.dist)
+	if (data->wall_hit_hor)
 		return (hor);
-	else
+	else if (data->wall_hit_ver)
 		return (ver);
+	return (hor);
 }
 
 void	ft_execution(t_data *data)
@@ -52,6 +54,6 @@ void	ft_execution(t_data *data)
 		// printf ("VER %f\n", ray.vdist);
 		// i++;
 		// angle -= ft_convert_deg_rad(ANGLE_STEP);
-		// angle -= ft_convert_deg_rad(60 / 20);
+	// 	angle -= ft_convert_deg_rad(60 / 20);
 	// }
 }
