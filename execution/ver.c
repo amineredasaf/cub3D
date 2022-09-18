@@ -2,7 +2,7 @@
 
 void	ft_first_ver(t_data *data, t_ray *ray, float angle)
 {
-	ray->ystep = 64 * tan(angle);
+	ray->ystep = 64 * fabs(tan(angle));
 	if (cos(angle) >= 0)
 	{
 		ray->xstep = 64;
@@ -41,7 +41,7 @@ void	ft_ver_check(t_data *data, t_ray *ray)
 		}
 		else
 		{
-			ray->inter_x += ray->xstep + 1;
+			ray->inter_x += ray->xstep;
 			ray->inter_y += ray->ystep;
 		}
 	}

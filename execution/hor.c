@@ -2,7 +2,7 @@
 
 void	ft_first_hor(t_data *data, t_ray *ray, float angle)
 {
-	ray->xstep = 64 / tan(angle);
+	ray->xstep = 64 / fabs(tan(angle));
 	if (sin(angle) >= 0)
 	{
 		ray->ystep = -64;
@@ -18,7 +18,7 @@ void	ft_first_hor(t_data *data, t_ray *ray, float angle)
 	else
 	{
 		ray->inter_x = data->player.x - fabs(fabs(data->player.y - ray->inter_y) / tan(angle));
-		ray->xstep = ray->xstep *= -1;
+		ray->xstep *= -1;
 	}
 	if (floor(ray->inter_x / 64) < 0
 		|| floor(ray->inter_x / 64) * 64 - 1 > ft_line_len(data, floor(ray->inter_y / 64)))
