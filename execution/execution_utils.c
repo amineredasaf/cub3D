@@ -75,7 +75,7 @@ void	ft_update_view_angle(t_data *data, int flag)
 
 int		is_wall(t_data *data, int x, int y)
 {
-	if (data->map_s.map[y][x] == '0')
+	if (data->map_s.map[y][x] != '1')
 		return (0);
 	else
 		return (1);

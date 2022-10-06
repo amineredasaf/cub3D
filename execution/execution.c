@@ -40,15 +40,15 @@ void	ft_execution(t_data *data)
 
 	i = 0;
 	data->map_s.n_lines = ft_count_lines(data);
-	angle = data->player.angle;
-	while (i < 19)
+	angle = data->player.angle + ft_convert_deg_rad(30);
+	while (i < 319)
 	{
 		// HERE
 		ray = ft_cast_ray(data, angle);
 		// HERE
 		ft_draw_ray(data, &ray);
 		i++;
-		// angle -= ft_convert_deg_rad(ANGLE_STEP);
-		angle -= ft_convert_deg_rad(60 / 20);
+		angle -= ft_convert_deg_rad(ANGLE_STEP);
+		// angle -= ft_convert_deg_rad(60 / 20);
 	}
 }
