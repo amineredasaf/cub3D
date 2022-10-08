@@ -120,13 +120,55 @@ int	update_minimap(t_data *data, int x, int y)
 void	rotate_player(t_data *data, int flag)
 {
 	if (flag == RIGHT)
-		data->player.angle -= ft_convert_deg_rad(20);
+		data->player.angle -= ft_convert_deg_rad(R_S);
 	else if (flag == LEFT)
-		data->player.angle += ft_convert_deg_rad(20);
+		data->player.angle += ft_convert_deg_rad(R_S);
 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
 	draw_minimap(data);
 	ft_execution(data);
 }
+
+void	move_forward(t_data *data)
+{
+	float	x_change;
+	float	y_change;
+
+	x_change = data->player.x + cos(data->player.angle) * M_S;
+	y_change = data->player.y - sin(data->player.angle) * M_S;
+	if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
+		return ;
+	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+	data->player.x = x_change;
+	data->player.y = y_change;
+	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+	draw_minimap(data);
+	ft_execution(data);
+}
+
+void	move_backward(t_data *data)
+{
+	float	x_change;
+	float	y_change;
+
+	x_change = data->player.x - cos(data->player.angle) * M_S;
+	y_change = data->player.y + sin(data->player.angle) * M_S;
+	if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
+		return ;
+	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+	data->player.x -= cos(data->player.angle) * M_S;
+	data->player.y += sin(data->player.angle) * M_S;
+	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+	draw_minimap(data);
+	ft_execution(data);
+}
+
+// void	left_slide(t_data *data)
+// {
+// 	float	x_change;
+// 	float	y_change;
+
+
+// }
 
 // this func find which key and move to the right direction
 // |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
@@ -134,21 +176,21 @@ int	key_detector(int keycode, t_data *data)
 {
 
 	// if (keycode == 0)
-	// 	update_minimap(data, -1, 0);
+	// 	left_slide(data);
 	// if (keycode == 2)
 	// 	update_minimap(data, 1, 0);
-	// if (keycode == 1)
-	// 	update_minimap(data, 0, 1);
-	// if (keycode == 13)
-	// 	update_minimap(data, 0, -1);
+	if (keycode == 1)
+		move_backward(data);
+	if (keycode == 13)
+		move_forward(data);
 	if (keycode == 123)
 		rotate_player(data, LEFT);
 	if (keycode == 124)
 		rotate_player(data, RIGHT);
 	if (keycode == 53)
 		exit (EXIT_SUCCESS);
-	// else
-		// printf("key = %d\n", keycode);
+	else
+		printf("key = %d\n", keycode);
 	return (EXIT_SUCCESS);
 }
 

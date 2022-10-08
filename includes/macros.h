@@ -18,6 +18,13 @@
 # define W_X 1000
 # define W_Y 1000
 
+
+/*              movement            */
+
+# define R_S 20
+# define M_S 10
+
+
 /*              execution           */
 # define ADD 1
 # define SUB 0
