@@ -162,13 +162,21 @@ void	move_backward(t_data *data)
 	ft_execution(data);
 }
 
+// void	left_slide(t_data *data)
+// {
+// 	float	x_change;
+// 	float	y_change;
+
+
+// }
+
 // this func find which key and move to the right direction
 // |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
 int	key_detector(int keycode, t_data *data)
 {
 
 	// if (keycode == 0)
-	// 	update_minimap(data, -1, 0);
+	// 	left_slide(data);
 	// if (keycode == 2)
 	// 	update_minimap(data, 1, 0);
 	if (keycode == 1)
@@ -181,8 +189,8 @@ int	key_detector(int keycode, t_data *data)
 		rotate_player(data, RIGHT);
 	if (keycode == 53)
 		exit (EXIT_SUCCESS);
-	// else
-	// 	printf("key = %d\n", keycode);
+	else
+		printf("key = %d\n", keycode);
 	return (EXIT_SUCCESS);
 }
 

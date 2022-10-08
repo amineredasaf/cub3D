@@ -25,30 +25,28 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 		return (hor);
 	else
 		return (ver);
-	// if (data->wall_hit_hor)
-	// 	return (hor);
-	// else if (data->wall_hit_ver)
-	// 	return (ver);
-	// return (hor);
 }
 
 void	ft_execution(t_data *data)
 {
 	float	angle;
+	float	projected_wall;
 	int		i;
 	t_ray	ray;
 
 	i = 0;
 	data->map_s.n_lines = ft_count_lines(data);
 	angle = data->player.angle + ft_convert_deg_rad(30);
-	while (i < 319)
+	while (i < 19)
 	{
 		// HERE
 		ray = ft_cast_ray(data, angle);
 		// HERE
 		ft_draw_ray(data, &ray);
+		projected_wall = (64 / ray.dist) * 277;
+		printf("[%f]\n", projected_wall);
 		i++;
-		angle -= ft_convert_deg_rad(ANGLE_STEP);
-		// angle -= ft_convert_deg_rad(60 / 20);
+		// angle -= ft_convert_deg_rad(ANGLE_STEP);
+		angle -= ft_convert_deg_rad(60 / 20);
 	}
 }
