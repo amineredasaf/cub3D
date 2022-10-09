@@ -19,8 +19,6 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 		if (ver.dist <= ver.dist && !data->wall_hit_ver)
 			ft_ver_check(data, &ver);
 	}
-	printf("hor [%f]\n", hor.dist);
-	printf("ver [%f]\n", ver.dist);
 	if (hor.dist <= ver.dist)
 		return (hor);
 	else
@@ -39,12 +37,9 @@ void	ft_execution(t_data *data)
 	angle = data->player.angle + ft_convert_deg_rad(30);
 	while (i < 19)
 	{
-		// HERE
 		ray = ft_cast_ray(data, angle);
-		// HERE
 		ft_draw_ray(data, &ray);
 		projected_wall = (64 / ray.dist) * 277;
-		printf("[%f]\n", projected_wall);
 		i++;
 		// angle -= ft_convert_deg_rad(ANGLE_STEP);
 		angle -= ft_convert_deg_rad(60 / 20);
