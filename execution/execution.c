@@ -29,19 +29,26 @@ void	ft_execution(t_data *data)
 {
 	float	angle;
 	float	projected_wall;
+	float	real_distance;
 	int		i;
 	t_ray	ray;
 
 	i = 0;
 	data->map_s.n_lines = ft_count_lines(data);
 	angle = data->player.angle + ft_convert_deg_rad(30);
-	while (i < 19)
+	while (i < 319)
 	{
 		ray = ft_cast_ray(data, angle);
-		ft_draw_ray(data, &ray);
-		projected_wall = (64 / ray.dist) * 277;
+		real_distance = ray.dist * fabs(cos(angle));
+		// ft_draw_ray(data, &ray);
+		projected_wall = floor((64 / ray.dist) * 277);
+		// (wind high - project wall) / 2;
+		data->minimap.img_ptr = insert_img_buffer(data, 500, W_X/320, projected_wall);
+		put_on_win(data, data->minimap.img_ptr, i*(W_X/320), (W_Y - projected_wall) / 2);
+		// printf("y = %f -- x = %d\n", projected_wall, W_X/320);
+
 		i++;
-		// angle -= ft_convert_deg_rad(ANGLE_STEP);
-		angle -= ft_convert_deg_rad(60 / 20);
+		angle -= ft_convert_deg_rad(ANGLE_STEP);
+		// angle -= ft_convert_deg_rad(60 / 20);
 	}
 }
