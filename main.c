@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/07 13:44:26 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/10 15:02:56 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@ void	*insert_img_buffer(t_data *data, int color, int x, int y);
 
 void	ft_draw_f_c(t_data *data)
 {
-	int	i;
-	// int	j;
-	void	*ptr;
-	void	*ptr2;
-
-	i = 0;
-	ptr = insert_img_buffer(data, data->ceiling.final_color, 1000, 500);
-	put_on_win(data, ptr, 0, 0);
-	ptr2 = insert_img_buffer(data, data->floor.final_color, 1000, 500);
-	put_on_win(data, ptr2, 0, 500);
+	data->minimap.img_ptr = insert_img_buffer(data, data->ceiling.final_color, W_X, W_Y/2);
+	put_on_win(data, data->minimap.img_ptr, 0, 0);
+	data->minimap.img_ptr = insert_img_buffer(data, data->floor.final_color, W_X, W_Y/2);
+	put_on_win(data, data->minimap.img_ptr, 0, W_Y/2);
 }
 
 // this func insert img to a buffer pixel by pixel to create a img
@@ -72,7 +66,7 @@ int	draw_minimap(t_data *data)
 
 	y = 0;
 	map = data->map_s.map;
-	data->minimap.wall_ptr = insert_img_buffer(data, 0xFFFFFF, 64, 64);
+	data->minimap.wall_ptr = insert_img_buffer(data, 0xFFFFFF, 63, 63);
 	// data->minimap.play_ptr = insert_img_buffer(data, 0x12FF00, 20, 64);
 	while (map[y])
 	{
@@ -174,11 +168,11 @@ void	move_backward(t_data *data)
 // |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
 int	key_detector(int keycode, t_data *data)
 {
-
+	(void)data;
 	// if (keycode == 0)
 	// 	left_slide(data);
-	// if (keycode == 2)
-	// 	update_minimap(data, 1, 0);
+	if (keycode == 2)
+		update_minimap(data, 1, 0);
 	if (keycode == 1)
 		move_backward(data);
 	if (keycode == 13)
@@ -212,12 +206,14 @@ int main(int argc, char **argv)
 	if (ft_parsing(&data))
 		return (EXIT_FAILURE);
 	data.minimap.mlx_ptr = mlx_init();
-	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
+	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cub3d");
+	data.minimap.img_ptr = mlx_new_image(data.minimap.mlx_ptr, W_X, W_Y);
 	HERE
 	ft_get_starting_angle(&data);
+	ft_draw_f_c(&data);
 	ft_execution(&data);
-	// ft_draw_f_c(&data);
-	draw_minimap(&data);
+	
+	// draw_minimap(&data);
 	move_minimap(&data);
 	mlx_loop(data.minimap.mlx_ptr);
 }
