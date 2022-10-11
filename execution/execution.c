@@ -43,6 +43,7 @@ void	ft_execution(t_data *data)
 {
 	float	angle;
 	float	projected_wall;
+	float	real_distance;
 	int		i;
 	t_ray	ray;
 	// void	*ptr;

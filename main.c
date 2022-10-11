@@ -6,14 +6,15 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/07 13:44:26 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/10 15:02:56 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
 
-//this func insert img to a buffer pixel by pixel to create a img
-void	*insert_img_buffer(t_data *data, int color, int x, int wall)
+
+// this func insert img to a buffer pixel by pixel to create a img
+void	*insert_img_buffer(t_data *data, int color, int x, int y)
 {
 	int		i;
 	static int		j;
@@ -74,7 +75,6 @@ int	draw_minimap(t_data *data)
 
 	y = 0;
 	map = data->map_s.map;
-	// data->minimap.wall_ptr = insert_img_buffer(data, 0xFFFFFF, 64, 64);
 	// data->minimap.play_ptr = insert_img_buffer(data, 0x12FF00, 20, 64);
 	while (map[y])
 	{
@@ -171,11 +171,11 @@ void	move_backward(t_data *data)
 // |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
 int	key_detector(int keycode, t_data *data)
 {
-
+	(void)data;
 	// if (keycode == 0)
 	// 	left_slide(data);
-	// if (keycode == 2)
-	// 	update_minimap(data, 1, 0);
+	if (keycode == 2)
+		update_minimap(data, 1, 0);
 	if (keycode == 1)
 		move_backward(data);
 	if (keycode == 13)
@@ -213,6 +213,7 @@ int main(int argc, char **argv)
 	data.minimap.img_ptr = mlx_new_image(data.minimap.mlx_ptr, W_X, W_Y);
 	data.minimap.buff = (int *) mlx_get_data_addr(data.minimap.img_ptr, &data.minimap.bpp, &data.minimap.llength, &data.minimap.ein);		
 	ft_get_starting_angle(&data);
+	ft_draw_f_c(&data);
 	ft_execution(&data);
 	move_minimap(&data);
 	mlx_loop(data.minimap.mlx_ptr);

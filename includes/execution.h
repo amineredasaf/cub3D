@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:44:30 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/27 03:46:28 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/10 14:33:05 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_first_hor(t_data *data, t_ray *ray, float angle);
 void	ft_ver_check(t_data *data, t_ray *ray);
 void	ft_first_ver(t_data *data, t_ray *ray, float angle);
 void	ft_hor_check(t_data *data, t_ray *ray);
+void	*insert_img_buffer(t_data *data, int color, int x, int y);
 void	put_on_win(t_data *data, void *ptr, int x, int y);
-void	*insert_img_buffer(t_data *data, int color, int x,int wall);
 
 #endif

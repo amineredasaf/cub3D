@@ -37,7 +37,7 @@ void	ft_get_starting_angle(t_data *data)
 			else if (data->map_s.map[i][j] == 'W')
 				ft_set_angle_pos(data, j, i, 'W');
 			else if (data->map_s.map[i][j] == 'E')
-				ft_set_angle_pos(data, j, i, 'E');		
+				ft_set_angle_pos(data, j, i, 'E');
 		}
 	}
 }
