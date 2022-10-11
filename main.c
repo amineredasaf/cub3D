@@ -11,46 +11,48 @@
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
-void	put_on_win(t_data *data, void *ptr, int x, int y);
-void	*insert_img_buffer(t_data *data, int color, int x, int y);
 
-void	ft_draw_f_c(t_data *data)
-{
-	int	i;
-	// int	j;
-	void	*ptr;
-	void	*ptr2;
-
-	i = 0;
-	ptr = insert_img_buffer(data, data->ceiling.final_color, 1000, 500);
-	put_on_win(data, ptr, 0, 0);
-	ptr2 = insert_img_buffer(data, data->floor.final_color, 1000, 500);
-	put_on_win(data, ptr2, 0, 500);
-}
-
-// this func insert img to a buffer pixel by pixel to create a img
-void	*insert_img_buffer(t_data *data, int color, int x, int y)
+//this func insert img to a buffer pixel by pixel to create a img
+void	*insert_img_buffer(t_data *data, int color, int x, int wall)
 {
 	int		i;
-	int		j;
-	void	*ptr;
+	static int		j;
 	t_mlx	*map;
+	int		before;
+	int		end;
 
-	j = 0;
+	before = floor((W_Y - wall) / 2);
+	end = floor(W_Y - before - wall);
 	i = 0;
 	map = &data->minimap;
-	ptr = mlx_new_image(map->mlx_ptr, x, y);
-	map->buff = (int *) mlx_get_data_addr(ptr, &map->bpp, &map->llength, &map->ein);
-	while (i < y)
+	while (i < before)
 	{
+		j = 0;
+		while (j < x) {
+			map->buff[j + (i * (map->llength / 4))] = data->ceiling.final_color;
+			j++;
+		}
+		i++;
+	}
+	while (i < end)
+	{
+		j = 0;
 		while (j < x) {
 			map->buff[j + (i * (map->llength / 4))] = color;
 			j++;
 		}
-		i++;
-		j = 0;
+		i++;	
 	}
-	return (ptr);
+	while (i < W_Y)
+	{
+		j = 0;
+		while (j < x) {
+			map->buff[j + (i * (map->llength / 4))] = data->floor.final_color;
+			j++;
+		}
+		i++;
+	}
+	return (data->minimap.img_ptr);
 }
 
 // this func put the images on the window;
@@ -72,7 +74,7 @@ int	draw_minimap(t_data *data)
 
 	y = 0;
 	map = data->map_s.map;
-	data->minimap.wall_ptr = insert_img_buffer(data, 0xFFFFFF, 64, 64);
+	// data->minimap.wall_ptr = insert_img_buffer(data, 0xFFFFFF, 64, 64);
 	// data->minimap.play_ptr = insert_img_buffer(data, 0x12FF00, 20, 64);
 	while (map[y])
 	{
@@ -111,8 +113,6 @@ int	update_minimap(t_data *data, int x, int y)
 		mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
 		data->map_s.map[old_y][old_x] = '0';
 		data->map_s.map[old_y + y][old_x + x ] = 'N';
-		ft_draw_f_c(data);
-		draw_minimap(data);
 	}
 	return (EXIT_SUCCESS);	
 }
@@ -124,7 +124,6 @@ void	rotate_player(t_data *data, int flag)
 	else if (flag == LEFT)
 		data->player.angle += ft_convert_deg_rad(R_S);
 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
-	draw_minimap(data);
 	ft_execution(data);
 }
 
@@ -141,7 +140,6 @@ void	move_forward(t_data *data)
 	data->player.x = x_change;
 	data->player.y = y_change;
 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
-	draw_minimap(data);
 	ft_execution(data);
 }
 
@@ -158,7 +156,6 @@ void	move_backward(t_data *data)
 	data->player.x -= cos(data->player.angle) * M_S;
 	data->player.y += sin(data->player.angle) * M_S;
 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
-	draw_minimap(data);
 	ft_execution(data);
 }
 
@@ -213,11 +210,10 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	data.minimap.mlx_ptr = mlx_init();
 	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
-	HERE
+	data.minimap.img_ptr = mlx_new_image(data.minimap.mlx_ptr, W_X, W_Y);
+	data.minimap.buff = (int *) mlx_get_data_addr(data.minimap.img_ptr, &data.minimap.bpp, &data.minimap.llength, &data.minimap.ein);		
 	ft_get_starting_angle(&data);
 	ft_execution(&data);
-	// ft_draw_f_c(&data);
-	draw_minimap(&data);
 	move_minimap(&data);
 	mlx_loop(data.minimap.mlx_ptr);
 }

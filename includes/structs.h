@@ -20,6 +20,7 @@ typedef struct s_mlx
 	void	*win_ptr;
 	void	*wall_ptr;
 	void	*play_ptr;
+	void	*img_ptr;
 	int		x;
 	int		y;
 	int		bpp;

@@ -27,5 +27,7 @@ void	ft_first_hor(t_data *data, t_ray *ray, float angle);
 void	ft_ver_check(t_data *data, t_ray *ray);
 void	ft_first_ver(t_data *data, t_ray *ray, float angle);
 void	ft_hor_check(t_data *data, t_ray *ray);
+void	put_on_win(t_data *data, void *ptr, int x, int y);
+void	*insert_img_buffer(t_data *data, int color, int x,int wall);
 
-#endif // EXECUTION_H
+#endif
