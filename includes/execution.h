@@ -30,4 +30,4 @@ void	ft_hor_check(t_data *data, t_ray *ray);
 void	*insert_img_buffer(t_data *data, int color, int x, int y);
 void	put_on_win(t_data *data, void *ptr, int x, int y);
 
-#endif // EXECUTION_H
+#endif

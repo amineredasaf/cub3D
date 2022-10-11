@@ -1,6 +1,20 @@
 
 #include "../includes/cub3d.h"
 
+// void	ft_draw_f_c(t_data *data)
+// {
+// 	int	i;
+// 	// int	j;
+// 	void	*ptr;
+// 	void	*ptr2;
+
+// 	i = 0;
+// 	ptr = insert_img_buffer(data, data->ceiling.final_color, 1000, 500);
+// 	put_on_win(data, ptr, 0, 0);
+// 	ptr2 = insert_img_buffer(data, data->floor.final_color, 1000, 500);
+// 	put_on_win(data, ptr2, 0, 500);
+// }
+
 t_ray	ft_cast_ray(t_data *data, float angle)
 {
 	t_ray	hor;
@@ -32,6 +46,7 @@ void	ft_execution(t_data *data)
 	float	real_distance;
 	int		i;
 	t_ray	ray;
+	// void	*ptr;
 
 	i = 0;
 	data->map_s.n_lines = ft_count_lines(data);
@@ -39,16 +54,12 @@ void	ft_execution(t_data *data)
 	while (i < 319)
 	{
 		ray = ft_cast_ray(data, angle);
-		real_distance = ray.dist * fabs(cos(angle));
 		// ft_draw_ray(data, &ray);
 		projected_wall = floor((64 / ray.dist) * 277);
-		// (wind high - project wall) / 2;
-		data->minimap.img_ptr = insert_img_buffer(data, 500, W_X/320, projected_wall);
-		put_on_win(data, data->minimap.img_ptr, i*(W_X/320), (W_Y - projected_wall) / 2);
-		// printf("y = %f -- x = %d\n", projected_wall, W_X/320);
-
+		data->minimap.img_ptr = insert_img_buffer(data, 500, i, projected_wall);
 		i++;
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 		// angle -= ft_convert_deg_rad(60 / 20);
 	}
+	put_on_win(data, data->minimap.img_ptr, 0, 0);
 }
