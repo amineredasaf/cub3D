@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/10 15:02:56 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/12 05:38:33 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,12 @@
 
 
 // this func insert img to a buffer pixel by pixel to create a img
-void	*insert_img_buffer(t_data *data, int color, int x, int y)
+void	insert_img_buffer(t_data *data, int x, int y, int color)
 {
-	int		i;
-	static int		j;
-	t_mlx	*map;
-	int		before;
-	int		end;
+	char	*dst;
 
-	before = floor((W_Y - wall) / 2);
-	end = floor(W_Y - before - wall);
-	i = 0;
-	map = &data->minimap;
-	while (i < before)
-	{
-		j = 0;
-		while (j < x) {
-			map->buff[j + (i * (map->llength / 4))] = data->ceiling.final_color;
-			j++;
-		}
-		i++;
-	}
-	while (i < end)
-	{
-		j = 0;
-		while (j < x) {
-			map->buff[j + (i * (map->llength / 4))] = color;
-			j++;
-		}
-		i++;	
-	}
-	while (i < W_Y)
-	{
-		j = 0;
-		while (j < x) {
-			map->buff[j + (i * (map->llength / 4))] = data->floor.final_color;
-			j++;
-		}
-		i++;
-	}
-	return (data->minimap.img_ptr);
+	dst = data->minimap.buff + (y * data->minimap.llength + x * (data->minimap.bpp / 8));
+	*(unsigned int*)dst = color;
 }
 
 // this func put the images on the window;
@@ -139,7 +105,6 @@ void	move_forward(t_data *data)
 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
 	data->player.x = x_change;
 	data->player.y = y_change;
-	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
 	ft_execution(data);
 }
 
@@ -155,7 +120,6 @@ void	move_backward(t_data *data)
 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
 	data->player.x -= cos(data->player.angle) * M_S;
 	data->player.y += sin(data->player.angle) * M_S;
-	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
 	ft_execution(data);
 }
 
@@ -174,8 +138,8 @@ int	key_detector(int keycode, t_data *data)
 	(void)data;
 	// if (keycode == 0)
 	// 	left_slide(data);
-	if (keycode == 2)
-		update_minimap(data, 1, 0);
+	// if (keycode == 2)
+	// 	update_minimap(data, 1, 0);
 	if (keycode == 1)
 		move_backward(data);
 	if (keycode == 13)
@@ -186,8 +150,6 @@ int	key_detector(int keycode, t_data *data)
 		rotate_player(data, RIGHT);
 	if (keycode == 53)
 		exit (EXIT_SUCCESS);
-	else
-		printf("key = %d\n", keycode);
 	return (EXIT_SUCCESS);
 }
 
@@ -211,9 +173,8 @@ int main(int argc, char **argv)
 	data.minimap.mlx_ptr = mlx_init();
 	data.minimap.win_ptr = mlx_new_window(data.minimap.mlx_ptr, W_X, W_Y, "cube");
 	data.minimap.img_ptr = mlx_new_image(data.minimap.mlx_ptr, W_X, W_Y);
-	data.minimap.buff = (int *) mlx_get_data_addr(data.minimap.img_ptr, &data.minimap.bpp, &data.minimap.llength, &data.minimap.ein);		
+	data.minimap.buff = mlx_get_data_addr(data.minimap.img_ptr, &data.minimap.bpp, &data.minimap.llength, &data.minimap.ein);		
 	ft_get_starting_angle(&data);
-	ft_draw_f_c(&data);
 	ft_execution(&data);
 	move_minimap(&data);
 	mlx_loop(data.minimap.mlx_ptr);
