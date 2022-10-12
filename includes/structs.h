@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/10 14:14:44 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/12 04:59:07 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ typedef struct s_mlx
 	void	*img_ptr;
 	void	*wall_ptr;
 	void	*play_ptr;
-	void	*img_ptr;
 	int		x;
 	int		y;
 	int		bpp;
 	int		llength;
 	int		ein;
 	char	*name;
-	int		*buff;
+	char 	*buff;
 }	t_mlx;
 
 typedef struct s_textures
