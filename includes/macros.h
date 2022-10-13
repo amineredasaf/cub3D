@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/13 11:29:18 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/13 13:27:14 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 /*              movement            */
 
-# define R_S 20
+# define R_S 10
 # define M_S 10
 
 
@@ -33,7 +33,7 @@
 # define BLOCK_H 64
 # define PI 3.14159265359
 # define FOV 60
-# define ANGLE_STEP 0.1875
+# define ANGLE_STEP 0.06
 
 # define LEFT -1
 # define RIGHT 1
