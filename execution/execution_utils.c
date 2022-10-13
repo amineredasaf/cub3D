@@ -49,8 +49,11 @@ float	ft_line_len(t_data *data, float y)
 
 	x = 0;
 	y1 = (int) y;
-	while (data->map_s.map[y1][x] != '\0' && data->map_s.map[y1][x] != '\n')
-		x++;
+	if (y >= 0)
+	{
+		while (data->map_s.map[y1][x] != '\0' && data->map_s.map[y1][x] != '\n')
+			x++;
+	}
 	return (x);
 }
 
