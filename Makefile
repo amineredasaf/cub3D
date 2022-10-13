@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/09/03 09:23:30 by rsaf             ###   ########.fr        #
+#    Updated: 2022/10/13 10:59:05 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ test		:
 	cc $(MLX) mlx_testing.c
 
 $(NAME)		: $(OBJ)
-	cc $(C_FLAGS) $^ $(MLX) -o $@
+	cc $(C_FLAGS) $^ $(MLX) -o $@ -fsanitize=address
 
 clean		:
 	rm -f $(OBJ)

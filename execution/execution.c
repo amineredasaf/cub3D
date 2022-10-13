@@ -50,7 +50,7 @@ void	ft_execution(t_data *data)
 	// ft_draw_f_c(data);
 	int from = 0;
 	int b = 0;
-	while (i < 319)
+	while (i < 500)
 	{
 		ray = ft_cast_ray(data, angle);
 		// ft_draw_ray(data, &ray);
@@ -59,17 +59,17 @@ void	ft_execution(t_data *data)
 		b = 0;
 		while (b < from)
 		{
-			insert_img_buffer(data, i, b, 500);
+			insert_img_buffer(data, i, b, 0xFF1053);
 			b++;
 		}
 		while (b >= from && b < from + projected_wall)
 		{
-			insert_img_buffer(data, i, b, 600);
+			insert_img_buffer(data, i, b, 65280);
 			b++;
 		}
 		while (b >= from + projected_wall && b < W_Y)
 		{
-			insert_img_buffer(data, i, b, 700);
+			insert_img_buffer(data, i, b, 16766720);
 			b++;
 		}
 		i++;
