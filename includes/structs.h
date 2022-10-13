@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/12 04:59:07 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/13 19:12:02 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 typedef struct s_mlx
 {
 	/* data */
+	int		img_hie;
+	int		img_wid;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;

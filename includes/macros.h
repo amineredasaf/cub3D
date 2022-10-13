@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/13 13:27:14 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/13 20:42:38 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 /*              win size            */
 
-# define W_X 1000
-# define W_Y 1000
+# define W_X 500
+# define W_Y 500
 
 
 /*              movement            */
 
-# define R_S 10
+# define R_S 5
 # define M_S 10
 
 
