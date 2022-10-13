@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/13 11:03:01 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/13 14:51:08 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_get_map(t_data *data)
 	size = data->map_s.end_point - data->map_s.start_point;
 	i = data->map_s.start_point;
 	j = 0;
-	data->map_s.map = malloc (sizeof(char *) * size + 1);
+	data->map_s.map = calloc (size + 1, sizeof(char *) );
 	while (i < data->map_s.end_point)
 	{
 		line = data->file_content[i++];
