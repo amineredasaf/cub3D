@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/09/07 00:48:41 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/13 11:03:01 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_read_file(t_data *data)
 	data->map_s.end_point = i;
 	if (i == 0)
 		exit (ft_print_error(E_EMPTY_FILE));
-	data->file_content = malloc(sizeof(char *) * (i + 1));
+	data->file_content = calloc(i + 1, sizeof(char *));
 	if (!data->file_content)
 		exit(ft_print_error(E_ALLOCATION_FAILED));
 	i = 0;

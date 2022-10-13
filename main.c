@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/12 05:38:33 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/13 11:28:55 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ void	insert_img_buffer(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->minimap.buff + (y * data->minimap.llength + x * (data->minimap.bpp / 8));
-	*(unsigned int*)dst = color;
+	if (x > 0 && x < W_X && y > 0 && y < W_Y)
+	{
+		dst = data->minimap.buff + (y * data->minimap.llength + x * (data->minimap.bpp / 8));
+		*(unsigned int*)dst = color;
+	}
 }
 
 // this func put the images on the window;
