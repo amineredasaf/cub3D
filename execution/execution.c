@@ -61,12 +61,12 @@ void	ft_execution(t_data *data)
 		b = 0;
 		while (b < from)
 		{
-			insert_img_buffer(data, i, b, 0xFF1053);
+			insert_img_buffer(data, i, b, 3093151);
 			b++;
 		}
 		while (b >= from && b < from + projected_wall)
 		{
-			insert_img_buffer(data, i, b, 65280);
+			insert_img_buffer(data, i, b, 3828567);
 			b++;
 		}
 		while (b >= from + projected_wall && b < W_Y)
