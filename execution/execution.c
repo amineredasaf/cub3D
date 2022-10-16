@@ -51,7 +51,8 @@ void	ft_execution(t_data *data)
 	int		ver;
 	int		hor;
 	float	real;
-	int		offset_x;
+	double		offset_x;
+	double		offset_y;
 	t_ray	ray;
 
 	i = 0;
@@ -60,17 +61,20 @@ void	ft_execution(t_data *data)
 	// ft_draw_f_c(data);
 	int from = 0;
 	int b = 0;
+	double	k = 0;
 	ver = 0;
 	hor = 0;
 	data->minimap.img2_ptr = mlx_xpm_file_to_image(data->minimap.mlx_ptr, data->sides.no_txt, &data->minimap.img_wid, &data->minimap.img_hie);
-	data->minimap.img_buff2 = mlx_get_data_addr(data->minimap.img2_ptr, &data->minimap.bpp2, &data->minimap.llength2, &data->minimap.ein2);
+	data->minimap.img_buff2 = (int *)mlx_get_data_addr(data->minimap.img2_ptr, &data->minimap.bpp2, &data->minimap.llength2, &data->minimap.ein2);
 	while (i < 1000)
 	{
 		ray = ft_cast_ray(data, angle);
 		if (ray.dir == 'v')
-			offset_x = (ray.inter_x / 64 - floor(ray.inter_x / 64)) * data->minimap.img_wid;
+			offset_x = (ray.inter_y / 64);
 		if (ray.dir == 'h')
-			offset_x = (ray.inter_y / 64 - floor(ray.inter_y / 64)) * data->minimap.img_wid;
+			offset_x = (ray.inter_x / 64);
+		offset_x = offset_x - floor(offset_x);
+		offset_x *= data->minimap.img_wid;
 		// if (ray.dir == 'h')
 		// 	hor++;
 		// printf("hor %d ver %d\n", hor, ver);
@@ -78,6 +82,7 @@ void	ft_execution(t_data *data)
 		// ft_draw_ray(data, &ray);
 		projected_wall = floor((64 / real) * 277);
 		from = (W_Y - projected_wall) / 2;
+		k = (projected_wall / 2) - (W_Y / 2);
 		b = 0;
 		while (b < from)
 		{
@@ -86,12 +91,15 @@ void	ft_execution(t_data *data)
 		}
 		while (b >= from && b < from + projected_wall)
 		{
-			insert_img_buffer(data, i, b, 5378315);
+			offset_y = (b + k) * (data->minimap.img_hie / projected_wall);
+			offset_y = floor(offset_y);
+			offset_y *= data->minimap.img_wid;
+			insert_img_buffer(data, i, b, data->minimap.img_buff2[(int)offset_x + (int)offset_y]);
 			b++;
 		}
 		while (b >= from + projected_wall && b < W_Y)
 		{
-			insert_img_buffer(data, i, b, 0);
+			insert_img_buffer(data, i, b, 9896822);
 			b++;
 		}
 		i++;

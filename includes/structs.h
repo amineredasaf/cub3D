@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/12 04:59:07 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/16 22:32:27 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_mlx
 	int		img_wid;
 	int		img_hie;
 	char	*img_buff;
-	char	*img_buff2;
+	int		*img_buff2;
 }	t_mlx;
 
 typedef struct s_textures
