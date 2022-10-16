@@ -57,6 +57,9 @@ $(NAME)		: $(OBJ)
 clean		:
 	rm -f $(OBJ)
 
+hh			:
+	make && make clean && clear
+
 fclean		: clean
 	rm -f $(NAME)
 re			: fclean all
