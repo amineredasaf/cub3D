@@ -19,15 +19,23 @@ typedef struct s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
+	void	*img2_ptr;
 	void	*wall_ptr;
 	void	*play_ptr;
 	int		x;
 	int		y;
 	int		bpp;
+	int		bpp2;
 	int		llength;
+	int		llength2;
 	int		ein;
+	int		ein2;
 	char	*name;
 	char 	*buff;
+	int		img_wid;
+	int		img_hie;
+	char	*img_buff;
+	char	*img_buff2;
 }	t_mlx;
 
 typedef struct s_textures
@@ -92,6 +100,7 @@ typedef struct s_coordinate
 typedef struct s_ray
 {
 	float	dist;
+	char	dir;
 	float	inter_x;
 	float	inter_y;
 	float	xstep;
