@@ -4,9 +4,6 @@
 void	ft_draw_f_c(t_data *data)
 {
 	int	i;
-	// int	j;
-	// void	*ptr;
-	// void	*ptr2;
 
 	i = 0;
 	insert_img_buffer(data, W_X/2, W_X/2, W_X/2);
@@ -65,7 +62,7 @@ void	ft_execution(t_data *data)
 	hor = 0;
 	data->mlx_s.img2_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
 	data->mlx_s.img_buff2 = (int *)mlx_get_data_addr(data->mlx_s.img2_ptr, &data->mlx_s.bpp2, &data->mlx_s.llength2, &data->mlx_s.ein2);
-	while (++i < 1000)
+	while (++i < W_X)
 	{
 		ray = ft_cast_ray(data, angle);
 		if (ray.dir == 'v')
