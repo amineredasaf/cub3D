@@ -92,7 +92,7 @@ void line(t_data *data, int x0, int y0, int x1, int y1) {
   int err = (dx>dy ? dx : -dy)/2, e2;
 
   for(int i = 0; i < 1000; i++){
-	mlx_pixel_put(data->minimap.mlx_ptr, data->minimap.win_ptr, x0, y0, data->floor.final_color);
+	mlx_pixel_put(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr, x0, y0, data->floor.final_color);
     if (x0==x1 && y0==y1) break;
     e2 = err;
     if (e2 >-dx) { err -= dy; x0 += sx; }

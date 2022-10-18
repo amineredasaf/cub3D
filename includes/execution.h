@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:44:30 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/12 04:49:34 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/18 18:28:42 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_first_hor(t_data *data, t_ray *ray, float angle);
 void	ft_ver_check(t_data *data, t_ray *ray);
 void	ft_first_ver(t_data *data, t_ray *ray, float angle);
 void	ft_hor_check(t_data *data, t_ray *ray);
+
+// **       MLX EXECUTION       ** //
 void	insert_img_buffer(t_data *data, int x, int y, int color);
 void	put_on_win(t_data *data, void *ptr, int x, int y);
 
