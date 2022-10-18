@@ -55,10 +55,9 @@ void	ft_execution(t_data *data)
 	double		offset_y;
 	t_ray	ray;
 
-	i = 0;
+	i = -1;
 	data->map_s.n_lines = ft_count_lines(data);
 	angle = data->player.angle + ft_convert_deg_rad(30);
-	// ft_draw_f_c(data);
 	int from = 0;
 	int b = 0;
 	double	k = 0;
@@ -66,7 +65,7 @@ void	ft_execution(t_data *data)
 	hor = 0;
 	data->minimap.img2_ptr = mlx_xpm_file_to_image(data->minimap.mlx_ptr, data->sides.no_txt, &data->minimap.img_wid, &data->minimap.img_hie);
 	data->minimap.img_buff2 = (int *)mlx_get_data_addr(data->minimap.img2_ptr, &data->minimap.bpp2, &data->minimap.llength2, &data->minimap.ein2);
-	while (i < 1000)
+	while (++i < 1000)
 	{
 		ray = ft_cast_ray(data, angle);
 		if (ray.dir == 'v')
@@ -75,20 +74,13 @@ void	ft_execution(t_data *data)
 			offset_x = (ray.inter_x / 64);
 		offset_x = offset_x - floor(offset_x);
 		offset_x *= data->minimap.img_wid;
-		// if (ray.dir == 'h')
-		// 	hor++;
-		// printf("hor %d ver %d\n", hor, ver);
 		real = ray.dist * cos(angle - data->player.angle);
-		// ft_draw_ray(data, &ray);
 		projected_wall = floor((64 / real) * 277);
 		from = (W_Y - projected_wall) / 2;
 		k = (projected_wall / 2) - (W_Y / 2);
-		b = 0;
-		while (b < from)
-		{
-			insert_img_buffer(data, i, b, 3496822);
-			b++;
-		}
+		b = -1;
+		while (++b < from)
+			insert_img_buffer(data, i, b, data->ceiling.final_color);
 		while (b >= from && b < from + projected_wall)
 		{
 			offset_y = (b + k) * (data->minimap.img_hie / projected_wall);
@@ -102,9 +94,7 @@ void	ft_execution(t_data *data)
 			insert_img_buffer(data, i, b, 9896822);
 			b++;
 		}
-		i++;
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
-		// angle -= ft_convert_deg_rad(60 / 20);
 	}
 	put_on_win(data, data->minimap.img_ptr, 0, 0);
 }
