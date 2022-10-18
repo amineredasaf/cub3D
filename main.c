@@ -134,6 +134,21 @@ void	move_backward(t_data *data)
 
 // }
 
+// void	left_slide(t_data *data)
+// {
+// 	float	x_change;
+// 	float	y_change;
+
+// 	x_change = data->player.x + cos(data->player.angle) * 60;
+// 	y_change = data->player.y - sin(data->player.angle) * 60;
+// 	if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
+// 		return ;
+// 	mlx_clear_window(data->minimap.mlx_ptr, data->minimap.win_ptr);
+// 	data->player.x = x_change;
+// 	data->player.y = y_change;
+// 	ft_execution(data);	
+// }
+
 // this func find which key and move to the right direction
 // |	0 : A	|	2 : D	|	1 : S	|	13 : W	|
 int	key_detector(int keycode, t_data *data)
