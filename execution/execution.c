@@ -1,17 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
+/*   Updated: 2022/10/19 10:03:02 by rsaf             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	ft_draw_f_c(t_data *data)
-{
-	int	i;
-	// int	j;
-	// void	*ptr;
-	// void	*ptr2;
-
-	i = 0;
-	insert_img_buffer(data, W_X/2, W_X/2, W_X/2);
-	insert_img_buffer(data, W_X/2, W_X/2, W_X/2);
-}
 
 t_ray	ft_cast_ray(t_data *data, float angle)
 {
@@ -45,27 +44,30 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 
 void	ft_execution(t_data *data)
 {
+	double	offset_x;
+	double	offset_y;
+	double	k;
 	float	angle;
 	float	projected_wall;
+	float	real;
 	int		i;
 	int		ver;
 	int		hor;
-	float	real;
-	double		offset_x;
-	double		offset_y;
+	int		from;
+	int		b;
 	t_ray	ray;
 
 	i = -1;
 	data->map_s.n_lines = ft_count_lines(data);
 	angle = data->player.angle + ft_convert_deg_rad(30);
-	int from = 0;
-	int b = 0;
-	double	k = 0;
+	from = 0;
+	b = 0;
+	k = 0;
 	ver = 0;
 	hor = 0;
 	data->mlx_s.img2_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
 	data->mlx_s.img_buff2 = (int *)mlx_get_data_addr(data->mlx_s.img2_ptr, &data->mlx_s.bpp2, &data->mlx_s.llength2, &data->mlx_s.ein2);
-	while (++i < 1000)
+	while (++i < W_X)
 	{
 		ray = ft_cast_ray(data, angle);
 		if (ray.dir == 'v')

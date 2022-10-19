@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/10/13 12:54:22 by rsaf             ###   ########.fr        #
+#    Updated: 2022/10/19 08:36:25 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ INIT		=	./initialization/initialize_data.c \
 				./initialization/mlx_initialization.c \
 
 EXECUTION	=	./execution/execution.c ./execution/execution_utils.c \
-				./execution/hor.c ./execution/ver.c \
+				./execution/hor.c ./execution/ver.c ./execution/ft_mlx.c\
+				./execution/moves.c \
 
 GNL			=	./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c
 
