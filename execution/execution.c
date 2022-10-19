@@ -1,15 +1,6 @@
 
 #include "../includes/cub3d.h"
 
-void	ft_draw_f_c(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	insert_img_buffer(data, W_X/2, W_X/2, W_X/2);
-	insert_img_buffer(data, W_X/2, W_X/2, W_X/2);
-}
-
 t_ray	ft_cast_ray(t_data *data, float angle)
 {
 	t_ray	hor;

@@ -6,73 +6,51 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/18 18:29:25 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/19 08:36:12 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
 
+// void	rotate_player(t_data *data, int flag)
+// {
+// 	if (flag == RIGHT)
+// 		data->player.angle -= ft_convert_deg_rad(R_S);
+// 	else if (flag == LEFT)
+// 		data->player.angle += ft_convert_deg_rad(R_S);
+// 	mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
+// 	ft_execution(data);
+// }
 
-// this func insert img to a buffer pixel by pixel to create a img
-void	insert_img_buffer(t_data *data, int x, int y, int color)
-{
-	char	*dst;
+// void	move_forward(t_data *data)
+// {
+// 	float	x_change;
+// 	float	y_change;
 
-	if (x > 0 && x < W_X && y > 0 && y < W_Y)
-	{
-		dst = data->mlx_s.buff + (y * data->mlx_s.llength + x * (data->mlx_s.bpp / 8));
-		*(unsigned int*)dst = color;
-	}
-}
+// 	x_change = data->player.x + cos(data->player.angle) * M_S;
+// 	y_change = data->player.y - sin(data->player.angle) * M_S;
+// 	if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
+// 		return ;
+// 	mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
+// 	data->player.x = x_change;
+// 	data->player.y = y_change;
+// 	ft_execution(data);
+// }
 
-// this func put the images on the window;
-void	put_on_win(t_data *data, void *ptr, int x, int y)
-{
-	t_mlx map;
+// void	move_backward(t_data *data)
+// {
+// 	float	x_change;
+// 	float	y_change;
 
-	map = data->mlx_s;
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, ptr, x, y);
-}
-
-void	rotate_player(t_data *data, int flag)
-{
-	if (flag == RIGHT)
-		data->player.angle -= ft_convert_deg_rad(R_S);
-	else if (flag == LEFT)
-		data->player.angle += ft_convert_deg_rad(R_S);
-	mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
-	ft_execution(data);
-}
-
-void	move_forward(t_data *data)
-{
-	float	x_change;
-	float	y_change;
-
-	x_change = data->player.x + cos(data->player.angle) * M_S;
-	y_change = data->player.y - sin(data->player.angle) * M_S;
-	if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
-		return ;
-	mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
-	data->player.x = x_change;
-	data->player.y = y_change;
-	ft_execution(data);
-}
-
-void	move_backward(t_data *data)
-{
-	float	x_change;
-	float	y_change;
-
-	x_change = data->player.x - cos(data->player.angle) * M_S;
-	y_change = data->player.y + sin(data->player.angle) * M_S;
-	if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
-		return ;
-	mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
-	data->player.x -= cos(data->player.angle) * M_S;
-	data->player.y += sin(data->player.angle) * M_S;
-	ft_execution(data);
-}
+// 	x_change = data->player.x - cos(data->player.angle) * M_S;
+// 	y_change = data->player.y + sin(data->player.angle) * M_S;
+// 	if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
+// 		return ;
+// 	mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
+// 	data->player.x -= cos(data->player.angle) * M_S;
+// 	data->player.y += sin(data->player.angle) * M_S;
+// 	ft_execution(data);
+// }
 
 // void	left_slide(t_data *data)
 // {
