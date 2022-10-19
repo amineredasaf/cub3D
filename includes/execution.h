@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:44:30 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/19 08:35:58 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/19 08:39:38 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	insert_img_buffer(t_data *data, int x, int y, int color);
 void	put_on_win(t_data *data, void *ptr, int x, int y);
 
 // **       Moves EXECUTION     ** //
-
 void	rotate_player(t_data *data, int flag);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);

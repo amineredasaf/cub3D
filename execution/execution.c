@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
+/*   Updated: 2022/10/19 10:03:02 by rsaf             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -33,22 +44,25 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 
 void	ft_execution(t_data *data)
 {
+	double	offset_x;
+	double	offset_y;
+	double	k;
 	float	angle;
 	float	projected_wall;
+	float	real;
 	int		i;
 	int		ver;
 	int		hor;
-	float	real;
-	double		offset_x;
-	double		offset_y;
+	int		from;
+	int		b;
 	t_ray	ray;
 
 	i = -1;
 	data->map_s.n_lines = ft_count_lines(data);
 	angle = data->player.angle + ft_convert_deg_rad(30);
-	int from = 0;
-	int b = 0;
-	double	k = 0;
+	from = 0;
+	b = 0;
+	k = 0;
 	ver = 0;
 	hor = 0;
 	data->mlx_s.img2_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
