@@ -4,7 +4,7 @@ void	ft_first_ver(t_data *data, t_ray *ray, float angle)
 {
 	float	var;
 
-	ray->ystep = 64 * fabs(tan(angle));
+	ray->ystep = fabs(64 * tan(angle));
 	ray->xstep = 64;
 	ray->inter_x = floor(data->player.x / 64) * 64 + 64;
 	if (cos(angle) < 0)
@@ -27,6 +27,7 @@ void	ft_first_ver(t_data *data, t_ray *ray, float angle)
 
 void	ft_ver_check(t_data *data, t_ray *ray)
 {
+	ray->dir = 'v';
 	if (floor(ray->inter_y / 64) < 0
 		|| floor(ray->inter_y / 64) > data->map_s.n_lines - 1)
 		ray->dist = MAXFLOAT;
