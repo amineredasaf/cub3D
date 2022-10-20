@@ -27,19 +27,13 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 	{
 		if (hor.dist <= ver.dist && !data->wall_hit_hor)
 			ft_hor_check(data, &hor);
-		if (ver.dist <= ver.dist && !data->wall_hit_ver)
+		if (ver.dist < hor.dist && !data->wall_hit_ver)
 			ft_ver_check(data, &ver);
 	}
 	if (hor.dist <= ver.dist)
-	{
-		hor.dir = 'h';
 		return (hor);
-	}
 	else
-	{
-		ver.dir = 'v';
 		return (ver);
-	}
 }
 
 void	ft_execution(t_data *data)
