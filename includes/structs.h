@@ -35,7 +35,7 @@ typedef struct s_mlx
 	int		img_wid;
 	int		img_hie;
 	char	*img_buff;
-	int		*img_buff2;
+	char		*img_buff2;
 }	t_mlx;
 
 typedef struct s_textures

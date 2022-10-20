@@ -36,10 +36,26 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 		return (ver);
 }
 
+
+int	color_convert(t_data *data, char *buff, int lenght, int i, int j)
+{
+	int	pixel;
+	int	color = 0;
+
+	pixel = (j * lenght) + (i * data->mlx_s.bpp2 / 8);
+	if (pixel > 0)
+	{
+		color = buff[pixel + 0];
+		color += buff[pixel + 1] << 8;
+		color += buff[pixel + 2] << 16;
+	}
+	return (color);
+}
+
 void	ft_execution(t_data *data)
 {
-	double	offset_x;
-	double	offset_y;
+	int	offset_x;
+	int	offset_y;
 	double	k;
 	float	angle;
 	float	projected_wall;
@@ -48,7 +64,7 @@ void	ft_execution(t_data *data)
 	int		ver;
 	int		hor;
 	int		from;
-	int		b;
+	double		b;
 	t_ray	ray;
 
 	i = -1;
@@ -60,34 +76,45 @@ void	ft_execution(t_data *data)
 	ver = 0;
 	hor = 0;
 	data->mlx_s.img2_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
-	data->mlx_s.img_buff2 = (int *)mlx_get_data_addr(data->mlx_s.img2_ptr, &data->mlx_s.bpp2, &data->mlx_s.llength2, &data->mlx_s.ein2);
+	data->mlx_s.img_buff2 = mlx_get_data_addr(data->mlx_s.img2_ptr, &data->mlx_s.bpp2, &data->mlx_s.llength2, &data->mlx_s.ein2);
+	// printf(">>> %d\n",data->mlx_s.llength2);exit(0);
 	while (++i < W_X)
 	{
 		ray = ft_cast_ray(data, angle);
-		if (ray.dir == 'v')
-			offset_x = (ray.inter_y / 64);
-		if (ray.dir == 'h')
-			offset_x = (ray.inter_x / 64);
-		offset_x = offset_x - floor(offset_x);
-		offset_x *= data->mlx_s.img_wid;
+		// offset_x -= floor(offset_x);
+		// offset_x *= data->mlx_s.img_wid;
 		real = ray.dist * cos(angle - data->player.angle);
 		projected_wall = floor((64 / real) * 277);
+		if (ray.dir == 'v')
+			offset_x = fmod(ray.inter_y, 64) * data->mlx_s.img_wid / BLOCK_W;
+		if (ray.dir == 'h')
+			offset_x = fmod(ray.inter_x, 64) * data->mlx_s.img_wid / BLOCK_W;
+		// offset_x = ((fmod(ray.inter_x, BLOCK_W) * data->mlx_s.img_wid) / BLOCK_W); 
+		// printf("x =  %f , y =  %d\n",ray.inter_x);
 		from = (W_Y - projected_wall) / 2;
 		k = (projected_wall / 2) - (W_Y / 2);
 		b = -1;
 		while (++b < from)
 			insert_img_buffer(data, i, b, data->ceiling.final_color);
-		while (b >= from && b < from + projected_wall)
+		// break ;
+		while (b < from + projected_wall)
 		{
-			offset_y = (b + k) * (data->mlx_s.img_hie / projected_wall);
-			offset_y = floor(offset_y);
-			offset_y *= data->mlx_s.img_wid;
-			insert_img_buffer(data, i, b, data->mlx_s.img_buff2[(int)offset_x + (int)offset_y]);
+			offset_y = (fmod(b - (W_Y/2 - projected_wall/2), projected_wall) * (data->mlx_s.img_hie / projected_wall));
+			// offset_y = (b + k) * (data->mlx_s.img_hie / projected_wall);
+			// offset_y = floor(offset_y);
+			// offset_y *= data->mlx_s.img_wid;
+			
+			// int	pixel = (offset_y * data->mlx_s.llength2) + (offset_x * 8);
+
+
+
+			// insert_img_buffer(data, i, b, data->mlx_s.img_buff2[(int)offset_x + (int)offset_y]);
+			insert_img_buffer(data, i, b, color_convert(data, data->mlx_s.img_buff2, data->mlx_s.llength2, offset_x, offset_y));
 			b++;
 		}
 		while (b >= from + projected_wall && b < W_Y)
 		{
-			insert_img_buffer(data, i, b, data->floor.final_color);
+			insert_img_buffer(data, i, b, 800000);
 			b++;
 		}
 		angle -= ft_convert_deg_rad(ANGLE_STEP);

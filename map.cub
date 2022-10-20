@@ -1,11 +1,13 @@
-NO B.xpm
+NO ./assest/wll.xpm
 SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
 F 220,100,0
-C 225,30,0
+C 0,130,255
 
 111111111111111
 100011000010011
 10N0000001111
+10001000001
+10000000001
 111111111111
