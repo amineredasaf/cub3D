@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 08:19:08 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/21 12:48:32 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	color_convert(t_data *data, char *buff, int lenght, int i, int j)
 	return (color);
 }
 
-void	ft_execution(t_data *data)
+int	ft_execution(t_data *data)
 {
 	int	offset_x;
 	int	offset_y;
@@ -96,9 +96,8 @@ void	ft_execution(t_data *data)
 		from = (W_Y - projected_wall) / 2;
 		k = (projected_wall / 2) - (W_Y / 2);
 		b = -1;
-		while (++b < from)
+		while (++b <= from)
 			insert_img_buffer(data, i, b, data->ceiling.final_color);
-		// break ;
 		while (b < from + projected_wall)
 		{
 			offset_y = (fmod(b - (W_Y/2 - projected_wall/2), projected_wall) * (data->mlx_s.img_hie / projected_wall));
@@ -122,4 +121,5 @@ void	ft_execution(t_data *data)
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}
 	put_on_win(data, data->mlx_s.img_ptr, 0, 0);
+	return 0;
 }

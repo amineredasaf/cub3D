@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/19 09:45:49 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/21 12:59:07 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,56 @@ int	key_detector(int keycode, t_data *data)
 {
 	(void)data;
 	if (keycode == 1)
-		move_backward(data);
+		data->key_flags.move_backward = 1;
 	if (keycode == 13)
-		move_forward(data);
+		data->key_flags.move_forward = 1;
 	if (keycode == 123)
-		rotate_player(data, LEFT);
+		data->key_flags.rotate_left = 1;
 	if (keycode == 124)
-		rotate_player(data, RIGHT);
+		data->key_flags.rotate_right = 1;
 	if (keycode == 53)
 		exit (EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
 
+int	key_released(int keycode, t_data *data)
+{
+	(void)data;
+	if (keycode == 1)
+		data->key_flags.move_backward = 0;
+	if (keycode == 13)
+		data->key_flags.move_forward = 0;
+	if (keycode == 123)
+		data->key_flags.rotate_left = 0;
+	if (keycode == 124)
+		data->key_flags.rotate_right = 0;
+	if (keycode == 53)
+		exit (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
+}
+
+
+int	update_frame(t_data *data)
+{
+	t_keys key;
+
+	key = data->key_flags;
+	if (key.move_backward == 1)
+		move_backward(data);
+	if (key.move_forward == 1)
+		move_forward(data);
+	if (key.rotate_left == 1)
+		rotate_player(data, LEFT);
+	if (key.rotate_right == 1)
+		rotate_player(data, RIGHT);
+	return 0;
+}
 // this func waitng for key pressed to call the right action
 int	key_pressed(t_data *data)
 {
 	mlx_hook(data->mlx_s.win_ptr, 2, 1L << 2, key_detector, data);
+	mlx_hook(data->mlx_s.win_ptr, 3, 1L << 3, key_released, data);
+	mlx_loop_hook(data->mlx_s.mlx_ptr, update_frame, data);
 	return (EXIT_SUCCESS);
 }
 
