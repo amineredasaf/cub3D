@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 08:06:04 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/21 12:39:29 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,17 @@ typedef struct s_ray
 	float	ystep;
 }	t_ray;
 
+typedef struct s_keys
+{
+	int	move_right;
+	int	move_left;
+	int	move_backward;
+	int	move_forward;
+	int	rotate_left;
+	int	rotate_right;
+}	t_keys;
+
+
 typedef struct s_data
 {
 	char		**av;
@@ -123,6 +134,7 @@ typedef struct s_data
 	int			wall_hit_ver;
 	t_coordinate	coordinate;
 	t_mlx		mlx_s;
+	t_keys		key_flags;
 }   t_data;
 
 #endif // STRUCTS_H

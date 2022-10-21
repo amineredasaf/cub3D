@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:44:30 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/19 08:39:38 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/21 12:48:44 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // **       RAY EXECUTION       ** //
 //---------------------------------//
 float	ft_convert_deg_rad(float deg);
-void	ft_execution(t_data *data);
+int     ft_execution(t_data *data);
 void    ft_get_starting_angle(t_data *data);
 void    line(t_data *data, int x0, int y0, int x1, int y1);
 void	ft_get_starting_angle(t_data *data);
