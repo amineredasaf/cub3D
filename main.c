@@ -17,6 +17,8 @@
 int	key_detector(int keycode, t_data *data)
 {
 	(void)data;
+	if (keycode == 0)
+		data->key_flags.move_left = 1;
 	if (keycode == 1)
 		data->key_flags.move_backward = 1;
 	if (keycode == 13)
@@ -27,12 +29,16 @@ int	key_detector(int keycode, t_data *data)
 		data->key_flags.rotate_right = 1;
 	if (keycode == 53)
 		exit (EXIT_SUCCESS);
+	else
+		printf("%d\n", keycode);
 	return (EXIT_SUCCESS);
 }
 
 int	key_released(int keycode, t_data *data)
 {
 	(void)data;
+	if (keycode == 0)
+		data->key_flags.move_left = 0;
 	if (keycode == 1)
 		data->key_flags.move_backward = 0;
 	if (keycode == 13)
@@ -52,6 +58,8 @@ int	update_frame(t_data *data)
 	t_keys key;
 
 	key = data->key_flags;
+	if (key.move_left == 1)
+		move_left(data);
 	if (key.move_backward == 1)
 		move_backward(data);
 	if (key.move_forward == 1)
