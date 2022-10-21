@@ -42,4 +42,5 @@ void	put_on_win(t_data *data, void *ptr, int x, int y);
 void	rotate_player(t_data *data, int flag);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
+void	move_left(t_data *data);
 #endif

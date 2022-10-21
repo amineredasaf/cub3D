@@ -64,8 +64,47 @@ void	move_backward(t_data *data)
 		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
 			return ;
 		mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
-		data->player.x -= cos(data->player.angle) * M_S;
-		data->player.y += sin(data->player.angle) * M_S;
+		data->player.x = x_change;
+		data->player.y = y_change;
+		ft_execution(data);
+	}
+}
+
+void	move_left(t_data *data)
+{
+	float	x_change;
+	float	y_change;
+
+	t_keys key;
+
+	key = data->key_flags;
+	if (cos(data->player.angle) >= 0 && sin(data->player.angle) >= 0)
+	{
+		x_change = data->player.x - cos(data->player.angle) * M_S;
+		y_change = data->player.y - sin(data->player.angle) * M_S;
+	}
+	if (cos(data->player.angle) <= 0 && sin(data->player.angle) >= 0)
+	{
+		y_change = data->player.y + sin(data->player.angle) * M_S;
+		x_change = data->player.x - cos(data->player.angle) * M_S;
+	}
+	if (cos(data->player.angle) <= 0 && sin(data->player.angle) <= 0)
+	{
+		y_change = data->player.y - sin(data->player.angle) * M_S;
+		x_change = data->player.x + cos(data->player.angle) * M_S;
+	}
+	 if (cos(data->player.angle) >= 0 && sin(data->player.angle) <= 0)
+	{
+		y_change = data->player.y + sin(data->player.angle) * M_S;
+		x_change = data->player.x + cos(data->player.angle) * M_S;
+	}
+	if (key.move_left == 1)
+	{
+		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
+			return ;
+		mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
+		data->player.x = x_change;
+		data->player.y = y_change;
 		ft_execution(data);
 	}
 }

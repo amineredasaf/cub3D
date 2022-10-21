@@ -93,12 +93,14 @@ int	ft_execution(t_data *data)
 			offset_x = fmod(ray.inter_x, 64) * data->mlx_s.img_wid / BLOCK_W;
 		// offset_x = ((fmod(ray.inter_x, BLOCK_W) * data->mlx_s.img_wid) / BLOCK_W); 
 		// printf("x =  %f , y =  %d\n",ray.inter_x);
-		from = (W_Y - projected_wall) / 2;
-		k = (projected_wall / 2) - (W_Y / 2);
+		from = (W_Y - projected_wall) / 2 > 0 ? (W_Y - projected_wall) / 2 : 0;
+		k = from + projected_wall;
+		if (k > W_Y)
+			k = W_Y;
 		b = -1;
 		while (++b <= from)
 			insert_img_buffer(data, i, b, data->ceiling.final_color);
-		while (b < from + projected_wall)
+		while (b < k)
 		{
 			offset_y = (fmod(b - (W_Y/2 - projected_wall/2), projected_wall) * (data->mlx_s.img_hie / projected_wall));
 			// offset_y = (b + k) * (data->mlx_s.img_hie / projected_wall);
@@ -113,7 +115,7 @@ int	ft_execution(t_data *data)
 			insert_img_buffer(data, i, b, color_convert(data, data->mlx_s.img_buff2, data->mlx_s.llength2, offset_x, offset_y));
 			b++;
 		}
-		while (b >= from + projected_wall && b < W_Y)
+		while (b < W_Y)
 		{
 			insert_img_buffer(data, i, b, data->floor.final_color);
 			b++;
