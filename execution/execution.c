@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/19 10:03:02 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/21 08:19:08 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	ft_execution(t_data *data)
 	hor = 0;
 	data->mlx_s.img2_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
 	data->mlx_s.img_buff2 = mlx_get_data_addr(data->mlx_s.img2_ptr, &data->mlx_s.bpp2, &data->mlx_s.llength2, &data->mlx_s.ein2);
+	if (!data->mlx_s.img_buff2)
+		exit(ft_print_error("Mlx Error"));
 	// printf(">>> %d\n",data->mlx_s.llength2);exit(0);
 	while (++i < W_X)
 	{
@@ -114,7 +116,7 @@ void	ft_execution(t_data *data)
 		}
 		while (b >= from + projected_wall && b < W_Y)
 		{
-			insert_img_buffer(data, i, b, 800000);
+			insert_img_buffer(data, i, b, data->floor.final_color);
 			b++;
 		}
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
