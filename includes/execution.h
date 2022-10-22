@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:44:30 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 12:48:44 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/22 23:28:41 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void	rotate_player(t_data *data, int flag);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	move_left(t_data *data);
+void	move_right(t_data *data);
 #endif

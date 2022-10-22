@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 12:59:07 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/22 23:30:36 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	key_detector(int keycode, t_data *data)
 		data->key_flags.move_left = 1;
 	if (keycode == 1)
 		data->key_flags.move_backward = 1;
+	if (keycode == 2)
+		data->key_flags.move_right = 1;
 	if (keycode == 13)
 		data->key_flags.move_forward = 1;
 	if (keycode == 123)
@@ -41,6 +43,8 @@ int	key_released(int keycode, t_data *data)
 		data->key_flags.move_left = 0;
 	if (keycode == 1)
 		data->key_flags.move_backward = 0;
+	if (keycode == 2)
+		data->key_flags.move_right = 0;
 	if (keycode == 13)
 		data->key_flags.move_forward = 0;
 	if (keycode == 123)
@@ -60,6 +64,8 @@ int	update_frame(t_data *data)
 	key = data->key_flags;
 	if (key.move_left == 1)
 		move_left(data);
+	if (key.move_right == 1)
+		move_right(data);
 	if (key.move_backward == 1)
 		move_backward(data);
 	if (key.move_forward == 1)
