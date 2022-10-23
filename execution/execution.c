@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 12:48:32 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/23 00:44:23 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,6 @@ int	ft_execution(t_data *data)
 		while (b < k)
 		{
 			offset_y = (fmod(b - (W_Y/2 - projected_wall/2), projected_wall) * (data->mlx_s.img_hie / projected_wall));
-			// offset_y = (b + k) * (data->mlx_s.img_hie / projected_wall);
-			// offset_y = floor(offset_y);
-			// offset_y *= data->mlx_s.img_wid;
-			
-			// int	pixel = (offset_y * data->mlx_s.llength2) + (offset_x * 8);
-
-
-
-			// insert_img_buffer(data, i, b, data->mlx_s.img_buff2[(int)offset_x + (int)offset_y]);
 			insert_img_buffer(data, i, b, color_convert(data, data->mlx_s.img_buff2, data->mlx_s.llength2, offset_x, offset_y));
 			b++;
 		}
@@ -123,5 +114,6 @@ int	ft_execution(t_data *data)
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}
 	put_on_win(data, data->mlx_s.img_ptr, 0, 0);
+	mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.img2_ptr);
 	return 0;
 }
