@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/22 22:35:59 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/23 00:44:23 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ int	ft_execution(t_data *data)
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}
 	put_on_win(data, data->mlx_s.img_ptr, 0, 0);
+	mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.img2_ptr);
 	return 0;
 }

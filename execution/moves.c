@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/22 23:30:03 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/22 23:42:01 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,6 @@ void	move_left(t_data *data)
 			x_change = data->player.x - sin(data->player.angle) * M_S;
 			y_change = data->player.y - cos(data->player.angle) * M_S;
 		}
-	printf("px = %f\n",data->player.x);
-	printf("py = %f\n",data->player.y);
-	printf("angle = %f\n",data->player.angle);
-	printf("cos = %f\n",cos(data->player.angle));
-	printf("sin = %f\n",sin(data->player.angle));
-	printf("xc = %f\n",x_change);
-	printf("yc = %f\n",y_change);
 	// exit(0);
 	if (key.move_left == 1)
 	{
@@ -144,13 +137,6 @@ void	move_right(t_data *data)
 			x_change = data->player.x + sin(data->player.angle) * M_S;
 			y_change = data->player.y + cos(data->player.angle) * M_S;
 		}
-	printf("px = %f\n",data->player.x);
-	printf("py = %f\n",data->player.y);
-	printf("angle = %f\n",data->player.angle);
-	printf("cos = %f\n",cos(data->player.angle));
-	printf("sin = %f\n",sin(data->player.angle));
-	printf("xc = %f\n",x_change);
-	printf("yc = %f\n",y_change);
 	// exit(0);
 	if (key.move_right == 1)
 	{
