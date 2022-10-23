@@ -70,15 +70,6 @@ void	move_backward(t_data *data)
 	}
 }
 
-
-float normalize(float angle)
-{
-	angle = (int)angle % (int)(2 * M_PI);
-	if(angle < 0)
-		angle += 2 * M_PI;
-	return(angle);
-}
-
 void	move_left(t_data *data)
 {
 	float	x_change = 0;
@@ -86,23 +77,9 @@ void	move_left(t_data *data)
 
 	t_keys key;
 
-	// data->player.angle = normalize(data->player.angle);
 	key = data->key_flags;
-	if ((cos(data->player.angle) <= 0 && sin(data->player.angle) >= 0)
-		|| (cos(data->player.angle) >= 0 && sin(data->player.angle) <= 0))
-		{
-			HERE
-			x_change = data->player.x - sin(data->player.angle) * M_S;
-			y_change = data->player.y + cos(data->player.angle) * M_S;
-		}
-	if  ((cos(data->player.angle) >= 0 && sin(data->player.angle) >= 0)
-		|| (cos(data->player.angle) <= 0 && sin(data->player.angle) <= 0))
-		{
-			HERE
-			x_change = data->player.x - sin(data->player.angle) * M_S;
-			y_change = data->player.y - cos(data->player.angle) * M_S;
-		}
-	// exit(0);
+	x_change = data->player.x - cos((M_PI / 2) - data->player.angle) * M_S;
+	y_change = data->player.y - sin((M_PI / 2) - data->player.angle) * M_S;
 	if (key.move_left == 1)
 	{
 		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
@@ -121,23 +98,9 @@ void	move_right(t_data *data)
 
 	t_keys key;
 
-	// data->player.angle = normalize(data->player.angle);
 	key = data->key_flags;
-	if ((cos(data->player.angle) <= 0 && sin(data->player.angle) >= 0)
-		|| (cos(data->player.angle) >= 0 && sin(data->player.angle) <= 0))
-		{
-			HERE
-			x_change = data->player.x + sin(data->player.angle) * M_S;
-			y_change = data->player.y - cos(data->player.angle) * M_S;
-		}
-	if  ((cos(data->player.angle) >= 0 && sin(data->player.angle) >= 0)
-		|| (cos(data->player.angle) <= 0 && sin(data->player.angle) <= 0))
-		{
-			HERE
-			x_change = data->player.x + sin(data->player.angle) * M_S;
-			y_change = data->player.y + cos(data->player.angle) * M_S;
-		}
-	// exit(0);
+	x_change = data->player.x + cos((M_PI / 2) - data->player.angle) * M_S;
+	y_change = data->player.y + sin((M_PI / 2) - data->player.angle) * M_S;
 	if (key.move_right == 1)
 	{
 		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1')
