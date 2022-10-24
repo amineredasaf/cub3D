@@ -83,24 +83,3 @@ int		is_wall(t_data *data, int x, int y)
 	else
 		return (1);
 }
-
-
-void line(t_data *data, int x0, int y0, int x1, int y1) {
-
-  int dx = abs(x1-x0), sx = x0<x1 ? 1 : -1;
-  int dy = abs(y1-y0), sy = y0<y1 ? 1 : -1; 
-  int err = (dx>dy ? dx : -dy)/2, e2;
-
-  for(int i = 0; i < 1000; i++){
-	mlx_pixel_put(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr, x0, y0, data->floor.final_color);
-    if (x0==x1 && y0==y1) break;
-    e2 = err;
-    if (e2 >-dx) { err -= dy; x0 += sx; }
-    if (e2 < dy) { err += dx; y0 += sy; }
-  }
-}
-
-void	ft_draw_ray(t_data *data, t_ray *ray)
-{
-	line (data, data->player.x, data->player.y, (int) ray->inter_x, (int) ray->inter_y);
-}

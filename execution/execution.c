@@ -24,7 +24,7 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 	ft_first_hor(data, &hor, angle);
 	ft_first_ver(data, &ver, angle);
 	while (((!data->wall_hit_hor && ver.dist >= hor.dist) || (!data->wall_hit_ver && hor.dist >= ver.dist))
-		&& (hor.dist < MAXFLOAT && ver.dist < MAXFLOAT))
+		&& (hor.dist < MAXFLOAT || ver.dist < MAXFLOAT))
 	{
 		if (hor.dist <= ver.dist && !data->wall_hit_hor)
 			ft_hor_check(data, &hor);
@@ -96,8 +96,6 @@ int	ft_execution(t_data *data)
 	hor = 0;
 	int idx;
 	idx = 0;
-	// data->side.img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->side.img_wid, &data->side.img_hie);
-	// data->side.img_buff = mlx_get_data_addr(data->side.img_ptr, &data->side.bpp, &data->side.llength, &data->side.ein);
 	prepare_textures(data);
 	while (++i < W_X)
 	{
