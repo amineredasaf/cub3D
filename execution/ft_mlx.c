@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:24:55 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 09:58:14 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:06:22 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	insert_img_buffer(t_data *data, int x, int y, int color)
 	{
 
 		int pixel = (y * data->mlx_s.mllength) + (x * data->mlx_s.mbpp / 8);
-		data->mlx_s.buff[pixel + 0] = (color) & 0xFF;
-		data->mlx_s.buff[pixel + 1] = (color >> 8) & 0xFF;
-		data->mlx_s.buff[pixel + 2] = (color >> 16) & 0xFF;
+		data->mlx_s.mbuff[pixel + 0] = (color) & 0xFF;
+		data->mlx_s.mbuff[pixel + 1] = (color >> 8) & 0xFF;
+		data->mlx_s.mbuff[pixel + 2] = (color >> 16) & 0xFF;
 	}
 }
 

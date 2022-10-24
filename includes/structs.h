@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 10:04:18 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:06:00 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_mlx
 	int		mbpp;
 	int		mllength;
 	int		mein;
-	char 	*buff;
+	char 	*mbuff;
 	int		img_wid;
 	int		img_hie;
 	char	*img_buff;
