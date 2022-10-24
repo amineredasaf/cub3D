@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 12:23:25 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 18:00:02 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 	ver.dist = W_X * W_Y;
 	ft_first_hor(data, &hor, angle);
 	ft_first_ver(data, &ver, angle);
-	while ((!data->wall_hit_hor && ver.dist >= hor.dist) || (!data->wall_hit_ver && hor.dist >= ver.dist))
+	while (((!data->wall_hit_hor && ver.dist >= hor.dist) || (!data->wall_hit_ver && hor.dist >= ver.dist))
+		&& (hor.dist < MAXFLOAT && ver.dist < MAXFLOAT))
 	{
 		if (hor.dist <= ver.dist && !data->wall_hit_hor)
 			ft_hor_check(data, &hor);
