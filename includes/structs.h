@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 09:59:23 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:04:18 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_ptrs
 	void	*img_ptr;
 	int		bpp;
 	int		llength;
+	int		ein;
 }	t_ptrs;
 
 
@@ -32,9 +33,7 @@ typedef struct s_mlx
 	int		y;
 	int		mbpp;
 	int		mllength;
-	int		ein;
-	int		ein2;
-	char	*name;
+	int		mein;
 	char 	*buff;
 	int		img_wid;
 	int		img_hie;

@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 09:59:20 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:02:29 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_execution(t_data *data)
 	ver = 0;
 	hor = 0;
 	data->side.img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
-	data->mlx_s.img_buff2 = mlx_get_data_addr(data->side.img_ptr, &data->side.bpp, &data->side.llength, &data->mlx_s.ein2);
+	data->mlx_s.img_buff2 = mlx_get_data_addr(data->side.img_ptr, &data->side.bpp, &data->side.llength, &data->side.ein);
 	if (!data->mlx_s.img_buff2)
 		exit(ft_print_error("Mlx Error"));
 	while (++i < W_X)
