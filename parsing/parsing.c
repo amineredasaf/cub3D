@@ -102,6 +102,22 @@ void	ft_get_map(t_data *data)
 	// }
 }
 
+// this function creates a 2D table for textures
+void	ft_split_textures(t_data *data)
+{
+	data->textures = malloc(sizeof(char *) * 5);
+	if (!data->textures)
+	{
+		printf("mamak allocciha\n");
+		exit(1);
+	}
+	data->textures[0] = ft_strdup(data->sides.no_txt);
+	data->textures[1] = ft_strdup(data->sides.so_txt);
+	data->textures[2] = ft_strdup(data->sides.we_txt);
+	data->textures[3] = ft_strdup(data->sides.ea_txt);
+	data->textures[4] = NULL;
+}
+
 // this func is main func for parsing process.
 int	ft_parsing(t_data *data)
 {
@@ -116,6 +132,7 @@ int	ft_parsing(t_data *data)
 		return (EXIT_FAILURE);
 	ft_read_file(data);
 	ft_parse_textures(data);
+	ft_split_textures(data);
 	ft_parse_map(data);
 	ft_get_colors(data);
 	ft_get_map(data);
