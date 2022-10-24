@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 10:58:06 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 11:08:09 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_ptrs
 {
 	/* data */
+	char	*img_buff;
 	void	*img_ptr;
 	int		bpp;
 	int		llength;
@@ -37,8 +38,6 @@ typedef struct s_mlx
 	int		mbpp;
 	int		mllength;
 	int		mein;
-	char	*img_buff;
-	char	*img_buff2;
 }	t_mlx;
 
 typedef struct s_textures
@@ -138,8 +137,8 @@ typedef struct s_data
 	int			wall_hit_ver;
 	t_coordinate	coordinate;
 	t_mlx		mlx_s;
-	t_ptrs		side;
 	t_keys		key_flags;
+	t_ptrs		side[4];
 }   t_data;
 
 #endif // STRUCTS_H

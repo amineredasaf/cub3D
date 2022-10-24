@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:23:37 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/24 10:55:32 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 11:17:49 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,22 @@ void	ft_initialize_textures(t_textures *sides)
 
 void	ft_initialize_data(t_data *data)
 {
+	int sides;
+
+	sides = 3;
 	data->file_content = NULL;
 	data->map_s.map = 0;
-	data->side.img_wid = 0;
-	data->side.img_hie = 0;
-	data->side.llength = 0;
-	data->side.bpp = 0;
-	data->side.ein = 0;
+	
+	while (sides >= 0)
+	{
+		data->side[sides].img_wid = 0;
+		data->side[sides].img_hie = 0;
+		data->side[sides].llength = 0;
+		data->side[sides].bpp = 0;
+		data->side[sides].ein = 0;
+		data->side[sides].img_buff = NULL;
+		sides--;
+	}
 	data->key_flags.move_backward = 0;
 	data->key_flags.move_forward = 0;
 	data->key_flags.move_left = 0;
