@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/23 00:44:23 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 11:21:49 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	color_convert(t_data *data, char *buff, int lenght, int i, int j)
 	int	pixel;
 	int	color = 0;
 
-	pixel = (j * lenght) + (i * data->mlx_s.bpp2 / 8);
+	pixel = (j * lenght) + (i * data->side[0].bpp/ 8);
 	if (pixel > 0)
 	{
 		color = buff[pixel + 0];
@@ -50,6 +50,17 @@ int	color_convert(t_data *data, char *buff, int lenght, int i, int j)
 		color += buff[pixel + 2] << 16;
 	}
 	return (color);
+}
+
+void	prepare_textures(t_data *data)
+{
+	t_ptrs *side;
+
+	side = data->side;
+	side[NO].img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &side[NO].img_wid, &side[NO].img_hie);
+	side[NO].img_buff = mlx_get_data_addr(side[NO].img_ptr, &side[NO].bpp, &side[NO].llength, &side[NO].ein);
+	side[SO].img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &side[0].img_wid, &side[0].img_hie);
+	side[0].img_buff = mlx_get_data_addr(side[0].img_ptr, &side[0].bpp, &side[0].llength, &side[0].ein);
 }
 
 int	ft_execution(t_data *data)
@@ -75,24 +86,20 @@ int	ft_execution(t_data *data)
 	k = 0;
 	ver = 0;
 	hor = 0;
-	data->mlx_s.img2_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
-	data->mlx_s.img_buff2 = mlx_get_data_addr(data->mlx_s.img2_ptr, &data->mlx_s.bpp2, &data->mlx_s.llength2, &data->mlx_s.ein2);
-	if (!data->mlx_s.img_buff2)
+	// data->side.img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->side.img_wid, &data->side.img_hie);
+	// data->side.img_buff = mlx_get_data_addr(data->side.img_ptr, &data->side.bpp, &data->side.llength, &data->side.ein);
+	prepare_textures(data);
+	if (!data->side[0].img_buff)
 		exit(ft_print_error("Mlx Error"));
-	// printf(">>> %d\n",data->mlx_s.llength2);exit(0);
 	while (++i < W_X)
 	{
 		ray = ft_cast_ray(data, angle);
-		// offset_x -= floor(offset_x);
-		// offset_x *= data->mlx_s.img_wid;
 		real = ray.dist * cos(angle - data->player.angle);
 		projected_wall = floor((64 / real) * 277);
 		if (ray.dir == 'v')
-			offset_x = fmod(ray.inter_y, 64) * data->mlx_s.img_wid / BLOCK_W;
+			offset_x = fmod(ray.inter_y, 64) * data->side[0].img_wid / BLOCK_W;
 		if (ray.dir == 'h')
-			offset_x = fmod(ray.inter_x, 64) * data->mlx_s.img_wid / BLOCK_W;
-		// offset_x = ((fmod(ray.inter_x, BLOCK_W) * data->mlx_s.img_wid) / BLOCK_W); 
-		// printf("x =  %f , y =  %d\n",ray.inter_x);
+			offset_x = fmod(ray.inter_x, 64) * data->side[0].img_wid / BLOCK_W;
 		from = (W_Y - projected_wall) / 2 > 0 ? (W_Y - projected_wall) / 2 : 0;
 		k = from + projected_wall;
 		if (k > W_Y)
@@ -102,8 +109,8 @@ int	ft_execution(t_data *data)
 			insert_img_buffer(data, i, b, data->ceiling.final_color);
 		while (b < k)
 		{
-			offset_y = (fmod(b - (W_Y/2 - projected_wall/2), projected_wall) * (data->mlx_s.img_hie / projected_wall));
-			insert_img_buffer(data, i, b, color_convert(data, data->mlx_s.img_buff2, data->mlx_s.llength2, offset_x, offset_y));
+			offset_y = (fmod(b - (W_Y/2 - projected_wall/2), projected_wall) * (data->side[0].img_hie / projected_wall));
+			insert_img_buffer(data, i, b, color_convert(data, data->side[0].img_buff, data->side[0].llength, offset_x, offset_y));
 			b++;
 		}
 		while (b < W_Y)
@@ -113,7 +120,7 @@ int	ft_execution(t_data *data)
 		}
 		angle -= ft_convert_deg_rad(ANGLE_STEP);
 	}
-	put_on_win(data, data->mlx_s.img_ptr, 0, 0);
-	mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.img2_ptr);
+	put_on_win(data, data->mlx_s.frame_ptr, 0, 0);
+	mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[0].img_ptr);
 	return 0;
 }

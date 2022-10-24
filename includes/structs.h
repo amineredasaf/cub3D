@@ -6,36 +6,38 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 12:39:29 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 11:08:09 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+typedef struct s_ptrs
+{
+	/* data */
+	char	*img_buff;
+	void	*img_ptr;
+	int		bpp;
+	int		llength;
+	int		ein;
+	int		img_wid;
+	int		img_hie;
+}	t_ptrs;
+
+
 typedef struct s_mlx
 {
 	/* data */
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_ptr;
-	void	*img2_ptr;
-	void	*wall_ptr;
-	void	*play_ptr;
+	void	*frame_ptr;
+	char 	*mbuff;
 	int		x;
 	int		y;
-	int		bpp;
-	int		bpp2;
-	int		llength;
-	int		llength2;
-	int		ein;
-	int		ein2;
-	char	*name;
-	char 	*buff;
-	int		img_wid;
-	int		img_hie;
-	char	*img_buff;
-	char	*img_buff2;
+	int		mbpp;
+	int		mllength;
+	int		mein;
 }	t_mlx;
 
 typedef struct s_textures
@@ -65,7 +67,8 @@ typedef struct s_map
 	int		map_size;
 	int		longest_line;
 	int		n_lines;
-	int		l_lentgh;	
+	int		l_lentgh;
+	int		waboya;
 }	t_map;
 
 typedef struct s_color
@@ -135,6 +138,7 @@ typedef struct s_data
 	t_coordinate	coordinate;
 	t_mlx		mlx_s;
 	t_keys		key_flags;
+	t_ptrs		side[4];
 }   t_data;
 
 #endif // STRUCTS_H

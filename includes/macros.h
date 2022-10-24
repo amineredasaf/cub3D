@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 13:01:31 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 11:19:53 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@
 # define S_EA 13
 # define S_F  14
 # define S_C  15
+
+
+/*              texture sides       */
+# define NO 0
+# define SO 1
+# define WE 2
+# define EA 3
 
 /*				characters			*/
 
