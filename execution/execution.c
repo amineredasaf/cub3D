@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 12:08:45 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 12:23:25 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	prepare_textures(t_data *data)
 	while (idx <= 3)
 	{
 		side[idx].img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->textures[idx], &side[idx].img_wid, &side[idx].img_hie);
+		if (!side[idx].img_ptr)
+		exit(ft_print_error(E_WALLS));
 		side[idx].img_buff = mlx_get_data_addr(side[idx].img_ptr, &side[idx].bpp, &side[idx].llength, &side[idx].ein);
 		idx++;
 		/* code */
