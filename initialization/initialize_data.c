@@ -36,7 +36,8 @@ void	ft_initialize_data(t_data *data)
 	sides = 3;
 	data->file_content = NULL;
 	data->map_s.map = 0;
-	
+	data->textures = NULL;
+
 	while (sides >= 0)
 	{
 		data->side[sides].img_wid = 0;

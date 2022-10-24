@@ -138,6 +138,7 @@ typedef struct s_data
 	t_coordinate	coordinate;
 	t_mlx		mlx_s;
 	t_keys		key_flags;
+	char		**textures;
 	t_ptrs		side[4];
 }   t_data;
 
