@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/23 00:29:17 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 09:57:58 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int	main(int argc, char **argv)
 	// system("leaks cub3d");
 	data.mlx_s.mlx_ptr = mlx_init();
 	data.mlx_s.win_ptr = mlx_new_window(data.mlx_s.mlx_ptr, W_X, W_Y, "cube");
-	data.mlx_s.img_ptr = mlx_new_image(data.mlx_s.mlx_ptr, W_X, W_Y);
-	data.mlx_s.buff = mlx_get_data_addr(data.mlx_s.img_ptr, &data.mlx_s.bpp, &data.mlx_s.llength, &data.mlx_s.ein);
+	data.mlx_s.frame_ptr = mlx_new_image(data.mlx_s.mlx_ptr, W_X, W_Y);
+	data.mlx_s.buff = mlx_get_data_addr(data.mlx_s.frame_ptr, &data.mlx_s.mbpp, &data.mlx_s.mllength, &data.mlx_s.ein);
 	ft_get_starting_angle(&data);
 	ft_execution(&data);
 	key_pressed(&data);

@@ -6,28 +6,32 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/21 12:39:29 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 09:59:23 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
+typedef struct s_ptrs
+{
+	/* data */
+	void	*img_ptr;
+	int		bpp;
+	int		llength;
+}	t_ptrs;
+
+
 typedef struct s_mlx
 {
 	/* data */
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_ptr;
-	void	*img2_ptr;
-	void	*wall_ptr;
-	void	*play_ptr;
+	void	*frame_ptr;
 	int		x;
 	int		y;
-	int		bpp;
-	int		bpp2;
-	int		llength;
-	int		llength2;
+	int		mbpp;
+	int		mllength;
 	int		ein;
 	int		ein2;
 	char	*name;
@@ -135,6 +139,7 @@ typedef struct s_data
 	t_coordinate	coordinate;
 	t_mlx		mlx_s;
 	t_keys		key_flags;
+	t_ptrs		side;
 }   t_data;
 
 #endif // STRUCTS_H
