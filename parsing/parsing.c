@@ -51,29 +51,28 @@ int	ft_open_map(t_data *data)
 void	ft_read_file(t_data *data)
 {
 	char	*line;
+	char	*temp;
 	int		i;
-	int		flag;
-	
-	flag = 0;
+
 	i = 0;
 	line = NULL;
-	while (get_next_line(data->fd_map[0]))
+	while ((temp = get_next_line(data->fd_map[0])))
+	{
+		free(temp);
 		i++;
+	}
 	data->map_s.end_point = i;
 	if (i == 0)
 		exit (ft_print_error(E_EMPTY_FILE));
-	data->file_content = calloc(i + 1, sizeof(char *));
+	data->file_content = ft_calloc(i + 1, sizeof(char *));
 	if (!data->file_content)
 		exit(ft_print_error(E_ALLOCATION_FAILED));
 	i = 0;
 	while ((line = get_next_line(data->fd_map[1])))
 	{
 		data->file_content[i++] = ft_substr(line, 0, ft_strlen(line));
-		flag++;
 		free(line);
 	}
-	if (!flag)
-		ft_print_error(E_FILE_FORMAT);
 }
 
 // this function store the map content in data->map_s.map
@@ -87,7 +86,7 @@ void	ft_get_map(t_data *data)
 	size = data->map_s.end_point - data->map_s.start_point;
 	i = data->map_s.start_point;
 	j = 0;
-	data->map_s.map = calloc (size + 1, sizeof(char *) );
+	data->map_s.map = ft_calloc(size + 1, sizeof(char *) );
 	while (i < data->map_s.end_point)
 	{
 		line = data->file_content[i++];
@@ -95,11 +94,6 @@ void	ft_get_map(t_data *data)
 	}
 	data->map_s.map[j] = NULL;
 	i = 0;
-	// while (data->map_s.map[i])
-	// {
-	// 	printf("%s", data->map_s.map[i]);
-	// 	i++;
-	// }
 }
 
 // this function creates a 2D table for textures
@@ -112,10 +106,28 @@ void	ft_split_textures(t_data *data)
 		exit(1);
 	}
 	data->textures[0] = ft_strdup(data->sides.no_txt);
+	free(data->sides.no_txt);
 	data->textures[1] = ft_strdup(data->sides.so_txt);
+	free(data->sides.so_txt);
 	data->textures[2] = ft_strdup(data->sides.we_txt);
+	free(data->sides.we_txt);
 	data->textures[3] = ft_strdup(data->sides.ea_txt);
+	free(data->sides.ea_txt);
 	data->textures[4] = NULL;
+}
+
+void	ft_free_split(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	if (str)
+		free(str);
 }
 
 // this func is main func for parsing process.
@@ -136,5 +148,6 @@ int	ft_parsing(t_data *data)
 	ft_parse_map(data);
 	ft_get_colors(data);
 	ft_get_map(data);
+	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
 }
