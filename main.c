@@ -31,8 +31,6 @@ int	key_detector(int keycode, t_data *data)
 		data->key_flags.rotate_right = 1;
 	if (keycode == 53)
 		exit (EXIT_SUCCESS);
-	// else
-	// 	printf("%d\n", keycode);
 	return (EXIT_SUCCESS);
 }
 
