@@ -16,6 +16,9 @@
 // THIS function incremente sides depends on the flag and return the path
 char	*ft_textures_alloc(t_data *data, char *line, int flag)
 {
+	char	*temp;
+	char	*result;
+
 	if (flag == S_NO)
 		data->sides.n_no++;
 	else if (flag == S_SO)
@@ -28,12 +31,18 @@ char	*ft_textures_alloc(t_data *data, char *line, int flag)
 		|| data->sides.n_so > 1 || data->sides.n_ea > 1)
 		return (NULL);
 	data->sides.f_found++;
-	return (ft_strtrim(ft_strdup(&line[2]), " "));
+	temp = ft_strdup(&line[2]);
+	result = ft_strtrim(temp, " ");
+	free(temp);
+	return (result);
 }
 
 // this function incremente colors depends on the flag and return the colors
 char	*ft_color_alloc(t_data *data, char *line, int flag)
 {
+	char	*temp;
+	char	*result;
+
 	if (flag == S_F)
 		data->sides.n_f++;
 	else if (flag == S_C)
@@ -41,7 +50,10 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 	if (data->sides.n_f > 1 || data->sides.n_c > 1)
 		return (NULL);
 	data->sides.f_found++;
-	return (ft_strtrim(ft_strdup(&line[1]), " "));
+	temp = ft_strdup(&line[2]);
+	result = ft_strtrim(temp, " ");
+	free(temp);
+	return (result);
 }
 
 // this func alloact texture data in our struct. beta version could be better
@@ -94,23 +106,26 @@ int	ft_check_sides(t_data *data, char *line)
 int	ft_parse_textures(t_data *data)
 {
 	char *line;
-	int	x;
+	int	i;
 
-	x = 0;
-	while (data->file_content[x])
+	i = 0;
+	while (data->file_content[i])
 	{
-		line = ft_strtrim(data->file_content[x], " ");
+		line = ft_strtrim(data->file_content[i], " ");
 		if (line && !ft_is_map(line))
 			ft_check_sides(data, line);
 		else if (data->sides.f_found < 6)
 			exit(ft_print_error(E_FILE_FORMAT));
 		else if (ft_is_map(line))
+		{
+			free(line);
 			break;
+		}
 		free(line);
-		x++;
+		i++;
 	}
-	if (x != 0)
-		data->map_s.start_point = x;
+	if (i != 0)
+		data->map_s.start_point = i;
 	if (ft_check_after_id(data))
 		exit(ft_print_error(E_TEXTURE));
 	ft_update_txt(data);

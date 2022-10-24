@@ -94,7 +94,6 @@ int	main(int argc, char **argv)
 	ft_initialize_data(&data);
 	if (ft_parsing(&data))
 		return (EXIT_FAILURE);
-	// system("leaks cub3d");
 	data.mlx_s.mlx_ptr = mlx_init();
 	data.mlx_s.win_ptr = mlx_new_window(data.mlx_s.mlx_ptr, W_X, W_Y, "cube");
 	data.mlx_s.frame_ptr = mlx_new_image(data.mlx_s.mlx_ptr, W_X, W_Y);
@@ -102,6 +101,7 @@ int	main(int argc, char **argv)
 	ft_get_starting_angle(&data);
 	ft_execution(&data);
 	key_pressed(&data);
+	system("leaks cub3d");
 	// while(1);
 	mlx_loop(data.mlx_s.mlx_ptr);
 }
