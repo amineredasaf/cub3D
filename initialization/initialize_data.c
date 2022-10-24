@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:23:37 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/09/03 12:28:42 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/10/24 10:55:32 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,16 @@ void	ft_initialize_data(t_data *data)
 {
 	data->file_content = NULL;
 	data->map_s.map = 0;
+	data->side.img_wid = 0;
+	data->side.img_hie = 0;
+	data->side.llength = 0;
+	data->side.bpp = 0;
+	data->side.ein = 0;
+	data->key_flags.move_backward = 0;
+	data->key_flags.move_forward = 0;
+	data->key_flags.move_left = 0;
+	data->key_flags.move_right = 0;
+	data->key_flags.rotate_left = 0;
+	data->key_flags.rotate_right = 0;
 	ft_initialize_textures(&data->sides);
 }

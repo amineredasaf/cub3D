@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:24:55 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 10:06:22 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:21:33 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,3 @@ void	put_on_win(t_data *data, void *ptr, int x, int y)
 	if (x >= 0 && x <= W_X && y >= 0 && y <= W_Y)
 		mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, ptr, x, y);
 }
-
-
-// void	put_pixel(t_data *data, int color, int alpha)
-// {
-// 	int	pixel;
-// 	int	x;
-// 	int	y;
-
-// 	x = data->point.x;
-// 	y = data->point.y;
-// 	pixel = (y * data->line_length) + (x * data->bits_per_pixel / 8);
-// 	if (data->endian == 1 && pixel > 0)
-// 	{
-// 		data->addr[pixel + 0] = alpha;
-// 		data->addr[pixel + 1] = (color >> 16) & 0xFF;
-// 		data->addr[pixel + 2] = (color >> 8) & 0xFF;
-// 		data->addr[pixel + 3] = (color) & 0xFF;
-// 	}
-// 	else if (data->endian == 0 && pixel > 0)
-// 	{
-// 		data->addr[pixel + 0] = (color) & 0xFF;
-// 		data->addr[pixel + 1] = (color >> 8) & 0xFF;
-// 		data->addr[pixel + 2] = (color >> 16) & 0xFF;
-// 		data->addr[pixel + 3] = alpha;
-// 	}
-// }
