@@ -1,7 +1,7 @@
-NO ./assest/br.xpm
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./assest/a.xpm
+SO ./assest/b.xpm
+WE ./assest/c.xpm
+EA ./assest/d.xpm
 F 228,230,168
 C 198,197,139
 
