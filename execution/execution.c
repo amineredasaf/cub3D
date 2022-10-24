@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 10:02:29 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:08:22 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_execution(t_data *data)
 	k = 0;
 	ver = 0;
 	hor = 0;
-	data->side.img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->mlx_s.img_wid, &data->mlx_s.img_hie);
+	data->side.img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->sides.no_txt, &data->side.img_wid, &data->mlx_s.img_hie);
 	data->mlx_s.img_buff2 = mlx_get_data_addr(data->side.img_ptr, &data->side.bpp, &data->side.llength, &data->side.ein);
 	if (!data->mlx_s.img_buff2)
 		exit(ft_print_error("Mlx Error"));
@@ -87,10 +87,10 @@ int	ft_execution(t_data *data)
 		real = ray.dist * cos(angle - data->player.angle);
 		projected_wall = floor((64 / real) * 277);
 		if (ray.dir == 'v')
-			offset_x = fmod(ray.inter_y, 64) * data->mlx_s.img_wid / BLOCK_W;
+			offset_x = fmod(ray.inter_y, 64) * data->side.img_wid / BLOCK_W;
 		if (ray.dir == 'h')
-			offset_x = fmod(ray.inter_x, 64) * data->mlx_s.img_wid / BLOCK_W;
-		// offset_x = ((fmod(ray.inter_x, BLOCK_W) * data->mlx_s.img_wid) / BLOCK_W); 
+			offset_x = fmod(ray.inter_x, 64) * data->side.img_wid / BLOCK_W;
+		// offset_x = ((fmod(ray.inter_x, BLOCK_W) * data->side.img_wid) / BLOCK_W); 
 		// printf("x =  %f , y =  %d\n",ray.inter_x);
 		from = (W_Y - projected_wall) / 2 > 0 ? (W_Y - projected_wall) / 2 : 0;
 		k = from + projected_wall;
