@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:24:55 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 10:21:33 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 00:29:58 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,12 @@
 // this func insert img to a buffer pixel by pixel to create a img
 void	insert_img_buffer(t_data *data, int x, int y, int color)
 {
-	// char	*dst;
+	int	pixel;
 
-	// {
-	// 	dst = data->mlx_s.buff + (y * data->mlx_s.llength + x * (data->mlx_s.mbpp / 8));
-	// 	*(unsigned int *)dst = color;
-	// }
+	pixel = 0;
 	if (x >= 0 && x <= W_X && y >= 0 && y <= W_Y)
 	{
-
-		int pixel = (y * data->mlx_s.mllength) + (x * data->mlx_s.mbpp / 8);
+		pixel = (y * data->mlx_s.mllength) + (x * data->mlx_s.mbpp / 8);
 		data->mlx_s.mbuff[pixel + 0] = (color) & 0xFF;
 		data->mlx_s.mbuff[pixel + 1] = (color >> 8) & 0xFF;
 		data->mlx_s.mbuff[pixel + 2] = (color >> 16) & 0xFF;

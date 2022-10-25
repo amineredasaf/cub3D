@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ver.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/26 00:38:25 by rsaf              #+#    #+#             */
+/*   Updated: 2022/10/26 00:38:26 by rsaf             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 void	ft_first_ver(t_data *data, t_ray *ray, float angle)
@@ -35,7 +47,7 @@ void	ft_ver_check(t_data *data, t_ray *ray)
 	{
 		if (is_wall(data, floor(ray->inter_x / 64), floor(ray->inter_y / 64)))
 		{
-			ray->dist = sqrtf((data->player.x- ray->inter_x)
+			ray->dist = sqrtf((data->player.x - ray->inter_x)
 					* (data->player.x - ray->inter_x)
 					+ (data->player.y - ray->inter_y)
 					* (data->player.y - ray->inter_y));

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/26 00:24:18 by rsaf              #+#    #+#             */
+/*   Updated: 2022/10/26 00:28:13 by rsaf             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 float	ft_convert_deg_rad(float deg)
@@ -31,9 +43,9 @@ void	ft_get_starting_angle(t_data *data)
 		while (data->map_s.map[i][++j])
 		{
 			if (data->map_s.map[i][j] == 'N')
-				ft_set_angle_pos(data, j, i,'N');				
+				ft_set_angle_pos(data, j, i, 'N');
 			else if (data->map_s.map[i][j] == 'S')
-				ft_set_angle_pos(data, j, i, 'S');		
+				ft_set_angle_pos(data, j, i, 'S');
 			else if (data->map_s.map[i][j] == 'W')
 				ft_set_angle_pos(data, j, i, 'W');
 			else if (data->map_s.map[i][j] == 'E')
@@ -45,22 +57,22 @@ void	ft_get_starting_angle(t_data *data)
 float	ft_line_len(t_data *data, float y)
 {
 	int	x;
-	int y1;
+	int	y1;
 
 	x = 0;
 	y1 = (int) y;
 	if (y >= 0)
 	{
-		while (data->map_s.map[y1] && data->map_s.map[y1][x] != '\0' && data->map_s.map[y1][x] != '\n')
+		while (data->map_s.map[y1] && \
+		data->map_s.map[y1][x] != '\0' && data->map_s.map[y1][x] != '\n')
 			x++;
 	}
 	return (x);
 }
 
-
 int	ft_count_lines(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data->map_s.map[i])
@@ -76,7 +88,7 @@ void	ft_update_view_angle(t_data *data, int flag)
 		data->player.angle -= ft_convert_deg_rad(20);
 }
 
-int		is_wall(t_data *data, int x, int y)
+int	is_wall(t_data *data, int x, int y)
 {
 	if (data->map_s.map[y][x] != '1')
 		return (0);
