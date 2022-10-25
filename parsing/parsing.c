@@ -90,7 +90,7 @@ void	ft_get_map(t_data *data)
 	while (i < data->map_s.end_point)
 	{
 		line = data->file_content[i++];
-		data->map_s.map[j++] = ft_substr(line, 0, ft_strlen(line));
+		data->map_s.map[j++] = ft_substr(line, 0, ft_strlen(line) - 1);
 	}
 	data->map_s.map[j] = NULL;
 	i = 0;
@@ -130,6 +130,70 @@ void	ft_free_split(char **str)
 		free(str);
 }
 
+int	ft_map_line_size(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line && line[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	ft_longest_line(char **map)
+{
+	int	value;
+	int	i;
+
+	i = 0;
+	value = 0;
+	while (map && map[i])
+	{
+		if (ft_map_line_size(map[i]) > value)
+			value = ft_map_line_size(map[i]);
+		i++;
+	}
+	return (value);
+}
+
+void	ft_fill_lines(t_data *data)
+{
+	int		i;
+	int		j;
+	int		size;
+	char	*temp;
+	int		hold;
+
+	j = 0;
+	size = ft_longest_line(data->map_s.map);
+	hold = size;
+	// printf("%d\n", size);
+	while (data->map_s.map && data->map_s.map[j])
+	{
+		temp = NULL;
+		i = 0;
+		temp = malloc(sizeof(char) * hold + 1);
+		while (data->map_s.map[j][i])
+		{
+			temp[i] = data->map_s.map[j][j];
+			if (ft_isspace(temp[i]))
+				temp[i] = '1';
+			i++;
+		}
+		while (size--)
+		{
+			temp[i] = '1';
+			i++;
+		}
+		temp[i] = '\0';
+		if (data->map_s.map[j])
+			free(data->map_s.map[j]);
+		data->map_s.map[j] = ft_strdup(temp);
+		free(temp);
+		j++;
+	}
+}
+
 // this func is main func for parsing process.
 int	ft_parsing(t_data *data)
 {
@@ -148,6 +212,13 @@ int	ft_parsing(t_data *data)
 	ft_parse_map(data);
 	ft_get_colors(data);
 	ft_get_map(data);
+	ft_fill_lines(data);
+	int	i = 0;
+	while (data->map_s.map[i])
+	{
+		printf("[%s]\n", data->map_s.map[i]);
+		i++;
+	}
 	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
 }

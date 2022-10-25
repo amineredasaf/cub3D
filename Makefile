@@ -53,8 +53,7 @@ test		:
 	cc $(MLX) mlx_testing.c
 
 $(NAME)		: $(OBJ)
-	cc $(C_FLAGS) $^ $(MLX) -o $@
-#-fsanitize=address
+	cc $(C_FLAGS) $^ $(MLX) -o $@ -fsanitize=address
 
 clean		:
 	rm -f $(OBJ)
