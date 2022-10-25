@@ -29,7 +29,7 @@ void	ft_first_hor(t_data *data, t_ray *ray, float angle)
 	if (cos(angle) < 0)
 		ray->xstep *= -1;
 	if (floor(ray->inter_x / 64) < 0
-		|| floor(ray->inter_x / 64) * 64 - 1
+		|| floor(ray->inter_x / 64)
 		>= ft_line_len(data, floor(ray->inter_y / 64)))
 		ray->dist = MAXFLOAT;
 	ray->dist = sqrtf((data->player.x - ray->inter_x)

@@ -26,7 +26,6 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 	while (((!data->wall_hit_hor && ver.dist >= hor.dist) || (!data->wall_hit_ver && hor.dist >= ver.dist))
 		&& (hor.dist < MAXFLOAT || ver.dist < MAXFLOAT))
 	{
-		// HERE
 		if (hor.dist <= ver.dist && !data->wall_hit_hor)
 			ft_hor_check(data, &hor);
 		if (ver.dist < hor.dist && !data->wall_hit_ver)
