@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:40:12 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/24 11:41:09 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/25 13:40:51 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_textures
 	int		n_ea;
 	int		n_f;
 	int		n_c;
+	int		n_p;
 	char	*no_txt;
 	char	*so_txt;
 	char	*we_txt;

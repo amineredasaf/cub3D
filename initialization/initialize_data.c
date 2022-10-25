@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:23:37 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/24 11:17:49 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/25 13:41:00 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_initialize_textures(t_textures *sides)
 	sides->n_no = 0;
 	sides->n_c = 0;
 	sides->n_f = 0;
+	sides->n_p = 0;
 	sides->no_txt = NULL;
 	sides->so_txt = NULL;
 	sides->we_txt = NULL;

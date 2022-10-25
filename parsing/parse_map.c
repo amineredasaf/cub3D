@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabtaour <yabtaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/09/03 12:33:36 by yabtaour         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:49:01 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,17 @@ int	first_line_verification(char **line)
 // this func parse the lines conditions inside the map
 int	inside_line_verification(char **line, t_data *data)
 {
+	char c;
 	int	x;
-	// int	len;
-	// int closed;
 
 	x = 0;
 	while(line[1] && line[1][x] != '\n')
 	{
+		c = line[1][x];
 		if (line[1][x] == '1')
 			data->map_s.closed = TRUE;
+		if (c == 'N' || c == 'W' || c == 'E' || c == 'S')
+			data->sides.n_p++;
 		else if (ft_isspace(line[1][x]) && line[1][x] != '0')
 			ft_check_vertical(line, 1, x);
 		else if (ft_isvalid(line[1][x]) && ((line[1][x + 1] != '1'
@@ -69,6 +71,8 @@ int	inside_line_verification(char **line, t_data *data)
 			exit(ft_print_error("E_WALLS"));
 		x++;
 	}
+	if (data->sides.n_p != 1)
+		exit(ft_print_error(E_CHARACTERS));
 	return (EXIT_SUCCESS);
 }
 
