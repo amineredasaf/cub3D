@@ -19,5 +19,5 @@ int ft_isvalid(char c)
 {
 	if (c == '0' || c == 'N' || c == 'W' || c == 'E' || c == 'S')
 		return (TRUE);
-	return (FAlSE);
+	return (FALSE);
 }

@@ -65,7 +65,7 @@ int	inside_line_verification(char **line, t_data *data)
 				|| (line[2][x] != '1' && !ft_isvalid(line[2][x]))
 				|| (line[0][x] != '1' && !ft_isvalid(line[0][x]))))
 			exit(ft_print_error(E_CHARACTERS));
-		else if (ft_isvalid(line[1][x]) && data->map_s.closed == FAlSE)
+		else if (ft_isvalid(line[1][x]) && data->map_s.closed == FALSE)
 			exit(ft_print_error("E_WALLS"));
 		x++;
 	}
@@ -99,7 +99,7 @@ int	ft_parse_map(t_data *data)
 
 	map = &data->map_s;
 	x = map->start_point;
-	data->map_s.closed = FAlSE;
+	data->map_s.closed = FALSE;
 	while (data->file_content[x])
 	{
 		if (data->file_content[x][0] == '\n')
