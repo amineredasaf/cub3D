@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:32:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 14:48:37 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 00:36:55 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	rotate_player(t_data *data, int flag)
 {
-	int		i = -1;
-	t_keys key;
+	t_keys	key;
+	int		i;
 
+	i = -1;
 	key = data->key_flags;
 	if (key.rotate_left == 1 || key.rotate_right == 1)
 	{
@@ -33,12 +34,12 @@ void	rotate_player(t_data *data, int flag)
 
 void	move_forward(t_data *data)
 {
-	int		i = -1;
+	t_keys	key;
 	float	x_change;
 	float	y_change;
+	int		i;
 
-	t_keys key;
-
+	i = -1;
 	key = data->key_flags;
 	x_change = data->player.x + cos(data->player.angle) * M_S;
 	y_change = data->player.y - sin(data->player.angle) * M_S;
@@ -59,12 +60,12 @@ void	move_forward(t_data *data)
 
 void	move_backward(t_data *data)
 {
-	int		i = -1;
+	t_keys	key;
 	float	x_change;
 	float	y_change;
+	int		i;
 
-	t_keys key;
-
+	i = -1;
 	key = data->key_flags;
 	x_change = data->player.x - cos(data->player.angle) * M_S;
 	y_change = data->player.y + sin(data->player.angle) * M_S;
@@ -85,12 +86,12 @@ void	move_backward(t_data *data)
 
 void	move_left(t_data *data)
 {
-	int		i = -1;
-	float	x_change = 0;
-	float	y_change = 0;
+	t_keys	key;
+	float	x_change;
+	float	y_change;
+	int		i;
 
-	t_keys key;
-
+	i = -1;
 	key = data->key_flags;
 	x_change = data->player.x - cos((M_PI / 2) - data->player.angle) * M_S;
 	y_change = data->player.y - sin((M_PI / 2) - data->player.angle) * M_S;
@@ -111,11 +112,12 @@ void	move_left(t_data *data)
 
 void	move_right(t_data *data)
 {
-	int		i = -1;
-	float	x_change = 0;
-	float	y_change = 0;
-	t_keys key;
+	t_keys	key;
+	float	x_change;
+	float	y_change;
+	int		i;
 
+	i = -1;
 	key = data->key_flags;
 	x_change = data->player.x + cos((M_PI / 2) - data->player.angle) * M_S;
 	y_change = data->player.y + sin((M_PI / 2) - data->player.angle) * M_S;

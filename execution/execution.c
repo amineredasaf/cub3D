@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 10:42:42 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 00:44:53 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 	ver.dist = W_X * W_Y;
 	ft_first_hor(data, &hor, angle);
 	ft_first_ver(data, &ver, angle);
-	while (((!data->wall_hit_hor && ver.dist >= hor.dist) || (!data->wall_hit_ver && hor.dist >= ver.dist))
+	while (((!data->wall_hit_hor && ver.dist >= hor.dist) || \
+	(!data->wall_hit_ver && hor.dist >= ver.dist))
 		&& (hor.dist < MAXFLOAT || ver.dist < MAXFLOAT))
 	{
 		if (hor.dist <= ver.dist && !data->wall_hit_hor)
 			ft_hor_check(data, &hor);
-		if (ver.dist < hor.dist && !data->wall_hit_ver)
+		if (ver.dist <= hor.dist && !data->wall_hit_ver)
 			ft_ver_check(data, &ver);
 	}
 	if (hor.dist <= ver.dist)
@@ -37,13 +38,13 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 		return (ver);
 }
 
-
 int	color_convert(t_data *data, char *buff, int lenght, int i, int j)
 {
 	int	pixel;
-	int	color = 0;
+	int	color;
 
-	pixel = (j * lenght) + (i * data->side[0].bpp/ 8);
+	color = 0;
+	pixel = (j * lenght) + (i * data->side[0].bpp / 8);
 	if (pixel > 0)
 	{
 		color = buff[pixel + 0];
@@ -55,9 +56,9 @@ int	color_convert(t_data *data, char *buff, int lenght, int i, int j)
 
 void	prepare_textures(t_data *data)
 {
-	int idx;
-	t_ptrs *side;
-	t_mlx *mlx_s;
+	int		idx;
+	t_ptrs	*side;
+	t_mlx	*mlx_s;
 
 	idx = 0;
 	side = data->side;
@@ -68,17 +69,17 @@ void	prepare_textures(t_data *data)
 	{
 		side[idx].img_ptr = mlx_xpm_file_to_image(data->mlx_s.mlx_ptr, data->textures[idx], &side[idx].img_wid, &side[idx].img_hie);
 		if (!side[idx].img_ptr)
-		exit(ft_print_error(E_WALLS));
+			exit(ft_print_error(E_WALLS));
 		side[idx].img_buff = mlx_get_data_addr(side[idx].img_ptr, &side[idx].bpp, &side[idx].llength, &side[idx].ein);
 		idx++;
-		/* code */
 	}
 }
 
 int	ft_execution(t_data *data)
 {
-	int	offset_x;
-	int	offset_y;
+	int		idx;
+	int		offset_x;
+	int		offset_y;
 	double	k;
 	float	angle;
 	float	projected_wall;
@@ -87,7 +88,7 @@ int	ft_execution(t_data *data)
 	int		ver;
 	int		hor;
 	int		from;
-	double		b;
+	double	b;
 	t_ray	ray;
 
 	i = -1;
@@ -98,7 +99,6 @@ int	ft_execution(t_data *data)
 	k = 0;
 	ver = 0;
 	hor = 0;
-	int idx;
 	idx = 0;
 	prepare_textures(data);
 	while (++i < W_X)
@@ -124,7 +124,7 @@ int	ft_execution(t_data *data)
 			offset_x = fmod(ray.inter_y, 64) * data->side[idx].img_wid / BLOCK_W;
 		if (ray.dir == 'h')
 			offset_x = fmod(ray.inter_x, 64) * data->side[idx].img_wid / BLOCK_W;
-		from = (W_Y - projected_wall) / 2 > 0 ? (W_Y - projected_wall) / 2 : 0;
+		from = (W_Y - projected_wall) / 2 > 0 ? (W_Y - projected_wall) / 2 : 0;//forrbidden Ternaries
 		k = from + projected_wall;
 		if (k > W_Y)
 			k = W_Y;
@@ -133,7 +133,7 @@ int	ft_execution(t_data *data)
 			insert_img_buffer(data, i, b, data->ceiling.final_color);
 		while (b < k)
 		{
-			offset_y = (fmod(b - (W_Y/2 - projected_wall/2), projected_wall) * (data->side[idx].img_hie / projected_wall));
+			offset_y = (fmod(b - (W_Y / 2 - projected_wall / 2), projected_wall) * (data->side[idx].img_hie / projected_wall));
 			insert_img_buffer(data, i, b, color_convert(data, data->side[idx].img_buff, data->side[idx].llength, offset_x, offset_y));
 			b++;
 		}
@@ -146,5 +146,5 @@ int	ft_execution(t_data *data)
 	}
 	put_on_win(data, data->mlx_s.frame_ptr, 0, 0);
 	mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.frame_ptr);
-	return 0;
+	return (0);
 }

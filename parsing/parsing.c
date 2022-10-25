@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/25 23:14:45 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/25 23:43:00 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,9 +174,11 @@ void	ft_fill_lines(t_data *data)
 		temp = NULL;
 		i = 0;
 		temp = malloc(sizeof(char) * hold);
-		while (data->map_s.map[j][i] && i < size)
+		while (data->map_s.map[j][i] || i < size)
 		{
 			if (ft_isspace(data->map_s.map[j][i]) || !ft_isvalid(data->map_s.map[j][i]))
+				temp[i] = '1';
+			else if (data->map_s.map[j][i] == '\n')
 				temp[i] = '1';
 			else if (data->map_s.map[j][i] != '\n')
 				temp[i] = data->map_s.map[j][i];
@@ -210,12 +212,13 @@ int	ft_parsing(t_data *data)
 	ft_get_colors(data);
 	ft_get_map(data);
 	ft_fill_lines(data);
-	// int	i = 0;
-	// while (data->map_s.map[i])
-	// {
-	// 	printf("[%s]\n", data->map_s.map[i]);
-	// 	i++;
-	// }
+	int	i = 0;
+	while (data->map_s.map[i])
+	{
+		printf("[%s]\n", data->map_s.map[i]);
+		i++;
+	}
+	// exit(1);
 	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
 }
