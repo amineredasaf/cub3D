@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:38:33 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 10:42:42 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/25 23:50:20 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 	{
 		if (hor.dist <= ver.dist && !data->wall_hit_hor)
 			ft_hor_check(data, &hor);
-		if (ver.dist < hor.dist && !data->wall_hit_ver)
+		if (ver.dist <= hor.dist && !data->wall_hit_ver)
 			ft_ver_check(data, &ver);
 	}
 	if (hor.dist <= ver.dist)
