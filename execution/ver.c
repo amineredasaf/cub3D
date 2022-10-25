@@ -17,7 +17,7 @@ void	ft_first_ver(t_data *data, t_ray *ray, float angle)
 	if (sin(angle) >= 0)
 		ray->ystep *= -1;
 	if (floor(ray->inter_y / 64) < 0
-		|| floor(ray->inter_y / 64) >= data->map_s.n_lines - 1)
+		|| floor(ray->inter_y / 64) > data->map_s.n_lines - 1)
 		ray->dist = MAXFLOAT;
 	ray->dist = sqrtf((data->player.x - ray->inter_x)
 			* (data->player.x - ray->inter_x)
