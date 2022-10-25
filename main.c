@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 10:42:31 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/25 14:51:41 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ int	key_detector(int keycode, t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+int	destroy_win(int keycode, t_data *data)
+{
+	int	i;
+
+	i = -1;
+	(void)keycode;
+	(void)data;
+	// mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.frame_ptr);
+	// while (++i <= 3)
+	// 	mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);
+	exit (EXIT_SUCCESS);
+}
+
 int	key_released(int keycode, t_data *data)
 {
 	(void)data;
@@ -50,7 +63,7 @@ int	key_released(int keycode, t_data *data)
 	if (keycode == 124)
 		data->key_flags.rotate_right = 0;
 	if (keycode == 53)
-		exit (EXIT_SUCCESS);
+		destroy_win(53, data);
 	return (EXIT_SUCCESS);
 }
 
@@ -79,6 +92,7 @@ int	key_pressed(t_data *data)
 {
 	mlx_hook(data->mlx_s.win_ptr, 2, 1L << 2, key_detector, data);
 	mlx_hook(data->mlx_s.win_ptr, 3, 1L << 3, key_released, data);
+	mlx_hook(data->mlx_s.win_ptr, 17, 1L << 0, destroy_win, data);
 	mlx_loop_hook(data->mlx_s.mlx_ptr, update_frame, data);
 	return (EXIT_SUCCESS);
 }
