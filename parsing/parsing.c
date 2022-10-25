@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/13 14:51:08 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/25 23:14:45 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	ft_read_file(t_data *data)
 }
 
 // this function store the map content in data->map_s.map
+// i delete -1 from substr(*, len -1);
 void	ft_get_map(t_data *data)
 {
 	int		i;
@@ -86,11 +87,11 @@ void	ft_get_map(t_data *data)
 	size = data->map_s.end_point - data->map_s.start_point;
 	i = data->map_s.start_point;
 	j = 0;
-	data->map_s.map = ft_calloc(size + 1, sizeof(char *) );
+	data->map_s.map = ft_calloc(size + 1, sizeof(char *));
 	while (i < data->map_s.end_point)
 	{
 		line = data->file_content[i++];
-		data->map_s.map[j++] = ft_substr(line, 0, ft_strlen(line) - 1);
+		data->map_s.map[j++] = ft_substr(line, 0, ft_strlen(line));
 	}
 	data->map_s.map[j] = NULL;
 	i = 0;
@@ -167,22 +168,18 @@ void	ft_fill_lines(t_data *data)
 	j = 0;
 	size = ft_longest_line(data->map_s.map);
 	hold = size;
-	// printf("%d\n", size);
+	// printf("%d\n", size);exit(1);
 	while (data->map_s.map && data->map_s.map[j])
 	{
 		temp = NULL;
 		i = 0;
-		temp = malloc(sizeof(char) * hold + 1);
-		while (data->map_s.map[j][i])
+		temp = malloc(sizeof(char) * hold);
+		while (data->map_s.map[j][i] && i < size)
 		{
-			temp[i] = data->map_s.map[j][j];
-			if (ft_isspace(temp[i]))
+			if (ft_isspace(data->map_s.map[j][i]) || !ft_isvalid(data->map_s.map[j][i]))
 				temp[i] = '1';
-			i++;
-		}
-		while (size--)
-		{
-			temp[i] = '1';
+			else if (data->map_s.map[j][i] != '\n')
+				temp[i] = data->map_s.map[j][i];
 			i++;
 		}
 		temp[i] = '\0';
@@ -213,12 +210,12 @@ int	ft_parsing(t_data *data)
 	ft_get_colors(data);
 	ft_get_map(data);
 	ft_fill_lines(data);
-	int	i = 0;
-	while (data->map_s.map[i])
-	{
-		printf("[%s]\n", data->map_s.map[i]);
-		i++;
-	}
+	// int	i = 0;
+	// while (data->map_s.map[i])
+	// {
+	// 	printf("[%s]\n", data->map_s.map[i]);
+	// 	i++;
+	// }
 	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
 }
