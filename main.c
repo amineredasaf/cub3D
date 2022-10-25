@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 14:51:41 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/25 23:30:00 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	key_detector(int keycode, t_data *data)
 	if (keycode == 124)
 		data->key_flags.rotate_right = 1;
 	if (keycode == 53)
-		exit (EXIT_SUCCESS);
+		destroy_win(53, data);
 	return (EXIT_SUCCESS);
 }
 
