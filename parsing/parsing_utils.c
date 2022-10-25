@@ -16,7 +16,7 @@
 int	ft_is_map(char *line)
 {
 	if (!ft_isspace(line[0]) && line[0] != '1')
-		return (FAlSE);
+		return (FALSE);
 	return (TRUE);
 }
 
@@ -27,7 +27,7 @@ int	ft_issides(char *line, char a, char b, int flag)
 		return (TRUE);
 	else if (flag == COLOR && line && line[0] == a && ft_isspace(line[1]))
 		return (TRUE);
-	return (FAlSE);
+	return (FALSE);
 }
 
 // we need to add protection here for all textures and colors if empty or new line
