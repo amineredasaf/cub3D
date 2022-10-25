@@ -11,19 +11,17 @@
 /* ************************************************************************** */
 
 #ifndef MACROS_H
-#define MACROS_H
+# define MACROS_H
 
 /*              win size            */
 
 # define W_X 1000
 # define W_Y 1000
 
-
 /*              movement            */
 
 # define R_S 5
 # define M_S 5
-
 
 /*              execution           */
 # define ADD 1
@@ -46,7 +44,7 @@
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 # define TRUE 1
-# define FAlSE 0
+# define FALSE 0
 
 /*				sides				*/
 # define S_NO 10
@@ -55,7 +53,6 @@
 # define S_EA 13
 # define S_F  14
 # define S_C  15
-
 
 /*              texture sides       */
 # define NO 0
@@ -81,7 +78,6 @@
 # define W_INSIDE 2
 # define W_LAST 3
 
-
 /*				Error				*/
 # define E_WALLS "- Configuration Walls is not well formatted."
 # define E_CHARACTERS "- Configuration Characters, Not Well Formatted."
@@ -97,31 +93,31 @@
 
 /*				dubg				*/
 
-#ifndef DEBUG_H
-# define DEBUG_H
+// # ifndef DEBUG_H
+// #  define DEBUG_H
 
-//fonts color
-#define FBLACK      "\033[30m"
-#define FRED        "\033[31m"
-#define FGREEN      "\033[32m"
-#define FYELLOW     "\033[33m"
-#define FBLUE       "\033[34m"
-#define FPURPLE     "\033[35m"
-#define D_FGREEN    "\033[6m"
-#define FWHITE      "\033[7m"
-#define FCYAN       "\x1b[36m"
+// //fonts color
+// # define FBLACK      "\033[30m"
+// # define FRED        "\033[31m"
+// # define FGREEN      "\033[32m"
+// # define FYELLOW     "\033[33m"
+// # define FBLUE       "\033[34m"
+// # define FPURPLE     "\033[35m"
+// # define D_FGREEN    "\033[6m"
+// # define FWHITE      "\033[7m"
+// # define FCYAN       "\x1b[36m"
 
-//end color
-#define NONE        "\033[0m"
+// //end color
+// # define NONE        "\033[0m"
 
-# define HERE printf("File [%s%s%s] in Func [%s%s%s] on the Line [%s%d%s]\n",FYELLOW, __FILE__, NONE, FYELLOW, __func__, NONE, FRED, __LINE__, NONE);
-# define LEAKS system("leaks minishell");
-# define LOOP while(1);
-# define PID printf("[procces pid %d]\n", getpid());
-# define DATE printf("the current date is %s%s%s\n",FRED, __DATE__, NONE);
-# define TIME printf("The current time is %s%s%s\n",FRED, __TIME__, NONE);
-# define Warning(...) fprintf(stderr, __VA_ARGS__)
-// < ---- MATH ----> 
+// # define HERE printf("File [%s%s%s] in Func [%s%s%s] on the Line [%s%d%s]\n",FYELLOW, __FILE__, NONE, FYELLOW, __func__, NONE, FRED, __LINE__, NONE);
+// # define LEAKS system("leaks minishell");
+// # define LOOP while(1);
+// # define PID printf("[procces pid %d]\n", getpid());
+// # define DATE printf("the current date is %s%s%s\n",FRED, __DATE__, NONE);
+// # define TIME printf("The current time is %s%s%s\n",FRED, __TIME__, NONE);
+// # define Warning(...) fprintf(stderr, __VA_ARGS__)
+// // < ---- MATH ----> 
 
-#endif
+// # endif
 #endif // MACROS_H

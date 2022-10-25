@@ -11,17 +11,16 @@
 /* ************************************************************************** */
 
 #ifndef EXECUTION_H
-#define EXECUTION_H
+# define EXECUTION_H
 
 // **       RAY EXECUTION       ** //
 //---------------------------------//
 float	ft_convert_deg_rad(float deg);
-int     ft_execution(t_data *data);
-void    ft_get_starting_angle(t_data *data);
-void    line(t_data *data, int x0, int y0, int x1, int y1);
+int		ft_execution(t_data *data);
+void	ft_get_starting_angle(t_data *data);
 void	ft_get_starting_angle(t_data *data);
 float	ft_line_len(t_data *data, float y);
-int	    ft_count_lines(t_data *data);
+int		ft_count_lines(t_data *data);
 void	ft_update_view_angle(t_data *data, int flag);
 void	ft_draw_ray(t_data *data, t_ray *ray);
 int		is_wall(t_data *data, int x, int y);

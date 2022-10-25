@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
 typedef struct s_ptrs
 {
-	/* data */
 	char	*img_buff;
 	void	*img_ptr;
 	int		bpp;
@@ -25,14 +24,12 @@ typedef struct s_ptrs
 	int		img_hie;
 }	t_ptrs;
 
-
 typedef struct s_mlx
 {
-	/* data */
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*frame_ptr;
-	char 	*mbuff;
+	char	*mbuff;
 	int		x;
 	int		y;
 	int		mbpp;
@@ -44,9 +41,9 @@ typedef struct s_textures
 {
 	int		f_found;
 	int		n_no;
-	int 	n_so;
-	int 	n_we;
-	int 	n_ea;
+	int		n_so;
+	int		n_we;
+	int		n_ea;
 	int		n_f;
 	int		n_c;
 	char	*no_txt;
@@ -59,10 +56,9 @@ typedef struct s_textures
 
 typedef struct s_map
 {
-	/* data */
 	char	**map;
 	int		closed;
-	int		start_point; 
+	int		start_point;
 	int		end_point;
 	int		map_size;
 	int		longest_line;
@@ -83,8 +79,8 @@ typedef struct s_color
 typedef struct s_player
 {
 	float	fov;
-	float		x;
-	float		y;
+	float	x;
+	float	y;
 	float	angle;
 }	t_player;
 
@@ -96,8 +92,8 @@ typedef struct s_plane
 
 typedef struct s_coordinate
 {
-	float x;
-	float y;
+	float	x;
+	float	y;
 }	t_coordinate;
 
 typedef struct s_ray
@@ -120,26 +116,25 @@ typedef struct s_keys
 	int	rotate_right;
 }	t_keys;
 
-
 typedef struct s_data
 {
-	char		**av;
-	int			ac;
-	int			fd_map[2]; // file-descriptor of the map
-	char		**file_content; // file content *line by line*
-	t_color		floor;
-	t_color		ceiling;
-	t_textures	sides;
-	t_map		map_s;
-	t_player	player;
-	t_plane		plane;
-	int			wall_hit_hor;
-	int			wall_hit_ver;
+	char			**av;
+	int				ac;
+	int				fd_map[2];
+	char			**file_content;
+	t_color			floor;
+	t_color			ceiling;
+	t_textures		sides;
+	t_map			map_s;
+	t_player		player;
+	t_plane			plane;
+	int				wall_hit_hor;
+	int				wall_hit_ver;
 	t_coordinate	coordinate;
-	t_mlx		mlx_s;
-	t_keys		key_flags;
-	char		**textures;
-	t_ptrs		side[4];
-}   t_data;
+	t_mlx			mlx_s;
+	t_keys			key_flags;
+	char			**textures;
+	t_ptrs			side[4];
+}	t_data;
 
 #endif // STRUCTS_H
