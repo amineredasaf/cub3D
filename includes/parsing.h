@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:35:16 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/26 12:35:17 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 16:22:38 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		ft_parse_textures(t_data *data);
 int		ft_parse_map(t_data *data);
 void	ft_get_colors(t_data *data);
 int		ft_isvalid(char c);
+void	ft_fill_lines(t_data *data, int i, int j);
 //         parsing utils       */
 int		ft_issides(char *line, char a, char b, int flag);
 int		ft_is_map(char *line);

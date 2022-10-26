@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/26 16:04:31 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 16:22:54 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,67 +135,67 @@ void	ft_free_split(char **str)
 		free(str);
 }
 
-int	ft_map_line_size(char *line)
-{
-	int	i;
+// int	ft_map_line_size(char *line)
+// {
+// 	int	i;
 
-	i = 0;
-	while (line && line[i] != '\0')
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (line && line[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
 
-int	ft_longest_line(char **map)
-{
-	int	value;
-	int	i;
+// int	ft_longest_line(char **map)
+// {
+// 	int	value;
+// 	int	i;
 
-	i = 0;
-	value = 0;
-	while (map && map[i])
-	{
-		if (ft_map_line_size(map[i]) > value)
-			value = ft_map_line_size(map[i]);
-		i++;
-	}
-	return (value);
-}
+// 	i = 0;
+// 	value = 0;
+// 	while (map && map[i])
+// 	{
+// 		if (ft_map_line_size(map[i]) > value)
+// 			value = ft_map_line_size(map[i]);
+// 		i++;
+// 	}
+// 	return (value);
+// }
 
-void	ft_fill_lines(t_data *data)
-{
-	int		i;
-	int		j;
-	int		size;
-	char	*temp;
-	int		hold;
+// void	ft_fill_lines(t_data *data)
+// {
+// 	int		i;
+// 	int		j;
+// 	int		size;
+// 	char	*temp;
+// 	int		hold;
 
-	j = 0;
-	size = ft_longest_line(data->map_s.map);
-	hold = size;
-	while (data->map_s.map && data->map_s.map[j])
-	{
-		temp = NULL;
-		i = 0;
-		temp = malloc(sizeof(char) * hold);
-		while (data->map_s.map[j][i] || i < size)
-		{
-			if (ft_isspace(data->map_s.map[j][i])
-				|| !ft_isvalid(data->map_s.map[j][i]))
-				temp[i] = '1';
-			else if (data->map_s.map[j][i] == '\n')
-				temp[i] = '1';
-			else if (data->map_s.map[j][i] != '\n')
-				temp[i] = data->map_s.map[j][i];
-			i++;
-		}
-		temp[i] = '\0';
-		if (data->map_s.map[j])
-			free(data->map_s.map[j]);
-		data->map_s.map[j] = ft_strdup(temp);
-		free(temp);
-		j++;
-	}
-}
+// 	j = 0;
+// 	size = ft_longest_line(data->map_s.map);
+// 	hold = size;
+// 	while (data->map_s.map && data->map_s.map[j])
+// 	{
+// 		temp = NULL;
+// 		i = 0;
+// 		temp = malloc(sizeof(char) * hold);
+// 		while (data->map_s.map[j][i] || i < size)
+// 		{
+// 			if (ft_isspace(data->map_s.map[j][i])
+// 				|| !ft_isvalid(data->map_s.map[j][i]))
+// 				temp[i] = '1';
+// 			else if (data->map_s.map[j][i] == '\n')
+// 				temp[i] = '1';
+// 			else if (data->map_s.map[j][i] != '\n')
+// 				temp[i] = data->map_s.map[j][i];
+// 			i++;
+// 		}
+// 		temp[i] = '\0';
+// 		if (data->map_s.map[j])
+// 			free(data->map_s.map[j]);
+// 		data->map_s.map[j] = ft_strdup(temp);
+// 		free(temp);
+// 		j++;
+// 	}
+// }
 
 // this func is main func for parsing process.
 int	ft_parsing(t_data *data)
@@ -215,7 +215,7 @@ int	ft_parsing(t_data *data)
 	ft_parse_map(data);
 	ft_get_colors(data);
 	ft_get_map(data);
-	ft_fill_lines(data);
+	ft_fill_lines(data, 0, 0);
 	// exit(1);
 	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
