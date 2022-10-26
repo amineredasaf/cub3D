@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 13:49:01 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 13:40:52 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 // this func check looks for the closest '1' after any ' ' [space] detected
 int	ft_check_vertical(char **line, int y, int x)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[y])
 	{
 		if (line[y][x] == '1')
 			return (EXIT_SUCCESS);
-		else if (!ft_isspace(line[y][x]) && line[y][x] != '\n' && line[y][x] != '\0')
+		else if (!ft_isspace(line[y][x]) &&
+			line[y][x] != '\n' && line[y][x] != '\0')
 			exit (ft_print_error(E_CHARACTERS));
 		y++;
 	}
@@ -35,12 +36,12 @@ int	first_line_verification(char **line)
 	int	x;
 
 	x = 0;
-	while(line[0][x] && line[0][x] != '\n')
+	while (line[0][x] && line[0][x] != '\n')
 	{
 		if (line[0][x] != '1' && !ft_isspace(line[0][x]))
 			exit(ft_print_error("E_WALLS"));
 		else if (ft_isspace(line[0][x]))
-			ft_check_vertical(line , 0, x);
+			ft_check_vertical(line, 0, x);
 		x++;
 	}
 	return (EXIT_SUCCESS);
@@ -52,7 +53,7 @@ int	inside_line_verification(char **line, t_data *data)
 	int	x;
 
 	x = 0;
-	while(line[1] && line[1][x] != '\n')
+	while (line[1] && line[1][x] != '\n')
 	{
 		if (line[1][x] == '1')
 			data->map_s.closed = TRUE;
@@ -74,10 +75,9 @@ int	inside_line_verification(char **line, t_data *data)
 int	last_line_verification(char **line, t_data *data)
 {
 	int	x;
-	// int closed;
 
 	x = 0;
-	while(line[0] && line[0][x] != '\0')
+	while (line[0] && line[0][x] != '\0')
 	{
 		if (line[0][x] == '1')
 			data->map_s.closed = TRUE;
@@ -93,7 +93,7 @@ int	last_line_verification(char **line, t_data *data)
 int	ft_parse_map(t_data *data)
 {
 	t_map	*map;
-	int	x;
+	int		x;
 
 	map = &data->map_s;
 	x = map->start_point;

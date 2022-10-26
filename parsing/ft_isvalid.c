@@ -6,16 +6,14 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:39:52 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 13:42:51 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 13:37:56 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 // int	player_sides(char c)
-
-
-int ft_isvalid(char c)
+int	ft_isvalid(char c)
 {
 	if (c == '0' || c == 'N' || c == 'W' || c == 'E' || c == 'S')
 		return (TRUE);

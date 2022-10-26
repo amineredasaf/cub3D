@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/25 23:43:00 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 13:45:03 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	ft_split_textures(t_data *data)
 
 void	ft_free_split(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str && str[i])
