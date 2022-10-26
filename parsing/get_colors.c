@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:38:38 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/09/02 16:01:48 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 13:38:40 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_check_fields(char **fields)
 		exit (ft_print_error(E_COLOR));
 }
 
-
 // this function converts the colors from char * to int using atoi
 void	ft_store_color(t_data *data, int flag)
 {
@@ -56,7 +55,7 @@ void	ft_store_color(t_data *data, int flag)
 	{
 		data->ceiling.r = ft_atoi(data->ceiling.splited[0]);
 		data->ceiling.g = ft_atoi(data->ceiling.splited[1]);
-		data->ceiling.b = ft_atoi(data->ceiling.splited[2]);		
+		data->ceiling.b = ft_atoi(data->ceiling.splited[2]);
 	}
 }
 
