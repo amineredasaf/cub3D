@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/26 16:31:23 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 16:34:54 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,40 +43,6 @@ int	ft_open_map(t_data *data)
 	if (data->fd_map[0] == -1 || data->fd_map[1] == -1)
 		return (ft_print_error(E_PERMISSION_DENIED));
 	return (EXIT_SUCCESS);
-}
-
-// this func read conf file content and allocate space for it
-// FD : need to be closed [0]
-// data->file_content : need to be freed
-void	ft_read_file(t_data *data)
-{
-	char	*line;
-	char	*temp;
-	int		i;
-
-	i = 0;
-	line = NULL;
-	temp = get_next_line(data->fd_map[0]);
-	while (temp)
-	{
-		free(temp);
-		i++;
-		temp = get_next_line(data->fd_map[0]);
-	}
-	data->map_s.end_point = i;
-	if (i == 0)
-		exit (ft_print_error(E_EMPTY_FILE));
-	data->file_content = ft_calloc(i + 1, sizeof(char *));
-	if (!data->file_content)
-		exit(ft_print_error(E_ALLOCATION_FAILED));
-	i = 0;
-	line = get_next_line(data->fd_map[1]);
-	while (line)
-	{
-		data->file_content[i++] = ft_substr(line, 0, ft_strlen(line));
-		free(line);
-		line = get_next_line(data->fd_map[1]);
-	}
 }
 
 // this function store the map content in data->map_s.map
