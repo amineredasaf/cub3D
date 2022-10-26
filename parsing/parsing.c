@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/26 19:52:56 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 20:29:24 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,6 @@ void	ft_get_map(t_data *data)
 	data->map_s.map[j] = NULL;
 	i = 0;
 }
-
-// // this function creates a 2D table for textures
-// void	ft_split_textures(t_data *data)
-// {
-// 	data->textures = malloc(sizeof(char *) * 5);
-// 	if (!data->textures)
-// 	{
-// 		printf("mamak allocciha\n");
-// 		exit(1);
-// 	}
-// 	data->textures[0] = ft_strdup(data->sides.no_txt);
-// 	free(data->sides.no_txt);
-// 	data->textures[1] = ft_strdup(data->sides.so_txt);
-// 	free(data->sides.so_txt);
-// 	data->textures[2] = ft_strdup(data->sides.we_txt);
-// 	free(data->sides.we_txt);
-// 	data->textures[3] = ft_strdup(data->sides.ea_txt);
-// 	free(data->sides.ea_txt);
-// 	data->textures[4] = NULL;
-// }
 
 void	ft_free_split(char **str)
 {

@@ -6,13 +6,13 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 04:23:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/08/29 04:32:47 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 20:31:11 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-char    *ft_strdup(char *str)
+char	*ft_strdup(char *str)
 {
 	char	*ptr;
 	int		len;

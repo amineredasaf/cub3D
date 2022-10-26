@@ -6,13 +6,13 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 08:29:04 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/08/31 13:32:51 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 20:31:31 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-size_t	ft_strlcpy(char	*dst,char *src,size_t dstsize)
+size_t	ft_strlcpy(char	*dst, char *src, size_t dstsize)
 {
 	size_t	src_s;
 	size_t	i;
