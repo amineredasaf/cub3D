@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 16:15:41 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/26 16:25:12 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 18:15:06 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,15 @@ int	ft_longest_line(char **map)
 	return (value);
 }
 
-void	ft_fill_lines(t_data *data, int i,  int j)
+void	insert_new_line(t_data *data, char *temp, int j)
+{
+	if (data->map_s.map[j])
+		free(data->map_s.map[j]);
+	data->map_s.map[j] = ft_strdup(temp);
+	free(temp);
+}
+
+void	ft_fill_lines(t_data *data, int i, int j)
 {
 	int		size;
 	char	*temp;
@@ -49,22 +57,17 @@ void	ft_fill_lines(t_data *data, int i,  int j)
 		temp = NULL;
 		i = 0;
 		temp = malloc(sizeof(char) * size);
-		while (data->map_s.map[j][i] || i < size)
+		while (i < size)
 		{
 			if (ft_isspace(data->map_s.map[j][i])
 				|| !ft_isvalid(data->map_s.map[j][i]))
-				temp[i] = '1';
-			else if (data->map_s.map[j][i] == '\n')
 				temp[i] = '1';
 			else if (data->map_s.map[j][i] != '\n')
 				temp[i] = data->map_s.map[j][i];
 			i++;
 		}
 		temp[i] = '\0';
-		if (data->map_s.map[j])
-			free(data->map_s.map[j]);
-		data->map_s.map[j] = ft_strdup(temp);
-		free(temp);
+		insert_new_line(data, temp, j);
 		j++;
 	}
 }

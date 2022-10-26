@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/26 16:34:54 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 18:18:53 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,6 @@ int	ft_parsing(t_data *data)
 	ft_get_colors(data);
 	ft_get_map(data);
 	ft_fill_lines(data, 0, 0);
-	// exit(1);
 	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
 }
-	// int	i = 0;
-	// while (data->map_s.map[i])
-	// {
-	// 	printf("[%s]\n", data->map_s.map[i]);
-	// 	i++;
-	// }
