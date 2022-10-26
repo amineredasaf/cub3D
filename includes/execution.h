@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 03:44:30 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 23:30:25 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 12:32:07 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	move_left(t_data *data);
 void	move_right(t_data *data);
-int destroy_win(int keycode, t_data *data);
+int		destroy_win(int keycode, t_data *data);
 #endif
