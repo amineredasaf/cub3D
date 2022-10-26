@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/26 13:45:03 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 16:04:31 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ void	ft_read_file(t_data *data)
 
 	i = 0;
 	line = NULL;
-	while ((temp = get_next_line(data->fd_map[0])))
+	temp = get_next_line(data->fd_map[0]);
+	while (temp)
 	{
 		free(temp);
 		i++;
+		temp = get_next_line(data->fd_map[0]);
 	}
 	data->map_s.end_point = i;
 	if (i == 0)
@@ -68,10 +70,12 @@ void	ft_read_file(t_data *data)
 	if (!data->file_content)
 		exit(ft_print_error(E_ALLOCATION_FAILED));
 	i = 0;
-	while ((line = get_next_line(data->fd_map[1])))
+	line = get_next_line(data->fd_map[1]);
+	while (line)
 	{
 		data->file_content[i++] = ft_substr(line, 0, ft_strlen(line));
 		free(line);
+		line = get_next_line(data->fd_map[1]);
 	}
 }
 
@@ -168,7 +172,6 @@ void	ft_fill_lines(t_data *data)
 	j = 0;
 	size = ft_longest_line(data->map_s.map);
 	hold = size;
-	// printf("%d\n", size);exit(1);
 	while (data->map_s.map && data->map_s.map[j])
 	{
 		temp = NULL;
@@ -176,7 +179,8 @@ void	ft_fill_lines(t_data *data)
 		temp = malloc(sizeof(char) * hold);
 		while (data->map_s.map[j][i] || i < size)
 		{
-			if (ft_isspace(data->map_s.map[j][i]) || !ft_isvalid(data->map_s.map[j][i]))
+			if (ft_isspace(data->map_s.map[j][i])
+				|| !ft_isvalid(data->map_s.map[j][i]))
 				temp[i] = '1';
 			else if (data->map_s.map[j][i] == '\n')
 				temp[i] = '1';
@@ -212,13 +216,13 @@ int	ft_parsing(t_data *data)
 	ft_get_colors(data);
 	ft_get_map(data);
 	ft_fill_lines(data);
-	int	i = 0;
-	while (data->map_s.map[i])
-	{
-		printf("[%s]\n", data->map_s.map[i]);
-		i++;
-	}
 	// exit(1);
 	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
 }
+	// int	i = 0;
+	// while (data->map_s.map[i])
+	// {
+	// 	printf("[%s]\n", data->map_s.map[i]);
+	// 	i++;
+	// }

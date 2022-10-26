@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:38:38 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/26 13:38:40 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 14:54:09 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,18 @@ void	ft_convert_color(t_data *data, int flag)
 		if (data->floor.b > 255 || data->floor.r > 255 || data->floor.g > 255
 			|| data->floor.b < 0 || data->floor.r < 0 || data->floor.g < 0)
 			exit (ft_print_error(E_COLOR));
-		data->floor.final_color = (data->floor.r * 65536) + (data->floor.g * 265) + (data->floor.b);
+		data->floor.final_color = (data->floor.r * 65536) + \
+		(data->floor.g * 265) + (data->floor.b);
 	}
 	if (flag == S_C)
 	{
-		if (data->ceiling.b > 255 || data->ceiling.r > 255 || data->ceiling.g > 255
-			|| data->ceiling.b < 0 || data->ceiling.r < 0 || data->ceiling.g < 0)
+		if (data->ceiling.b > 255 || data->ceiling.r > 255
+			|| data->ceiling.g > 255
+			|| data->ceiling.b < 0 || data->ceiling.r < 0
+			|| data->ceiling.g < 0)
 			exit (ft_print_error(E_COLOR));
-		data->ceiling.final_color = (data->ceiling.r * 65536) + (data->ceiling.g * 265) + (data->ceiling.b);
+		data->ceiling.final_color = (data->ceiling.r * 65536) + \
+		(data->ceiling.g * 265) + (data->ceiling.b);
 	}
 }
 
