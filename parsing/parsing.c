@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:59:35 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/26 13:45:03 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 20:29:24 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,36 +45,6 @@ int	ft_open_map(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
-// this func read conf file content and allocate space for it
-// FD : need to be closed [0]
-// data->file_content : need to be freed
-void	ft_read_file(t_data *data)
-{
-	char	*line;
-	char	*temp;
-	int		i;
-
-	i = 0;
-	line = NULL;
-	while ((temp = get_next_line(data->fd_map[0])))
-	{
-		free(temp);
-		i++;
-	}
-	data->map_s.end_point = i;
-	if (i == 0)
-		exit (ft_print_error(E_EMPTY_FILE));
-	data->file_content = ft_calloc(i + 1, sizeof(char *));
-	if (!data->file_content)
-		exit(ft_print_error(E_ALLOCATION_FAILED));
-	i = 0;
-	while ((line = get_next_line(data->fd_map[1])))
-	{
-		data->file_content[i++] = ft_substr(line, 0, ft_strlen(line));
-		free(line);
-	}
-}
-
 // this function store the map content in data->map_s.map
 // i delete -1 from substr(*, len -1);
 void	ft_get_map(t_data *data)
@@ -97,26 +67,6 @@ void	ft_get_map(t_data *data)
 	i = 0;
 }
 
-// this function creates a 2D table for textures
-void	ft_split_textures(t_data *data)
-{
-	data->textures = malloc(sizeof(char *) * 5);
-	if (!data->textures)
-	{
-		printf("mamak allocciha\n");
-		exit(1);
-	}
-	data->textures[0] = ft_strdup(data->sides.no_txt);
-	free(data->sides.no_txt);
-	data->textures[1] = ft_strdup(data->sides.so_txt);
-	free(data->sides.so_txt);
-	data->textures[2] = ft_strdup(data->sides.we_txt);
-	free(data->sides.we_txt);
-	data->textures[3] = ft_strdup(data->sides.ea_txt);
-	free(data->sides.ea_txt);
-	data->textures[4] = NULL;
-}
-
 void	ft_free_split(char **str)
 {
 	int	i;
@@ -129,68 +79,6 @@ void	ft_free_split(char **str)
 	}
 	if (str)
 		free(str);
-}
-
-int	ft_map_line_size(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line && line[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	ft_longest_line(char **map)
-{
-	int	value;
-	int	i;
-
-	i = 0;
-	value = 0;
-	while (map && map[i])
-	{
-		if (ft_map_line_size(map[i]) > value)
-			value = ft_map_line_size(map[i]);
-		i++;
-	}
-	return (value);
-}
-
-void	ft_fill_lines(t_data *data)
-{
-	int		i;
-	int		j;
-	int		size;
-	char	*temp;
-	int		hold;
-
-	j = 0;
-	size = ft_longest_line(data->map_s.map);
-	hold = size;
-	// printf("%d\n", size);exit(1);
-	while (data->map_s.map && data->map_s.map[j])
-	{
-		temp = NULL;
-		i = 0;
-		temp = malloc(sizeof(char) * hold);
-		while (data->map_s.map[j][i] || i < size)
-		{
-			if (ft_isspace(data->map_s.map[j][i]) || !ft_isvalid(data->map_s.map[j][i]))
-				temp[i] = '1';
-			else if (data->map_s.map[j][i] == '\n')
-				temp[i] = '1';
-			else if (data->map_s.map[j][i] != '\n')
-				temp[i] = data->map_s.map[j][i];
-			i++;
-		}
-		temp[i] = '\0';
-		if (data->map_s.map[j])
-			free(data->map_s.map[j]);
-		data->map_s.map[j] = ft_strdup(temp);
-		free(temp);
-		j++;
-	}
 }
 
 // this func is main func for parsing process.
@@ -211,14 +99,7 @@ int	ft_parsing(t_data *data)
 	ft_parse_map(data);
 	ft_get_colors(data);
 	ft_get_map(data);
-	ft_fill_lines(data);
-	int	i = 0;
-	while (data->map_s.map[i])
-	{
-		printf("[%s]\n", data->map_s.map[i]);
-		i++;
-	}
-	// exit(1);
+	ft_fill_lines(data, 0, 0);
 	ft_free_split(data->file_content);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/10/22 23:43:58 by rsaf             ###   ########.fr        #
+#    Updated: 2022/10/26 19:52:53 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ MLX			=	-lmlx -framework OpenGL -framework AppKit
 PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 				./parsing/parse_map.c ./parsing/parsing_utils.c \
             	./parsing/get_colors.c ./parsing/ft_isvalid.c \
+				./parsing/ft_fill_lines.c ./parsing/ft_read_file.c \
+				./parsing/ft_split_textures.c \
 
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
@@ -53,7 +55,8 @@ test		:
 	cc $(MLX) mlx_testing.c
 
 $(NAME)		: $(OBJ)
-	cc $(C_FLAGS) $^ $(MLX) -o $@ -fsanitize=address
+	cc $(C_FLAGS) $^ $(MLX) -o $@ 
+#-fsanitize=address
 
 clean		:
 	rm -f $(OBJ)
