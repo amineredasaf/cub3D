@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:23:37 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/25 13:41:00 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/26 12:40:13 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ void	ft_initialize_textures(t_textures *sides)
 
 void	ft_initialize_data(t_data *data)
 {
-	int sides;
+	int	sides;
 
 	sides = 3;
 	data->file_content = NULL;
 	data->map_s.map = 0;
 	data->textures = NULL;
-
 	while (sides >= 0)
 	{
 		data->side[sides].img_wid = 0;
