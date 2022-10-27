@@ -6,7 +6,7 @@
 #    By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/25 20:42:39 by rsaf              #+#    #+#              #
-#    Updated: 2022/10/26 19:52:53 by rsaf             ###   ########.fr        #
+#    Updated: 2022/10/27 16:05:14 by rsaf             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ PARSING		=	./parsing/parsing.c ./parsing/parse_textures.c \
 				./parsing/parse_map.c ./parsing/parsing_utils.c \
             	./parsing/get_colors.c ./parsing/ft_isvalid.c \
 				./parsing/ft_fill_lines.c ./parsing/ft_read_file.c \
-				./parsing/ft_split_textures.c \
+				./parsing/ft_split_textures.c ./parsing/ft_parse_player.c \
 
 
 UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
