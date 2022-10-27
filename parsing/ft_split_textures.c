@@ -18,8 +18,8 @@ void	ft_split_textures(t_data *data)
 	data->textures = malloc(sizeof(char *) * 5);
 	if (!data->textures)
 	{
-		printf("mamak allocciha\n");
-		exit(1);
+		ft_free_split(data->file_content);
+		exit(ft_print_error(E_ALLOCATION_FAILED));
 	}
 	data->textures[0] = ft_strdup(data->sides.no_txt);
 	free(data->sides.no_txt);

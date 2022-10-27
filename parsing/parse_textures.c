@@ -95,7 +95,10 @@ int	ft_check_sides(t_data *data, char *line)
 	else if (ft_issides(line, 'C', 'q', COLOR))
 		ft_init_sides(data, line, S_C);
 	else if (line[0] != '1' && line[0] != '0' && line[0] != '\n')
+	{
+		ft_free_split(data->file_content);
 		exit(ft_print_error(E_FILE_FORMAT));
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -112,7 +115,10 @@ int	ft_parse_textures(t_data *data)
 		if (line && !ft_is_map(line))
 			ft_check_sides(data, line);
 		else if (data->sides.f_found < 6)
+		{
+			ft_free_split(data->file_content);
 			exit(ft_print_error(E_FILE_FORMAT));
+		}
 		else if (ft_is_map(line))
 		{
 			free(line);
@@ -124,7 +130,10 @@ int	ft_parse_textures(t_data *data)
 	if (i != 0)
 		data->map_s.start_point = i;
 	if (ft_check_after_id(data))
+	{
+		ft_free_split(data->file_content);
 		exit(ft_print_error(E_TEXTURE));
+	}
 	ft_update_txt(data);
 	return (EXIT_SUCCESS);
 }

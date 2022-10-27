@@ -41,6 +41,8 @@ int	destroy_win(int keycode, t_data *data)
 	i = -1;
 	(void)keycode;
 	(void)data;
+	ft_free_split(data->textures);
+	ft_free_split(data->map_s.map);
 	// mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.frame_ptr);
 	// while (++i <= 3)
 	// 	mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);

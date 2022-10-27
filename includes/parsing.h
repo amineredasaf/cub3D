@@ -29,5 +29,6 @@ int		ft_is_map(char *line);
 int		ft_check_after_id(t_data *data);
 void	ft_update_txt(t_data *data);
 void	*ft_calloc(size_t	count, size_t	size);
+void	ft_free_split(char **str);
 
 #endif // PARSING_H
