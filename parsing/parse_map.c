@@ -13,7 +13,7 @@
 #include "../includes/cub3d.h"
 
 // this func check looks for the closest '1' after any ' ' [space] detected
-int	ft_check_vertical(char **line, int y, int x)
+int	ft_check_vertical(t_data *data, char **line, int y, int x)
 {
 	int	i;
 
@@ -24,14 +24,18 @@ int	ft_check_vertical(char **line, int y, int x)
 			return (EXIT_SUCCESS);
 		else if (!ft_isspace(line[y][x]) &&
 			line[y][x] != '\n' && line[y][x] != '\0')
-			exit (ft_print_error(E_CHARACTERS));
+		{
+			ft_free_split(data->file_content);
+			ft_free_split(data->textures);
+			exit(ft_print_error(E_CHARACTERS));
+		}
 		y++;
 	}
 	return (EXIT_FAILURE);
 }
 
 // this func parse the first line conditions
-int	first_line_verification(char **line)
+int	first_line_verification(t_data *data, char **line)
 {
 	int	x;
 
@@ -39,16 +43,20 @@ int	first_line_verification(char **line)
 	while (line[0][x] && line[0][x] != '\n')
 	{
 		if (line[0][x] != '1' && !ft_isspace(line[0][x]))
-			exit(ft_print_error("E_WALLS"));
+		{
+			ft_free_split(data->file_content);
+			ft_free_split(data->textures);
+			exit(ft_print_error(E_WALLS));
+		}
 		else if (ft_isspace(line[0][x]))
-			ft_check_vertical(line, 0, x);
+			ft_check_vertical(data, line, 0, x);
 		x++;
 	}
 	return (EXIT_SUCCESS);
 }
 
 // this func parse the lines conditions inside the map
-int	inside_line_verification(char **line, t_data *data)
+int	inside_line_verification(t_data *data, char **line)
 {
 	int	x;
 
@@ -58,21 +66,29 @@ int	inside_line_verification(char **line, t_data *data)
 		if (line[1][x] == '1')
 			data->map_s.closed = TRUE;
 		else if (ft_isspace(line[1][x]) && line[1][x] != '0')
-			ft_check_vertical(line, 1, x);
+			ft_check_vertical(data, line, 1, x);
 		else if (ft_isvalid(line[1][x]) && ((line[1][x + 1] != '1'
 				&& !ft_isvalid(line[1][x + 1]))
 				|| (line[2][x] != '1' && !ft_isvalid(line[2][x]))
 				|| (line[0][x] != '1' && !ft_isvalid(line[0][x]))))
-			exit(ft_print_error(E_CHARACTERS));
+		{
+			ft_free_split(data->file_content);
+			ft_free_split(data->textures);
+			exit(ft_print_error(E_CHARACTERS));	
+		}
 		else if (ft_isvalid(line[1][x]) && data->map_s.closed == FALSE)
+		{
+			ft_free_split(data->file_content);
+			ft_free_split(data->textures);
 			exit(ft_print_error(E_WALLS));
+		}
 		x++;
 	}
 	return (EXIT_SUCCESS);
 }
 
 // this func parse the last line conditions
-int	last_line_verification(char **line, t_data *data)
+int	last_line_verification(t_data *data, char **line)
 {
 	int	x;
 
@@ -82,7 +98,11 @@ int	last_line_verification(char **line, t_data *data)
 		if (line[0][x] == '1')
 			data->map_s.closed = TRUE;
 		else if (line[0][x] != '1' && line[0][x] != ' ' && line[0][x] != '\n')
+		{
+			ft_free_split(data->file_content);
+			ft_free_split(data->textures);
 			exit(ft_print_error(E_WALLS));
+		}
 		x++;
 	}
 	return (EXIT_SUCCESS);
@@ -101,13 +121,17 @@ int	ft_parse_map(t_data *data)
 	while (data->file_content[x])
 	{
 		if (data->file_content[x][0] == '\n')
+		{
+			ft_free_split(data->file_content);
+			ft_free_split(data->textures);
 			exit(ft_print_error(E_WALLS));
+		}
 		if (x == map->start_point)
-			first_line_verification(&data->file_content[x]);
+			first_line_verification(data, &data->file_content[x]);
 		else if (data->file_content[x + 1] == NULL)
-			last_line_verification(&data->file_content[x], data);
+			last_line_verification(data, &data->file_content[x]);
 		else if (x != map->start_point)
-			inside_line_verification(&data->file_content[x - 1], data);
+			inside_line_verification(data, &data->file_content[x - 1]);
 		x++;
 	}
 	data->map_s.map_size = data->map_s.end_point - data->map_s.start_point;

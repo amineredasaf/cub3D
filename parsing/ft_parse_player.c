@@ -38,5 +38,9 @@ void	ft_parse_player(t_data *data)
 		y++;
 	}
 	if (data->sides.n_p != 1)
+	{
+		ft_free_split(data->file_content);
+		ft_free_split(data->textures);
 		exit(ft_print_error(E_CHARACTERS));
+	}
 }

@@ -58,6 +58,12 @@ void	ft_get_map(t_data *data)
 	i = data->map_s.start_point;
 	j = 0;
 	data->map_s.map = ft_calloc(size + 1, sizeof(char *));
+	if (!data->map_s.map)
+	{
+		ft_free_split(data->file_content);
+		ft_free_split(data->textures);
+		exit(ft_print_error(E_ALLOCATION_FAILED));
+	}
 	while (i < data->map_s.end_point)
 	{
 		line = data->file_content[i++];
