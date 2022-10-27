@@ -30,7 +30,7 @@
 # define BLOCK_W 64
 # define BLOCK_H 64
 # define PI 3.14159265359
-# define FOV 60
+# define H_FOV 0.5236
 # define ANGLE_STEP 0.06
 
 # define LEFT -1
