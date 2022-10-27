@@ -36,6 +36,7 @@ void	ft_hor_check(t_data *data, t_ray *ray);
 void	insert_img_buffer(t_data *data, int x, int y, int color);
 // this func put the images on the window;
 void	put_on_win(t_data *data, void *ptr, int x, int y);
+void	prepare_textures(t_data *data);
 
 // **       Moves EXECUTION     ** //
 void	rotate_player(t_data *data, int flag);

@@ -117,6 +117,23 @@ typedef struct s_keys
 	int	rotate_right;
 }	t_keys;
 
+typedef struct s_execution
+{
+	int		idx;
+	int		offset_x;
+	int		offset_y;
+	double	k;
+	float	angle;
+	float	projected_wall;
+	float	real;
+	int		i;
+	int		ver;
+	int		hor;
+	int		from;
+	double	b;
+	t_ray	ray;
+}	t_execution;
+
 typedef struct s_data
 {
 	char			**av;
@@ -136,6 +153,7 @@ typedef struct s_data
 	t_keys			key_flags;
 	char			**textures;
 	t_ptrs			side[4];
+	t_execution		exe;
 }	t_data;
 
 #endif // STRUCTS_H

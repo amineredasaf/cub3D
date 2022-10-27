@@ -101,5 +101,6 @@ int	ft_parsing(t_data *data)
 	ft_get_map(data);
 	ft_fill_lines(data, 0, 0);
 	ft_free_split(data->file_content);
+	data->map_s.n_lines = ft_count_lines(data);
 	return (EXIT_SUCCESS);
 }
