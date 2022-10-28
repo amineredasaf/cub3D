@@ -18,6 +18,7 @@ void	ft_split_textures(t_data *data)
 	data->textures = malloc(sizeof(char *) * 5);
 	if (!data->textures)
 	{
+		free_allocation(data);
 		ft_free_split(data->file_content);
 		exit(ft_print_error(E_ALLOCATION_FAILED));
 	}

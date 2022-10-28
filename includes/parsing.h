@@ -13,6 +13,8 @@
 #ifndef PARSING_H
 # define PARSING_H
 
+void    free_allocation(t_data *data);
+
 int		ft_check_cub(char *name);
 int		ft_parsing(t_data *data);
 int		ft_parse_textures(t_data *data);

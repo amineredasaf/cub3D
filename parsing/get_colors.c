@@ -13,7 +13,7 @@
 #include "../includes/cub3d.h"
 
 //this function checks how many commas are there in the color
-void	ft_check_comma(char *line)
+void	ft_check_comma(t_data *data, char *line)
 {
 	int	i;
 	int	count;
@@ -27,7 +27,12 @@ void	ft_check_comma(char *line)
 		i++;
 	}
 	if (count != 2)
+	{
+		ft_free_split(data->file_content);
+		ft_free_split(data->textures);
+		free_allocation(data);
 		exit (ft_print_error(E_COLOR));
+	}
 }
 
 //this function cheks how many fields are there in the color
@@ -40,10 +45,12 @@ void	ft_check_fields(t_data *data, char **fields)
 		i++;
 	if (i != 3)
 	{
-		ft_free_split(data->floor.splited);
-		ft_free_split(data->ceiling.splited);
+		if (data->floor.splited)
+			ft_free_split(data->floor.splited);
+		if (data->ceiling.splited)
+			ft_free_split(data->ceiling.splited);
+		ft_free_split(data->file_content);
 		ft_free_split(data->textures);
-		ft_free_split(data->map_s.map);
 		exit (ft_print_error(E_COLOR));
 	}
 }
@@ -76,8 +83,8 @@ void	ft_convert_color(t_data *data, int flag)
 		if (data->floor.b > 255 || data->floor.r > 255 || data->floor.g > 255
 			|| data->floor.b < 0 || data->floor.r < 0 || data->floor.g < 0)
 		{
+			ft_free_split(data->file_content);
 			ft_free_split(data->textures);
-			ft_free_split(data->map_s.map);
 			exit (ft_print_error(E_COLOR));
 		}
 		data->floor.final_color = data->floor.b << 16;
@@ -91,8 +98,8 @@ void	ft_convert_color(t_data *data, int flag)
 			|| data->ceiling.b < 0 || data->ceiling.r < 0
 			|| data->ceiling.g < 0)
 		{
+			ft_free_split(data->file_content);
 			ft_free_split(data->textures);
-			ft_free_split(data->map_s.map);
 			exit (ft_print_error(E_COLOR));
 		}
 		data->ceiling.final_color = data->ceiling.b << 16;
@@ -104,8 +111,8 @@ void	ft_convert_color(t_data *data, int flag)
 // this is the main function for parsing the colors
 void	ft_get_colors(t_data *data)
 {
-	ft_check_comma(data->sides.c_txt);
-	ft_check_comma(data->sides.f_txt);
+	ft_check_comma(data, data->sides.c_txt);
+	ft_check_comma(data, data->sides.f_txt);
 	data->floor.splited = ft_split(data->sides.f_txt, ',');
 	data->ceiling.splited = ft_split(data->sides.c_txt, ',');
 	free(data->sides.c_txt);
