@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:31:53 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/26 13:40:52 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 21:57:11 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,9 @@ int	inside_line_verification(t_data *data, char **line)
 				&& !ft_isvalid(line[1][x + 1]))
 				|| (line[2][x] != '1' && !ft_isvalid(line[2][x]))
 				|| (line[0][x] != '1' && !ft_isvalid(line[0][x]))))
-		{
-			ft_free_split(data->file_content);
-			ft_free_split(data->textures);
-			exit(ft_print_error(E_CHARACTERS));
-		}
+			kill_leaks(data, "FT", E_CHARACTERS);
 		else if (ft_isvalid(line[1][x]) && data->map_s.closed == FALSE)
-		{
-			ft_free_split(data->file_content);
-			ft_free_split(data->textures);
-			exit(ft_print_error(E_WALLS));
-		}
+			kill_leaks(data, "FT", E_WALLS);
 		x++;
 	}
 	return (EXIT_SUCCESS);

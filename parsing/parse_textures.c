@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/26 13:43:31 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 22:06:16 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,6 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 	result = ft_strtrim(temp, " ");
 	free(temp);
 	return (result);
-}
-
-void	free_allocation(t_data *data)
-{
-	if (data->sides.c_txt != NULL)
-		free(data->sides.c_txt);
-	if (data->sides.f_txt != NULL)
-		free(data->sides.f_txt);
-	if (data->sides.ea_txt != NULL)
-		free(data->sides.ea_txt);
-	if (data->sides.no_txt != NULL)
-		free(data->sides.no_txt);
-	if (data->sides.so_txt != NULL)
-		free(data->sides.so_txt);
-	if (data->sides.we_txt != NULL)
-		free(data->sides.we_txt);
 }
 
 // this func alloact texture data in our struct. beta version could be better
@@ -135,13 +119,7 @@ int	ft_parse_textures(t_data *data)
 		if (line && !ft_is_map(line))
 			ft_check_sides(data, line);
 		else if (data->sides.f_found < 6)
-		{
-			free_allocation(data);
-			if (line)
-				free(line);
-			ft_free_split(data->file_content);
-			exit(ft_print_error(E_FILE_FORMAT));
-		}
+			freeit(data, line);
 		else if (ft_is_map(line))
 		{
 			free(line);
@@ -153,10 +131,7 @@ int	ft_parse_textures(t_data *data)
 	if (i != 0)
 		data->map_s.start_point = i;
 	if (ft_check_after_id(data))
-	{
-		ft_free_split(data->file_content);
-		exit(ft_print_error(E_TEXTURE));
-	}
+		kill_leaks(data, "F", E_TEXTURE);
 	ft_update_txt(data);
 	return (EXIT_SUCCESS);
 }
