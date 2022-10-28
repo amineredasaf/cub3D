@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:35:16 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/27 16:03:45 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 16:21:10 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_fill_lines(t_data *data, int i, int j);
 void	ft_read_file(t_data *data);
 void	ft_split_textures(t_data *data);
 void	ft_parse_player(t_data *data);
+int     kill_leaks(t_data *data, char *flag, char *mesg);
 //         parsing utils       */
 int		ft_issides(char *line, char a, char b, int flag);
 int		ft_is_map(char *line);
