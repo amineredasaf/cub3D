@@ -75,11 +75,11 @@ void	ft_convert_color(t_data *data, int flag)
 	{
 		if (data->floor.b > 255 || data->floor.r > 255 || data->floor.g > 255
 			|| data->floor.b < 0 || data->floor.r < 0 || data->floor.g < 0)
-			{
-				ft_free_split(data->textures);
-				ft_free_split(data->map_s.map);
-				exit (ft_print_error(E_COLOR));
-			}
+		{
+			ft_free_split(data->textures);
+			ft_free_split(data->map_s.map);
+			exit (ft_print_error(E_COLOR));
+		}
 		data->floor.final_color = data->floor.b << 16;
 		data->floor.final_color += data->floor.g << 8;
 		data->floor.final_color += data->floor.r;
