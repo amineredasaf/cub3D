@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/28 22:06:16 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 22:25:10 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,19 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 // this func alloact texture data in our struct. beta version could be better
 int	ft_init_sides(t_data *data, char *line, int flag)
 {
-	if (flag == S_NO)
+	if (flag == S_NO && !data->sides.no_txt)
 		data->sides.no_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_SO)
+	else if (flag == S_SO && !data->sides.so_txt)
 		data->sides.so_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_WE)
+	else if (flag == S_WE && !data->sides.we_txt)
 		data->sides.we_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_EA)
+	else if (flag == S_EA && !data->sides.ea_txt)
 		data->sides.ea_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_F)
+	else if (flag == S_F && !data->sides.f_txt)
 		data->sides.f_txt = ft_color_alloc(data, line, flag);
-	else if (flag == S_C)
+	else if (flag == S_C && !data->sides.c_txt)
 		data->sides.c_txt = ft_color_alloc(data, line, flag);
-	if (data->sides.n_ea > 1 || data->sides.n_so > 1 || data->sides.n_we > 1
-		|| data->sides.n_no > 1 || data->sides.n_f > 1 || data->sides.n_c > 1)
+	else
 	{
 		free_allocation(data);
 		ft_free_split(data->file_content);
@@ -101,7 +100,7 @@ int	ft_check_sides(t_data *data, char *line)
 	{
 		free(line);
 		ft_free_split(data->file_content);
-		exit(ft_print_error(E_FILE_FORMAT));
+		exit(ft_print_error("E_FILE_FORMAT"));
 	}
 	return (EXIT_SUCCESS);
 }

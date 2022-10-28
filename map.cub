@@ -3,10 +3,8 @@ SO ./assest/BRICK2.xpm
 WE ./assest/BRICK3.xpm
 EA      ./assest/BRICK4.xpm
 F 0,102,0
-C 255,153,51
-
-
+C 153,51
 
 1111111111
 10000N001
-111111111
+1111111111

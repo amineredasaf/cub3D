@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:16:47 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/28 22:06:19 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 22:29:31 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	kill_leaks(t_data *data, char *flag, char *mesg)
 			ft_free_split(data->map_s.map);
 		i++;
 	}
+	system("leaks cub3d");
 	exit(ft_print_error(mesg));
 }
 
@@ -52,4 +53,5 @@ void	free_allocation(t_data *data)
 		free(data->sides.so_txt);
 	if (data->sides.we_txt != NULL)
 		free(data->sides.we_txt);
+	system("leaks cub3d");
 }
