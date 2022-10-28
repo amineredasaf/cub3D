@@ -55,6 +55,22 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 	return (result);
 }
 
+void	free_allocation(t_data *data)
+{
+	if (data->sides.c_txt != NULL)
+		free(data->sides.c_txt);
+	if (data->sides.f_txt != NULL)
+		free(data->sides.f_txt);
+	if (data->sides.ea_txt != NULL)
+		free(data->sides.ea_txt);
+	if (data->sides.no_txt != NULL)
+		free(data->sides.no_txt);
+	if (data->sides.so_txt != NULL)
+		free(data->sides.so_txt);
+	if (data->sides.we_txt != NULL)
+		free(data->sides.we_txt);
+}
+
 // this func alloact texture data in our struct. beta version could be better
 int	ft_init_sides(t_data *data, char *line, int flag)
 {
@@ -73,6 +89,9 @@ int	ft_init_sides(t_data *data, char *line, int flag)
 	if (data->sides.n_ea > 1 || data->sides.n_so > 1 || data->sides.n_we > 1
 		|| data->sides.n_no > 1 || data->sides.n_f > 1 || data->sides.n_c > 1)
 	{
+		free_allocation(data);
+		ft_free_split(data->file_content);
+		free(line);
 		ft_print_error(E_FILE_FORMAT);
 		exit (1);
 	}
@@ -96,6 +115,7 @@ int	ft_check_sides(t_data *data, char *line)
 		ft_init_sides(data, line, S_C);
 	else if (line[0] != '1' && line[0] != '0' && line[0] != '\n')
 	{
+		free(line);
 		ft_free_split(data->file_content);
 		exit(ft_print_error(E_FILE_FORMAT));
 	}
@@ -116,6 +136,9 @@ int	ft_parse_textures(t_data *data)
 			ft_check_sides(data, line);
 		else if (data->sides.f_found < 6)
 		{
+			free_allocation(data);
+			if (line)
+				free(line);
 			ft_free_split(data->file_content);
 			exit(ft_print_error(E_FILE_FORMAT));
 		}

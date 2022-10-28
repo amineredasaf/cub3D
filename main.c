@@ -44,5 +44,6 @@ int	main(int argc, char **argv)
 	ft_get_starting_angle(&data);
 	ft_execution(&data);
 	key_pressed(&data);
+	system("leaks cub3d");
 	mlx_loop(data.mlx_s.mlx_ptr);
 }

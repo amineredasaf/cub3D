@@ -56,9 +56,14 @@ void	ft_fill_lines(t_data *data, int i, int j)
 	{
 		temp = NULL;
 		i = 0;
-		temp = malloc(-sizeof(char) * size);
+		temp = malloc(sizeof(char) * size);
 		if (!temp)
-			kill_leaks(data, "FTM", E_ALLOCATION_FAILED);
+		{
+			ft_free_split(data->file_content);
+			ft_free_split(data->textures);
+			ft_free_split(data->map_s.map);
+			exit(ft_print_error(E_ALLOCATION_FAILED));
+		}
 		while (i < size)
 		{
 			if (ft_isspace(data->map_s.map[j][i])

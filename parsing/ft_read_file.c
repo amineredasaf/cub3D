@@ -29,6 +29,7 @@ int	count_lines(t_data *data)
 		i++;
 		temp = get_next_line(data->fd_map[0]);
 	}
+	close(data->fd_map[0]);
 	return (i);
 }
 
@@ -53,4 +54,5 @@ void	ft_read_file(t_data *data)
 		free(line);
 		line = get_next_line(data->fd_map[1]);
 	}
+	close(data->fd_map[1]);
 }
