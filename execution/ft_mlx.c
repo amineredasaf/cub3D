@@ -56,7 +56,7 @@ void	prepare_textures(t_data *data)
 		if (!side[idx].img_ptr)
 		{
 			ft_free_split(data->textures);
-			ft_free_split(data->map_s.map);			
+			ft_free_split(data->map_s.map);
 			exit(ft_print_error(E_WALLS));
 		}
 		side[idx].img_buff = mlx_get_data_addr(side[idx].img_ptr, \

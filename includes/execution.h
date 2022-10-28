@@ -38,11 +38,17 @@ void	insert_img_buffer(t_data *data, int x, int y, int color);
 void	put_on_win(t_data *data, void *ptr, int x, int y);
 void	prepare_textures(t_data *data);
 
+int		color_convert(t_data *data, char *buff, int lenght);
+
 // **       Moves EXECUTION     ** //
+
+int		key_pressed(t_data *data);
+
 void	rotate_player(t_data *data, int flag);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	move_left(t_data *data);
 void	move_right(t_data *data);
 int		destroy_win(int keycode, t_data *data);
+int		ft_can_move(t_data *data, float x, float y);
 #endif

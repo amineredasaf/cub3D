@@ -74,7 +74,7 @@ int	inside_line_verification(t_data *data, char **line)
 		{
 			ft_free_split(data->file_content);
 			ft_free_split(data->textures);
-			exit(ft_print_error(E_CHARACTERS));	
+			exit(ft_print_error(E_CHARACTERS));
 		}
 		else if (ft_isvalid(line[1][x]) && data->map_s.closed == FALSE)
 		{

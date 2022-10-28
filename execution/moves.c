@@ -45,9 +45,7 @@ void	move_forward(t_data *data)
 	y_change = data->player.y - sin(data->player.angle) * M_S;
 	if (key.move_forward == 1)
 	{
-		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\n'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\0')
+		if (!ft_can_move(data, x_change, y_change))
 			return ;
 		while (++i <= 3)
 			mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);
@@ -71,9 +69,7 @@ void	move_backward(t_data *data)
 	y_change = data->player.y + sin(data->player.angle) * M_S;
 	if (key.move_backward == 1)
 	{
-		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\n'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\0')
+		if (!ft_can_move(data, x_change, y_change))
 			return ;
 		while (++i <= 3)
 			mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);
@@ -97,9 +93,7 @@ void	move_left(t_data *data)
 	y_change = data->player.y - sin((M_PI / 2) - data->player.angle) * M_S;
 	if (key.move_left == 1)
 	{
-		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\n'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\0')
+		if (!ft_can_move(data, x_change, y_change))
 			return ;
 		while (++i <= 3)
 			mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);
@@ -123,9 +117,7 @@ void	move_right(t_data *data)
 	y_change = data->player.y + sin((M_PI / 2) - data->player.angle) * M_S;
 	if (key.move_right == 1)
 	{
-		if (data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '1'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\n'
-			|| data->map_s.map[(int)floor(y_change / 64)][(int)floor(x_change / 64)] == '\0')
+		if (!ft_can_move(data, x_change, y_change))
 			return ;
 		while (++i <= 3)
 			mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);

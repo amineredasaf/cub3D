@@ -38,22 +38,6 @@ t_ray	ft_cast_ray(t_data *data, float angle)
 		return (ver);
 }
 
-int	color_convert(t_data *data, char *buff, int lenght, int i, int j)
-{
-	int	pixel;
-	int	color;
-
-	color = 0;
-	pixel = (j * lenght) + (i * data->side[0].bpp / 8);
-	if (pixel > 0)
-	{
-		color = buff[pixel + 0];
-		color += buff[pixel + 1] << 8;
-		color += buff[pixel + 2] << 16;
-	}
-	return (color);
-}
-
 void	get_offset_x_texture(t_data *data)
 {
 	if (data->exe.ray.dir == 'v')
@@ -101,8 +85,7 @@ void	ft_rendering(t_data *data)
 		* (data->side[data->exe.idx].img_hie / data->exe.projected_wall));
 		insert_img_buffer(data, data->exe.i, data->exe.b, \
 		color_convert(data, data->side[data->exe.idx].img_buff, \
-		data->side[data->exe.idx].llength, \
-		data->exe.offset_x, data->exe.offset_y));
+		data->side[data->exe.idx].llength));
 		data->exe.b++;
 	}
 	while (data->exe.b < W_Y)

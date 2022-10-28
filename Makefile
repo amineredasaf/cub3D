@@ -27,14 +27,14 @@ UTILS		=	./utils/ft_substr.c ./utils/ft_strcmp.c \
 				./utils/ft_print_error.c ./utils/ft_strdup.c \
 				./utils/ft_strtrim.c ./utils/ft_isspace.c \
 				./utils/ft_split.c ./utils/ft_calloc.c \
-				./utils/ft_atoi.c \
+				./utils/ft_atoi.c keys_utils.c \
 				
 INIT		=	./initialization/initialize_data.c \
 				./initialization/mlx_initialization.c \
 
 EXECUTION	=	./execution/execution.c ./execution/execution_utils.c \
 				./execution/hor.c ./execution/ver.c ./execution/ft_mlx.c\
-				./execution/moves.c \
+				./execution/moves.c ./execution/moves_utils.c \
 
 GNL			=	./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c
 
