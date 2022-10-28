@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:51:34 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/25 23:30:00 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 22:07:48 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ int	destroy_win(int keycode, t_data *data)
 	(void)data;
 	ft_free_split(data->textures);
 	ft_free_split(data->map_s.map);
-	// mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.frame_ptr);
-	// while (++i <= 3)
-	// 	mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);
+	while (++i <= 3)
+		mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);
 	exit (EXIT_SUCCESS);
 }
 

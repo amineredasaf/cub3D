@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:01:10 by rsaf              #+#    #+#             */
-/*   Updated: 2022/10/26 13:43:31 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 22:25:10 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,39 +55,22 @@ char	*ft_color_alloc(t_data *data, char *line, int flag)
 	return (result);
 }
 
-void	free_allocation(t_data *data)
-{
-	if (data->sides.c_txt != NULL)
-		free(data->sides.c_txt);
-	if (data->sides.f_txt != NULL)
-		free(data->sides.f_txt);
-	if (data->sides.ea_txt != NULL)
-		free(data->sides.ea_txt);
-	if (data->sides.no_txt != NULL)
-		free(data->sides.no_txt);
-	if (data->sides.so_txt != NULL)
-		free(data->sides.so_txt);
-	if (data->sides.we_txt != NULL)
-		free(data->sides.we_txt);
-}
-
 // this func alloact texture data in our struct. beta version could be better
 int	ft_init_sides(t_data *data, char *line, int flag)
 {
-	if (flag == S_NO)
+	if (flag == S_NO && !data->sides.no_txt)
 		data->sides.no_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_SO)
+	else if (flag == S_SO && !data->sides.so_txt)
 		data->sides.so_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_WE)
+	else if (flag == S_WE && !data->sides.we_txt)
 		data->sides.we_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_EA)
+	else if (flag == S_EA && !data->sides.ea_txt)
 		data->sides.ea_txt = ft_textures_alloc(data, line, flag);
-	else if (flag == S_F)
+	else if (flag == S_F && !data->sides.f_txt)
 		data->sides.f_txt = ft_color_alloc(data, line, flag);
-	else if (flag == S_C)
+	else if (flag == S_C && !data->sides.c_txt)
 		data->sides.c_txt = ft_color_alloc(data, line, flag);
-	if (data->sides.n_ea > 1 || data->sides.n_so > 1 || data->sides.n_we > 1
-		|| data->sides.n_no > 1 || data->sides.n_f > 1 || data->sides.n_c > 1)
+	else
 	{
 		free_allocation(data);
 		ft_free_split(data->file_content);
@@ -117,7 +100,7 @@ int	ft_check_sides(t_data *data, char *line)
 	{
 		free(line);
 		ft_free_split(data->file_content);
-		exit(ft_print_error(E_FILE_FORMAT));
+		exit(ft_print_error("E_FILE_FORMAT"));
 	}
 	return (EXIT_SUCCESS);
 }
@@ -135,13 +118,7 @@ int	ft_parse_textures(t_data *data)
 		if (line && !ft_is_map(line))
 			ft_check_sides(data, line);
 		else if (data->sides.f_found < 6)
-		{
-			free_allocation(data);
-			if (line)
-				free(line);
-			ft_free_split(data->file_content);
-			exit(ft_print_error(E_FILE_FORMAT));
-		}
+			freeit(data, line);
 		else if (ft_is_map(line))
 		{
 			free(line);
@@ -153,10 +130,7 @@ int	ft_parse_textures(t_data *data)
 	if (i != 0)
 		data->map_s.start_point = i;
 	if (ft_check_after_id(data))
-	{
-		ft_free_split(data->file_content);
-		exit(ft_print_error(E_TEXTURE));
-	}
+		kill_leaks(data, "F", E_TEXTURE);
 	ft_update_txt(data);
 	return (EXIT_SUCCESS);
 }

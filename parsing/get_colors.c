@@ -6,7 +6,7 @@
 /*   By: rsaf <rsaf@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:38:38 by yabtaour          #+#    #+#             */
-/*   Updated: 2022/10/27 15:24:07 by rsaf             ###   ########.fr       */
+/*   Updated: 2022/10/28 22:26:38 by rsaf             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,7 @@ void	ft_convert_color(t_data *data, int flag)
 	{
 		if (data->floor.b > 255 || data->floor.r > 255 || data->floor.g > 255
 			|| data->floor.b < 0 || data->floor.r < 0 || data->floor.g < 0)
-		{
-			ft_free_split(data->file_content);
-			ft_free_split(data->textures);
-			exit (ft_print_error(E_COLOR));
-		}
+			kill_leaks(data, "FT", E_COLOR);
 		data->floor.final_color = data->floor.b << 16;
 		data->floor.final_color += data->floor.g << 8;
 		data->floor.final_color += data->floor.r;
@@ -97,11 +93,7 @@ void	ft_convert_color(t_data *data, int flag)
 			|| data->ceiling.g > 255
 			|| data->ceiling.b < 0 || data->ceiling.r < 0
 			|| data->ceiling.g < 0)
-		{
-			ft_free_split(data->file_content);
-			ft_free_split(data->textures);
-			exit (ft_print_error(E_COLOR));
-		}
+			kill_leaks(data, "FT", E_COLOR);
 		data->ceiling.final_color = data->ceiling.b << 16;
 		data->ceiling.final_color += data->ceiling.g << 8;
 		data->ceiling.final_color += data->ceiling.r;
