@@ -20,8 +20,8 @@
 
 /*              movement            */
 
-# define R_S 0.0872665
-# define M_S 5
+# define R_S 0.174533
+# define M_S 15
 
 /*              execution           */
 # define ADD 1
@@ -32,6 +32,7 @@
 # define PI 3.14159265359
 # define H_FOV 0.5236
 # define ANGLE_STEP 0.001047198
+# define P_PP_D 954.929249292
 
 # define LEFT -1
 # define RIGHT 1

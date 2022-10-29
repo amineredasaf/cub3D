@@ -106,7 +106,7 @@ int	ft_execution(t_data *data)
 		data->exe.ray = ft_cast_ray(data, data->exe.angle);
 		data->exe.real = data->exe.ray.dist \
 		* cos(data->exe.angle - data->player.angle);
-		data->exe.projected_wall = floor((64 / data->exe.real) * 277);
+		data->exe.projected_wall = floor((64 / data->exe.real) * P_PP_D);
 		get_offset_x_texture(data);
 		if ((W_Y - data->exe.projected_wall) / 2)
 			data->exe.from = (W_Y - data->exe.projected_wall) / 2;
