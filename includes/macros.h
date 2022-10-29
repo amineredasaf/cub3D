@@ -20,7 +20,7 @@
 
 /*              movement            */
 
-# define R_S 5
+# define R_S 0.0872665
 # define M_S 5
 
 /*              execution           */
@@ -31,7 +31,7 @@
 # define BLOCK_H 64
 # define PI 3.14159265359
 # define H_FOV 0.5236
-# define ANGLE_STEP 0.06
+# define ANGLE_STEP 0.001047198
 
 # define LEFT -1
 # define RIGHT 1

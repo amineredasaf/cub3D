@@ -24,9 +24,9 @@ void	rotate_player(t_data *data, int flag)
 		while (++i <= 3)
 			mlx_destroy_image(data->mlx_s.mlx_ptr, data->side[i].img_ptr);
 		if (flag == RIGHT)
-			data->player.angle -= ft_convert_deg_rad(R_S);
+			data->player.angle -= R_S;
 		else if (flag == LEFT)
-			data->player.angle += ft_convert_deg_rad(R_S);
+			data->player.angle += R_S;
 		mlx_clear_window(data->mlx_s.mlx_ptr, data->mlx_s.win_ptr);
 		ft_execution(data);
 	}
