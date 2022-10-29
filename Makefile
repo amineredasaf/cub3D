@@ -57,7 +57,6 @@ test		:
 
 $(NAME)		: $(OBJ)
 	cc $(C_FLAGS) $^ $(MLX) -o $@ 
-#-fsanitize=address
 
 clean		:
 	rm -f $(OBJ)

@@ -27,7 +27,6 @@ int	kill_leaks(t_data *data, char *flag, char *mesg)
 			ft_free_split(data->map_s.map);
 		i++;
 	}
-	system("leaks cub3d");
 	exit(ft_print_error(mesg));
 }
 
@@ -53,5 +52,4 @@ void	free_allocation(t_data *data)
 		free(data->sides.so_txt);
 	if (data->sides.we_txt != NULL)
 		free(data->sides.we_txt);
-	system("leaks cub3d");
 }

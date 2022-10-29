@@ -1,8 +1,8 @@
 NO ./assest/BRICK1.xpm
 SO ./assest/BRICK2.xpm
+F 0,102,0
 WE ./assest/BRICK3.xpm
 EA      ./assest/BRICK4.xpm
-F 0,102,0
 C 153,51,8
 
         1111111111111111111111111
