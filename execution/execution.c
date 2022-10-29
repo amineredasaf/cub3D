@@ -116,7 +116,7 @@ int	ft_execution(t_data *data)
 		if (data->exe.k > W_Y)
 			data->exe.k = W_Y;
 		ft_rendering(data);
-		data->exe.angle -= ft_convert_deg_rad(ANGLE_STEP);
+		data->exe.angle -= ANGLE_STEP;
 	}
 	put_on_win(data, data->mlx_s.frame_ptr, 0, 0);
 	mlx_destroy_image(data->mlx_s.mlx_ptr, data->mlx_s.frame_ptr);

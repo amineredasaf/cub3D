@@ -36,8 +36,8 @@ void	ft_set_angle_pos(t_data *data, int x, int y, char flag)
 		data->player.angle = M_PI;
 	if (flag == 'E')
 		data->player.angle = 0;
-	data->player.x = (x * 64) + 32;
-	data->player.y = (y * 64) + 32;
+	data->player.x = (x * BLOCK_W) + 32;
+	data->player.y = (y * BLOCK_H) + 32;
 }
 
 void	ft_get_starting_angle(t_data *data)
